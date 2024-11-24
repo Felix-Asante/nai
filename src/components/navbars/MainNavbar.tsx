@@ -6,10 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-type Props = {
-  linkClassName?: string;
-};
-export default function MainNavbar({ linkClassName }: Props) {
+export default function MainNavbar() {
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {

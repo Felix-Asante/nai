@@ -33,10 +33,6 @@ export default function ProjectsSection() {
     visible: { opacity: 1, y: 0, transition: { duration: 1 } },
   };
 
-  const cardHoverVariants = {
-    hover: { scale: 1.05 },
-  };
-
   return (
     <section className="py-16">
       <motion.div
@@ -52,8 +48,8 @@ export default function ProjectsSection() {
             Projects for the charity donation organization
           </h2>
           <p className="mt-4 text-gray-600 xl:w-[45%]">
-            These projects showcase Chari's commitment to addressing a diverse
-            range of issues, including education, healthcare, economic
+            These projects showcase Chari&apos;s commitment to addressing a
+            diverse range of issues, including education, healthcare, economic
             empowerment, community development, emergency relief, and
             environmental sustainability.
           </p>

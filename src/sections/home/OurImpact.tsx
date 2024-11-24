@@ -73,7 +73,7 @@ export default function OurImpact() {
           className="text-center"
         >
           <h2 className="text-3xl lg:text-4xl font-semibold text-primary-300">
-            Together, we've made a tremendous impact!
+            Together, we&apos;ve made a tremendous impact!
           </h2>
           <motion.div
             initial="hidden"
