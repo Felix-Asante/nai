@@ -1,4 +1,3 @@
-"use client";
 import Footer from "@/components/Footer";
 import HomeIntroSection from "@/sections/home/HomeIntroSection";
 import HowUCanHelp from "@/sections/home/HowUCanHelp";

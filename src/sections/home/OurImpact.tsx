@@ -1,3 +1,4 @@
+"use client";
 import { cn } from "@/utils";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";

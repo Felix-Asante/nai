@@ -1,3 +1,4 @@
+"use client";
 import MainNavbar from "@/components/navbars/MainNavbar";
 import { motion } from "framer-motion";
 import Link from "next/link";

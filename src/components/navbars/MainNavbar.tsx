@@ -1,10 +1,10 @@
+"use client";
 import { navbarRoutes } from "@/constants/routes";
-import { cn } from "@/utils";
-import Image from "next/image";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { AlignJustifyIcon } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 type Props = {
   linkClassName?: string;
