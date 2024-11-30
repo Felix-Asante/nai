@@ -7,7 +7,6 @@ import Container from "@/components/layouts/Container";
 import Link from "next/link";
 
 export default function ProjectHeader() {
-  // Animation Variants
   const headerVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },

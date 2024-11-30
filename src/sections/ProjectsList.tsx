@@ -5,7 +5,12 @@ import Link from "next/link";
 import React from "react";
 
 type Props = {
-  projects: any[];
+  projects: {
+    image: string;
+    title: string;
+    description: string;
+    category: string;
+  }[];
 };
 export default function ProjectsList({ projects }: Props) {
   return (
