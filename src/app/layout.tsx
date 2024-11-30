@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Noble Alms International - NAI",
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${bricolageGrotesque.className} antialiased`}>
         {children}
+        <Footer />
       </body>
     </html>
   );

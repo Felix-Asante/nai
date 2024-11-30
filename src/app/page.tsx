@@ -15,7 +15,6 @@ const LandingPage = () => {
       <HowUCanHelp />
       <OurImpact />
       <ProjectsSection />
-      <Footer />
     </div>
   );
 };
