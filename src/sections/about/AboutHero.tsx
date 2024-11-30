@@ -10,7 +10,7 @@ export default function AboutHero() {
       {/* Hero Section */}
       <Container className="py-16 md:py-20">
         <motion.h1
-          className="text-3xl md:text-4xl bg-secondary-200 text-primary px-3 w-fit font-bold"
+          className="text-3xl md:text-4xl bg-secondary-200 text-primary px-3 py-1 w-fit font-bold"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
