@@ -1,42 +1,85 @@
+"use client";
+
 import React from "react";
+import { motion } from "framer-motion";
 import { PROJECT_CATEGORY } from "@/constants/content";
 import Container from "@/components/layouts/Container";
 import Link from "next/link";
 
 export default function ProjectHeader() {
+  // Animation Variants
+  const headerVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.2 } },
+  };
+
+  const categoryVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: (index: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.4, delay: index * 0.1 },
+    }),
+  };
+
   return (
-    <header className="pt-5 md:pt-12">
-      <div className="flex items-center text-center flex-col gap-y-7 mb-12 md:mb-20 px-3">
-        <h2 className="title">Projects</h2>
-        <p className="md:paragraph-large md:w-[80%] xl:w-[60%]">
+    <motion.header
+      className="pt-5 md:pt-12"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <motion.div
+        className="flex items-center text-center flex-col gap-y-7 mb-12 md:mb-20 px-3"
+        variants={headerVariants}
+      >
+        <motion.h2 className="title" variants={headerVariants}>
+          Projects
+        </motion.h2>
+        <motion.p
+          className="md:paragraph-large md:w-[80%] xl:w-[60%]"
+          variants={textVariants}
+        >
           These projects showcase NAI&apos;s commitment to addressing a diverse
           range of issues, including education, healthcare, economic
           empowerment, community development, emergency relief, and
           environmental sustainability.
-          {/* Transforming lives through education, health, and charity. We strive
-          to improve the living conditions of vulnerable populations and provide
-          access to quality education and healthcare. */}
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
 
       <Container>
-        <div className="border-b flex gap-7 items-center overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
-          <Link
-            href="/projects"
-            className="pb-1 w-fit shrink-0 border-b-2 border-primary font-semibold text-primary transition-all duration-300"
-          >
-            All
-          </Link>
+        <motion.div
+          className="border-b flex gap-7 items-center overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
+          initial="hidden"
+          animate="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <motion.div variants={categoryVariants} custom={0}>
+            <Link
+              href="/projects"
+              className="pb-1 w-fit shrink-0 border-b-2 border-primary font-semibold text-primary transition-all duration-300"
+            >
+              All
+            </Link>
+          </motion.div>
+
           {PROJECT_CATEGORY.map((category, index) => (
-            <button
+            <motion.button
               key={index}
+              variants={categoryVariants}
+              custom={index + 1}
               className="pb-1 w-fit shrink-0 text-neutral-300 font-medium hover:text-primary transition-all duration-300"
             >
               {category}
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
       </Container>
-    </header>
+    </motion.header>
   );
 }
