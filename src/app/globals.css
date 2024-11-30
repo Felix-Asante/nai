@@ -30,4 +30,42 @@ body {
   .btn-large {
     @apply py-[18px] px-[30px] text-center;
   }
+  .subtitle {
+    @apply text-3xl md:text-4xl font-bold leading-[1.18];
+  }
+}
+
+/* embla carousel styles  */
+.embla {
+  max-width: 100%;
+  margin: auto;
+  --slide-height: 19rem;
+  --slide-spacing: 1.2rem;
+  --slide-size: 25%;
+}
+.embla__viewport {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+.embla__slide {
+  transform: translate3d(0, 0, 0);
+  flex: 0 0 70%;
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+}
+
+@media screen and (min-width: 768px) {
+  .embla__slide {
+    flex: 0 0 33%;
+  }
+}
+
+@media screen and (min-width: 991px) {
+  .embla__slide {
+    flex: 0 0 25%;
+  }
 }

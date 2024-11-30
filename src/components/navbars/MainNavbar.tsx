@@ -6,7 +6,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function MainNavbar() {
+type Props = {
+  className?: string;
+};
+export default function MainNavbar(props: Props) {
+  const { className = "" } = props;
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
@@ -23,7 +27,7 @@ export default function MainNavbar() {
         isSticky
           ? "bg-neutral-100 text-neutral-300 shadow-md"
           : "bg-transparent text-neutral-100"
-      }`}
+      }, ${className}`}
     >
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         {/* Logo */}

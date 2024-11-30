@@ -78,7 +78,7 @@ export default function HowUCanHelp() {
         <div className="mt-16 flex justify-center">
           <Link
             href="/donate"
-            className="btn-small bg-primary hover:bg-primary-200 text-neutral-100 font-bold rounded-full inline-block px-6 py-2"
+            className="btn-small bg-primary hover:bg-primary-200 text-neutral-100 font-bold rounded-md inline-block px-6 py-3"
           >
             Support Us
           </Link>
