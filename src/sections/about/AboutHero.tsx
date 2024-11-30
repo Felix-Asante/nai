@@ -6,9 +6,9 @@ import Image from "next/image";
 
 export default function AboutHero() {
   return (
-    <div className="mt-16">
+    <div>
       {/* Hero Section */}
-      <Container className="py-16 md:py-20">
+      <Container className="py-16">
         <motion.h1
           className="text-3xl md:text-4xl bg-secondary-200 text-primary px-3 py-1 w-fit font-bold"
           initial={{ opacity: 0, y: 50 }}
