@@ -1,10 +1,12 @@
 "use client";
 import { navbarRoutes } from "@/constants/routes";
-import { motion } from "framer-motion";
-import { AlignJustifyIcon } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { AlignJustifyIcon, XIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { buttonVariants } from "../ui/button";
+import Button from "../Button";
 
 type Props = {
   className?: string;
@@ -12,6 +14,7 @@ type Props = {
 export default function MainNavbar(props: Props) {
   const { className = "" } = props;
   const [isSticky, setIsSticky] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +23,22 @@ export default function MainNavbar(props: Props) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
 
   return (
     <motion.nav
@@ -66,11 +85,43 @@ export default function MainNavbar(props: Props) {
           >
             Donate Now
           </Link>
-          <button className="lg:hidden">
-            <AlignJustifyIcon className="w-6 h-6" />
-          </button>
+          <Button size="icon" onClick={toggleMenu} className="lg:hidden">
+            {isMenuOpen ? (
+              <XIcon className="w-10 h-10" />
+            ) : (
+              <AlignJustifyIcon className="w-10 h-10" />
+            )}
+          </Button>
         </ul>
       </div>
+      {isMenuOpen && (
+        <AnimatePresence>
+          <motion.ul
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="flex flex-col bg-white p-5 absolute top-20 left-0 max-h-screen h-screen w-full"
+          >
+            {navbarRoutes.map((route) => (
+              <li key={route.name} className="border-b py-3">
+                <Link
+                  href={route.href}
+                  className="hover:text-secondary capitalize font-semibold transition-colors duration-300"
+                >
+                  {route.name}
+                </Link>
+              </li>
+            ))}
+            <Link
+              href="/donate"
+              className={buttonVariants({ size: "lg", className: "mt-7" })}
+            >
+              Donate Now
+            </Link>
+          </motion.ul>
+        </AnimatePresence>
+      )}
     </motion.nav>
   );
 }
