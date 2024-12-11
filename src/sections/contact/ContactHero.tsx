@@ -1,9 +1,7 @@
 "use client";
-import MainNavbar from "@/components/navbars/MainNavbar";
-import React from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
 import Container from "@/components/layouts/Container";
+import MainNavbar from "@/components/navbars/MainNavbar";
+import { motion } from "framer-motion";
 
 export default function ContactHero() {
   return (
