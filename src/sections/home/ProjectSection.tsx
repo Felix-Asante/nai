@@ -2,6 +2,7 @@
 import { PROJECTS } from "@/constants/content";
 import { motion } from "framer-motion";
 import ProjectsList from "../ProjectsList";
+import Container from "@/components/layouts/Container";
 
 export default function ProjectsSection() {
   // Animation Variants
@@ -11,7 +12,7 @@ export default function ProjectsSection() {
   };
 
   return (
-    <section className="py-16">
+    <Container className="py-16">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -34,6 +35,6 @@ export default function ProjectsSection() {
 
         <ProjectsList projects={PROJECTS} />
       </motion.div>
-    </section>
+    </Container>
   );
 }

@@ -1,9 +1,10 @@
 import React from "react";
+import Container from "./layouts/Container";
 
 export default function Footer() {
   return (
     <footer className="bg-primary-300 text-neutral-100 py-8">
-      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-6">
+      <Container className="px-6 grid grid-cols-1 md:grid-cols-4 gap-6">
         <div>
           <h4 className="font-bold">About Us</h4>
           <p>Noble Alms International transforms lives with joy.</p>
@@ -32,7 +33,7 @@ export default function Footer() {
           <h4 className="font-bold">Follow Us</h4>
           <p>Social media links go here</p>
         </div>
-      </div>
+      </Container>
       <p className="text-center mt-8">
         © 2024 Noble Alms International. All rights reserved.
       </p>

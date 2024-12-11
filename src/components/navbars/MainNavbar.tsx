@@ -23,7 +23,7 @@ export default function MainNavbar(props: Props) {
 
   return (
     <motion.nav
-      className={`sticky top-0 left-0 w-full z-50 transition-all duration-300 mb-6 ${
+      className={`sticky top-0 left-0 w-full z-50 transition-all duration-300 ${
         isSticky
           ? "bg-neutral-100 text-neutral-300 shadow-md"
           : "bg-transparent text-neutral-100"

@@ -1,4 +1,6 @@
 "use client";
+import Container from "@/components/layouts/Container";
+import { buttonVariants } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -38,7 +40,7 @@ const cardVariants = {
 export default function HowUCanHelp() {
   return (
     <section className="py-16 bg-gray-50 my-24">
-      <div className="container mx-auto px-6">
+      <Container className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -76,14 +78,11 @@ export default function HowUCanHelp() {
           ))}
         </div>
         <div className="mt-16 flex justify-center">
-          <Link
-            href="/donate"
-            className="btn-small bg-primary hover:bg-primary-200 text-neutral-100 font-bold rounded-md inline-block px-6 py-3"
-          >
+          <Link href="/donate" className={buttonVariants({ size: "lg" })}>
             Support Us
           </Link>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

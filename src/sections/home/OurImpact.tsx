@@ -1,4 +1,5 @@
 "use client";
+import Container from "@/components/layouts/Container";
 import { cn } from "@/utils";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -42,7 +43,7 @@ export default function OurImpact() {
 
   return (
     <section className="py-16">
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-20 px-4">
+      <Container className="flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-20 px-4">
         {/* Left Images */}
         <div className="flex flex-row md:flex-col lg:gap-24 gap-5 lg:w-[20%]">
           {["/images/img-1.jpg", "/images/img-2.jpg"].map((src, index) => (
@@ -119,7 +120,7 @@ export default function OurImpact() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

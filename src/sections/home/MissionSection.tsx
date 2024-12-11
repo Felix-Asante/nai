@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { MISSIONS } from "@/constants/content";
+import Container from "@/components/layouts/Container";
 
 export default function MissionSection() {
   const listVariants = {
@@ -19,7 +20,7 @@ export default function MissionSection() {
   };
 
   return (
-    <section className="conatiner mx-auto px-6 my-10">
+    <Container className="px-6 my-10">
       <div className="bg-primary text-neutral-100 p-6 lg:p-12 rounded-xl">
         <div className="flex flex-col md:flex-row justify-between mb-12 md:mb-14 gap-4">
           <h2 className="text-3xl font-bold  md:w-1/2">
@@ -75,6 +76,6 @@ export default function MissionSection() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </Container>
   );
 }
