@@ -15,7 +15,7 @@ export default async function LandingPage() {
       <MissionSection />
       <HowUCanHelp />
       <OurImpact />
-      <ProjectsSection projects={data} />
+      <ProjectsSection projects={data.items} />
     </div>
   );
 }

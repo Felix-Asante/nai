@@ -15,6 +15,17 @@ type GetProjectResponse = {
 export async function getProjects(params: GetProjectParams) {
   const { page = 0, limit = 10, category } = params;
 
+  const countQuery = groq`count(*[_type == "project"])`;
+
+  const totalItems = await sanityFetch<number>({
+    query: countQuery,
+    qParams: {},
+    tags: [CACHE_TAGS.PROJECTS],
+  });
+
+  // Calculate total pages
+  const totalPages = Math.ceil(totalItems / limit);
+
   const query = groq`*[_type == "project"] | order(_createdAt desc) [${page}...${limit}] {
         _id,
         _createdAt,
@@ -36,7 +47,15 @@ export async function getProjects(params: GetProjectParams) {
     qParams: { page, limit },
     tags: [CACHE_TAGS.PROJECTS],
   });
-  return projects;
+
+  return {
+    items: projects,
+    meta: {
+      totalItems,
+      currentPage: page,
+      totalPages,
+    },
+  };
 }
 
 export async function getSingleProject(slug: string) {
