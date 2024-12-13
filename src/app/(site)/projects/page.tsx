@@ -1,5 +1,6 @@
 import Container from "@/components/layouts/Container";
 import MainNavbar from "@/components/navbars/MainNavbar";
+import { getAllCategories } from "@/lib/sanity/api/category";
 import { getProjects } from "@/lib/sanity/api/projects";
 import ProjectHeader from "@/sections/projects/ProjectHeader";
 import ProjectsList from "@/sections/ProjectsList";
@@ -14,14 +15,17 @@ type Props = {
 export default async function ProjectPage(props: Props) {
   const { page = 1, category } = await props.params;
 
-  const data = await getProjects({ page: page - 1, limit: 12, category });
+  const [projects, categories] = await Promise.all([
+    getProjects({ page: page - 1, limit: 12, category }),
+    getAllCategories(),
+  ]);
   return (
     <main>
       <MainNavbar className="text-neutral-300 bg-white" />
-      <ProjectHeader />
+      <ProjectHeader categories={categories} />
 
       <Container className="my-10">
-        <ProjectsList projects={data.items} />
+        <ProjectsList projects={projects.items} />
       </Container>
     </main>
   );

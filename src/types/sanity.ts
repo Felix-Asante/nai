@@ -13,3 +13,11 @@ export type Projects = {
   content: any[];
   publishedAt: string;
 };
+
+export type Categories = {
+  _id: string;
+  _createdAt: string;
+  title: string;
+  slug: string;
+  description: string;
+};

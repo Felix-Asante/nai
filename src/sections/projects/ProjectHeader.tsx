@@ -1,12 +1,16 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { PROJECT_CATEGORY } from "@/constants/content";
 import Container from "@/components/layouts/Container";
+import { Categories } from "@/types/sanity";
+import { motion } from "framer-motion";
 import Link from "next/link";
 
-export default function ProjectHeader() {
+type Props = {
+  categories: Categories[];
+};
+export default function ProjectHeader(props: Props) {
+  const { categories } = props;
+
   const headerVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -67,14 +71,14 @@ export default function ProjectHeader() {
             </Link>
           </motion.div>
 
-          {PROJECT_CATEGORY.map((category, index) => (
+          {categories?.map((category, index) => (
             <motion.button
               key={index}
               variants={categoryVariants}
               custom={index + 1}
-              className="pb-1 w-fit shrink-0 text-neutral-300 font-medium hover:text-primary transition-all duration-300"
+              className=" capitalize pb-1 w-fit shrink-0 text-neutral-300 font-medium hover:text-primary transition-all duration-300"
             >
-              {category}
+              {category?.title}
             </motion.button>
           ))}
         </motion.div>
