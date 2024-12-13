@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate:schema": "npx sanity@latest schema extract",
+    "generate:types": "npx sanity@latest typegen generate"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

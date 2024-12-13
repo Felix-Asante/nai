@@ -1,15 +1,11 @@
 "use client";
 
 import ProjectsCard from "@/components/cards/ProjectsCard";
+import { Projects } from "@/types/sanity";
 import React from "react";
 
 type Props = {
-  projects: {
-    image: string;
-    title: string;
-    description: string;
-    category: string;
-  }[];
+  projects: Projects[];
 };
 export default function ProjectsList({ projects }: Props) {
   return (

@@ -1,10 +1,14 @@
 "use client";
-import { PROJECTS } from "@/constants/content";
+import Container from "@/components/layouts/Container";
+import { Projects } from "@/types/sanity";
 import { motion } from "framer-motion";
 import ProjectsList from "../ProjectsList";
-import Container from "@/components/layouts/Container";
 
-export default function ProjectsSection() {
+type ProjectSectionProps = {
+  projects: Projects[];
+};
+
+export default function ProjectsSection({ projects }: ProjectSectionProps) {
   // Animation Variants
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -33,7 +37,7 @@ export default function ProjectsSection() {
           </p>
         </div>
 
-        <ProjectsList projects={PROJECTS} />
+        <ProjectsList projects={projects} />
       </motion.div>
     </Container>
   );
