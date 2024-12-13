@@ -30,7 +30,7 @@ export default async function SingleProject(props: Props) {
           <p className="text-gray-600 paragraph-lg mb-10">{project?.excerpt}</p>
 
           <Image
-            className="w-full h-[600px] object-cover rounded-lg"
+            className="w-full h-[300px] md:h-[600px] object-cover rounded-lg"
             src={urlFor(project?.image.url).url()}
             placeholder={project?.image.lqip ? "blur" : "empty"}
             blurDataURL={project?.image?.lqip || ""}
@@ -40,7 +40,7 @@ export default async function SingleProject(props: Props) {
             unoptimized
           />
 
-          <ProjectShareSection />
+          <ProjectShareSection project={project} />
 
           <div className="my-5">
             <DisplayPortableText value={project?.content} />

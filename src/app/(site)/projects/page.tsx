@@ -6,14 +6,14 @@ import ProjectHeader from "@/sections/projects/ProjectHeader";
 import ProjectsList from "@/sections/ProjectsList";
 
 type Props = {
-  params: Promise<{
+  searchParams: Promise<{
     page: number;
     category: string;
   }>;
 };
 
 export default async function ProjectPage(props: Props) {
-  const { page = 1, category } = await props.params;
+  const { page = 1, category } = await props.searchParams;
 
   const [projects, categories] = await Promise.all([
     getProjects({ page: page - 1, limit: 12, category }),
@@ -25,7 +25,11 @@ export default async function ProjectPage(props: Props) {
       <ProjectHeader categories={categories} />
 
       <Container className="my-10">
-        <ProjectsList projects={projects.items} />
+        {projects.items.length > 0 ? (
+          <ProjectsList projects={projects.items} />
+        ) : (
+          <p className="text-lg">No project found</p>
+        )}
       </Container>
     </main>
   );

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 export const metadata: Metadata = {
   title: "Noble Alms International - NAI",
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${bricolageGrotesque.className} antialiased`}>
-        {children}
+        <NuqsAdapter>{children}</NuqsAdapter>
         <Footer />
       </body>
     </html>

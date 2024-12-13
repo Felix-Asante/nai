@@ -9,14 +9,21 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
 } from "react-share";
+import { Projects } from "@/types/sanity";
 
-export default function ProjectShareSection() {
+export default function ProjectShareSection({
+  project,
+}: {
+  project: Projects;
+}) {
   return (
-    <div className="my-4 flex items-center justify-between">
+    <div className="my-4 flex flex-col sm:flex-row gap-4 sm:items-center justify-between">
       <div>
         <p className="text-sm">
           <strong>Pubslished at: </strong>
-          <span className="text-netural-300 text-sm">01/01/2023</span>
+          <span className="text-netural-300 text-sm">
+            {new Date(project._createdAt).toLocaleDateString()}
+          </span>
         </p>
       </div>
       <div className="flex items-center gap-3">

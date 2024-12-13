@@ -2,14 +2,20 @@
 
 import Container from "@/components/layouts/Container";
 import { Categories } from "@/types/sanity";
+import { cn } from "@/utils";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useQueryState } from "nuqs";
 
 type Props = {
   categories: Categories[];
 };
+
 export default function ProjectHeader(props: Props) {
   const { categories } = props;
+  const [selectedCategory, setSelectedCategory] = useQueryState("category", {
+    shallow: false,
+  });
 
   const headerVariants = {
     hidden: { opacity: 0, y: -20 },
@@ -65,7 +71,12 @@ export default function ProjectHeader(props: Props) {
           <motion.div variants={categoryVariants} custom={0}>
             <Link
               href="/projects"
-              className="pb-1 w-fit shrink-0 border-b-2 border-primary font-semibold text-primary transition-all duration-300"
+              className={cn(
+                "pb-1 w-fit shrink-0  transition-all hover:text-primary duration-300",
+                !selectedCategory
+                  ? "border-primary font-semibold border-b-2  text-primary"
+                  : "text-neutral-300 font-medium"
+              )}
             >
               All
             </Link>
@@ -76,7 +87,13 @@ export default function ProjectHeader(props: Props) {
               key={index}
               variants={categoryVariants}
               custom={index + 1}
-              className=" capitalize pb-1 w-fit shrink-0 text-neutral-300 font-medium hover:text-primary transition-all duration-300"
+              className={cn(
+                " capitalize pb-1 w-fit shrink-0  hover:text-primary transition-all duration-300",
+                category?.title === selectedCategory
+                  ? "border-primary font-semibold text-primary border-b-2"
+                  : "text-neutral-300 font-medium"
+              )}
+              onClick={() => setSelectedCategory(category?.title)}
             >
               {category?.title}
             </motion.button>

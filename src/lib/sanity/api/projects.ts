@@ -23,28 +23,38 @@ export async function getProjects(params: GetProjectParams) {
     tags: [CACHE_TAGS.PROJECTS],
   });
 
+  let categoryRef = null;
+  if (category) {
+    const categoryQuery = groq`*[_type == "category" && title == $category][0]._id`;
+    categoryRef = await sanityFetch<string>({
+      query: categoryQuery,
+      qParams: { category },
+      tags: [CACHE_TAGS.CATEGORIES],
+    });
+  }
+
   // Calculate total pages
   const totalPages = Math.ceil(totalItems / limit);
 
-  const query = groq`*[_type == "project"] | order(_createdAt desc) [${page}...${limit}] {
-        _id,
-        _createdAt,
-        "slug": slug.current,
-        title,
-        "image": {
-          "url": mainImage.asset->url,
-          "lqip": mainImage.asset->metadata.lqip,
-          "alt": mainImage.asset->alt,
-        },
-        "category": category->title,
-        "excerpt": excerpt,
-        content,
-        publishedAt
-      }`;
+  const query = groq`*[_type == "project" ${categoryRef ? `&& category._ref == $categoryRef` : ""}] | order(_createdAt desc) [${page * limit}...${(page + 1) * limit}] {
+    _id,
+    _createdAt,
+    "slug": slug.current,
+    title,
+    "image": {
+      "url": mainImage.asset->url,
+      "lqip": mainImage.asset->metadata.lqip,
+      "alt": mainImage.asset->alt,
+    },
+    "category": category->title,
+    "excerpt": excerpt,
+    content,
+    publishedAt
+  }`;
 
   const projects = await sanityFetch<Projects[]>({
     query,
-    qParams: { page, limit },
+    qParams: { page, limit, categoryRef },
     tags: [CACHE_TAGS.PROJECTS],
   });
 
