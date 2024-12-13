@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { urlFor } from "@/lib/sanity.image";
+import { urlFor } from "@/lib/sanity/sanity.image";
 
 type imageProp = {
   src: {};

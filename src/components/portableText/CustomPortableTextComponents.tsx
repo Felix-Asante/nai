@@ -35,12 +35,7 @@ export const CustomPortableTextComponents: PortableTextComponents = {
     ),
     h3: ({ children }) => (
       <h3
-        id={children
-          ?.toString()
-          .toLowerCase()
-          .replaceAll(/[^-\w]+/g, "-")
-          .replaceAll(/--+/g, "-")
-          .replace(/^-|-$/g, "")}
+        id={slugify(children as string)}
         className="font-incognito before:content-['#'] before:hidden hover:before:sm:inline-block hover:before:hidden before:absolute lg:before:-left-5 before:-left-4 lg:before:text-2xl before:text-xl before:top-1/2 before:-translate-y-1/2 before:opacity-80 dark:before:text-zinc-500 before:text-zinc-400 relative block lg:font-bold font-semibold tracking-tight lg:text-3xl text-2xl dark:text-zinc-100 text-zinc-700 my-2"
       >
         <HashScroll text={children} />
@@ -48,12 +43,7 @@ export const CustomPortableTextComponents: PortableTextComponents = {
     ),
     h4: ({ children }) => (
       <h4
-        id={children
-          ?.toString()
-          .toLowerCase()
-          .replaceAll(/[^-\w]+/g, "-")
-          .replaceAll(/--+/g, "-")
-          .replace(/^-|-$/g, "")}
+        id={slugify(children as string)}
         className="font-incognito before:content-['#'] before:hidden hover:before:sm:inline-block hover:before:hidden before:absolute lg:before:-left-6 before:-left-4 lg:before:text-2xl before:text-xl before:top-1/2 before:-translate-y-1/2 before:opacity-80 dark:before:text-zinc-500 before:text-zinc-400 relative inline-block font-semibold tracking-tight text-xl dark:text-zinc-100 text-zinc-700 my-2"
       >
         <HashScroll text={children} />
