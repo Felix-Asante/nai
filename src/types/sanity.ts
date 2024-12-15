@@ -40,3 +40,10 @@ export type TeamMember = {
     _id: string;
   };
 };
+
+export type FAQ = {
+  _id: string;
+  _createdAt: string;
+  question: string;
+  answer: string;
+};

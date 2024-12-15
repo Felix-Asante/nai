@@ -88,6 +88,9 @@ export default function TeamSection({ teamMembers = [] }: Props) {
                         className="w-full h-64 object-cover rounded-lg"
                         width={300}
                         height={256}
+                        placeholder={member?.image?.lqip ? "blur" : "empty"}
+                        blurDataURL={member.image?.lqip || ""}
+                        unoptimized
                       />
                     </motion.div>
 
