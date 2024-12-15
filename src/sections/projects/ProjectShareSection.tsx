@@ -10,12 +10,14 @@ import {
   WhatsappShareButton,
 } from "react-share";
 import { Projects } from "@/types/sanity";
+import { useCopy } from "@/hooks/use-copy";
 
 export default function ProjectShareSection({
   project,
 }: {
   project: Projects;
 }) {
+  const { copied, copy } = useCopy();
   return (
     <div className="my-4 flex flex-col sm:flex-row gap-4 sm:items-center justify-between">
       <div>
@@ -27,9 +29,13 @@ export default function ProjectShareSection({
         </p>
       </div>
       <div className="flex items-center gap-3">
-        <Button variant="outline" size="sm">
+        <Button
+          onClick={() => copy(window.location.href)}
+          variant="outline"
+          size="sm"
+        >
           <CopyIcon className="w-4 h-4" />
-          <span>Copy Link</span>
+          <span>{copied ? "Copied!" : "Copy Link"}</span>
         </Button>
 
         <Button
@@ -38,7 +44,7 @@ export default function ProjectShareSection({
           title="Share on Facebook"
           className="px-0"
         >
-          <FacebookShareButton url="https://www.facebook.com">
+          <FacebookShareButton url={window.location.href}>
             <Image
               src={SocialMediaIcons.facebook}
               alt="facebook"
@@ -55,7 +61,7 @@ export default function ProjectShareSection({
           title="Share on Twitter"
           className="px-0"
         >
-          <TwitterShareButton url="https://www.twitter.com">
+          <TwitterShareButton url={window.location.href}>
             <Image
               src={SocialMediaIcons.x}
               alt="twitter"
@@ -72,7 +78,7 @@ export default function ProjectShareSection({
           title="Share on Whatsapp"
           className="px-0"
         >
-          <WhatsappShareButton url="https://www.twitter.com">
+          <WhatsappShareButton url={window.location.href}>
             <Image
               src={SocialMediaIcons.whatsapp}
               alt="twitter"

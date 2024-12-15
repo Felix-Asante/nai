@@ -2,18 +2,39 @@ import ProjectsCard from "@/components/cards/ProjectsCard";
 import Container from "@/components/layouts/Container";
 import MainNavbar from "@/components/navbars/MainNavbar";
 import DisplayPortableText from "@/components/portableText";
-import { ProjectContent, PROJECTS } from "@/constants/content";
+import { getSingleProject } from "@/lib/sanity/api/projects";
+import { urlFor } from "@/lib/sanity/sanity.image";
 import ProjectShareSection from "@/sections/projects/ProjectShareSection";
 import Image from "next/image";
 import Link from "next/link";
-import { getSingleProject } from "@/lib/sanity/api/projects";
-import { urlFor } from "@/lib/sanity/sanity.image";
 
 type Props = {
   params: Promise<{
     slug: string;
   }>;
 };
+
+export async function generateMetadata(props: Props) {
+  const params = await props.params;
+  const project = await getSingleProject(params.slug);
+
+  return {
+    title: `NAI-${project.title}`,
+    description: project.excerpt,
+    openGraph: {
+      title: project.title,
+      description: project.excerpt,
+      images: [
+        {
+          url: urlFor(project?.image.url).url(),
+          width: 400,
+          height: 400,
+          alt: project.image.alt,
+        },
+      ],
+    },
+  };
+}
 export default async function SingleProject(props: Props) {
   const params = await props.params;
   const project = await getSingleProject(params.slug);
