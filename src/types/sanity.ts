@@ -21,3 +21,22 @@ export type Categories = {
   slug: string;
   description: string;
 };
+
+export type TeamMember = {
+  _id: string;
+  _createdAt: string;
+  name: string;
+  position: string;
+  image: {
+    url: string;
+    lqip: string;
+    alt: string;
+  };
+  socials: {
+    facebook?: string;
+    instgram?: string;
+    x?: string;
+    whatsapp?: string;
+    _id: string;
+  };
+};

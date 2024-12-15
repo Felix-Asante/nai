@@ -9,55 +9,14 @@ import {
   NextButton,
   usePrevNextButtons,
 } from "@/components/EmblaCarouselArrowButtons";
+import { TeamMember } from "@/types/sanity";
+import Image from "next/image";
 
-const teamMembers = [
-  {
-    name: "Aimee Preece",
-    role: "CEO",
-    image: "/images/img-6.jpg",
-    socials: {
-      facebook: "https://img.icons8.com/color/48/facebook-new.png",
-      instagram: "https://img.icons8.com/color/48/instagram-new--v1.png",
-      whatsapp: "https://img.icons8.com/color/48/whatsapp--v1.png",
-      x: "https://img.icons8.com/color/48/twitterx--v1.png",
-    },
-  },
-  {
-    name: "Daniel Udall",
-    role: "Volunteer",
-    image: "/images/img-7.jpg",
-    socials: {
-      facebook: "https://img.icons8.com/color/48/facebook-new.png",
-      instagram: "https://img.icons8.com/color/48/instagram-new--v1.png",
-      whatsapp: "https://img.icons8.com/color/48/whatsapp--v1.png",
-      x: "https://img.icons8.com/color/48/twitterx--v1.png",
-    },
-  },
-  {
-    name: "Christina Boje",
-    role: "Manager",
-    image: "/images/img-8.jpg",
-    socials: {
-      facebook: "https://img.icons8.com/color/48/facebook-new.png",
-      instagram: "https://img.icons8.com/color/48/instagram-new--v1.png",
-      whatsapp: "https://img.icons8.com/color/48/whatsapp--v1.png",
-      x: "https://img.icons8.com/color/48/twitterx--v1.png",
-    },
-  },
-  {
-    name: "Alec Worthy",
-    role: "Volunteer",
-    image: "/images/img-9.jpg",
-    socials: {
-      facebook: "https://img.icons8.com/color/48/facebook-new.png",
-      instagram: "https://img.icons8.com/color/48/instagram-new--v1.png",
-      whatsapp: "https://img.icons8.com/color/48/whatsapp--v1.png",
-      x: "https://img.icons8.com/color/48/twitterx--v1.png",
-    },
-  },
-];
+type Props = {
+  teamMembers: TeamMember[];
+};
 
-export default function TeamSection() {
+export default function TeamSection({ teamMembers = [] }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start" });
   const {
     prevBtnDisabled,
@@ -65,6 +24,10 @@ export default function TeamSection() {
     onPrevButtonClick,
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
+
+  if (teamMembers.length === 0) {
+    return null;
+  }
 
   return (
     <Container className="my-16">
@@ -119,10 +82,12 @@ export default function TeamSection() {
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.4 }}
                     >
-                      <img
-                        src={member.image}
-                        alt={member.name}
+                      <Image
+                        src={member.image.url}
+                        alt={member.image?.alt || member.name}
                         className="w-full h-64 object-cover rounded-lg"
+                        width={300}
+                        height={256}
                       />
                     </motion.div>
 
@@ -130,7 +95,7 @@ export default function TeamSection() {
                     <h3 className="mt-4 text-lg font-semibold">
                       {member.name}
                     </h3>
-                    <p className="text-neutral-300">{member.role}</p>
+                    <p className="text-neutral-300">{member.position}</p>
 
                     {/* Social Icons */}
                     <div className="flex justify-center gap-4 mt-3 text-neutral-500">
@@ -143,7 +108,7 @@ export default function TeamSection() {
                             rel="noopener noreferrer"
                           >
                             <img
-                              src={`/icons/${platform}.svg`} // Replace with actual icon paths
+                              src={`/icons/${platform}.svg`}
                               alt={platform}
                               className="w-5 h-5"
                             />

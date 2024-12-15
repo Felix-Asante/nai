@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: process.env.NEXT_PUBLIC_IMAGE_ICONS_HOSTNAME!,
       },
+      {
+        protocol: "https",
+        hostname: process.env.NEXT_PUBLIC_SANITY_IMAGES_HOSTNAME!,
+      },
     ],
   },
 };
