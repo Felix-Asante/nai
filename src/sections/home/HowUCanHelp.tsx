@@ -1,29 +1,29 @@
 "use client";
 import Container from "@/components/layouts/Container";
 import { buttonVariants } from "@/components/ui/button";
+import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 
-const helpOptions = [
+const helpOptions = (translate: any) => [
   {
-    title: "Monetary Donations",
-    description: "Support projects with your financial contributions.",
+    title: translate("HowUCanHelp.itemOne.title"),
+    description: translate("HowUCanHelp.itemOne.description"),
     icon: "💸",
   },
   {
-    title: "Become a Monthly Donor",
-    description: "Ensure continuous impact with recurring donations.",
+    title: translate("HowUCanHelp.itemTwo.title"),
+    description: translate("HowUCanHelp.itemTwo.description"),
     icon: "🔄",
   },
   {
-    title: "Corporate Partnerships",
-    description:
-      "Collaborate with us to drive corporate social responsibility.",
+    title: translate("HowUCanHelp.itemThree.title"),
+    description: translate("HowUCanHelp.itemThree.description"),
     icon: "🤝",
   },
   {
-    title: "Volunteer Your Time",
-    description: "Be the change you want to see by volunteering.",
+    title: translate("HowUCanHelp.itemFour.title"),
+    description: translate("HowUCanHelp.itemFour.description"),
     icon: "🙌",
   },
 ];
@@ -38,6 +38,8 @@ const cardVariants = {
 };
 
 export default function HowUCanHelp() {
+  const translate = useTranslations();
+
   return (
     <section className="py-16 bg-gray-50 my-24">
       <Container className="container mx-auto px-6">
@@ -48,16 +50,15 @@ export default function HowUCanHelp() {
           className="text-center mb-10"
         >
           <h2 className="text-4xl font-bold text-primary-300 mb-4">
-            How Could You Help?
+            {translate("HowUCanHelp.headline")}
           </h2>
-          <p className="text-gray-600 text-lg">
-            Your contributions make a real difference. Explore the ways you can
-            support our mission and create meaningful change.
+          <p className="text-gray-600 text-lg md:w-[80%] mx-auto">
+            {translate("HowUCanHelp.description")}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {helpOptions.map((option, index) => (
+          {helpOptions(translate).map((option, index) => (
             <motion.div
               key={index}
               variants={cardVariants}
@@ -79,7 +80,7 @@ export default function HowUCanHelp() {
         </div>
         <div className="mt-16 flex justify-center">
           <Link href="/donate" className={buttonVariants({ size: "lg" })}>
-            Support Us
+            {translate("supportUs")}
           </Link>
         </div>
       </Container>

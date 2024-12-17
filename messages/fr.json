@@ -1,0 +1,171 @@
+{
+  "Navbar": {
+    "aboutUs": "À propos",
+    "projects": "Projets",
+    "contactUs": "Contactez-nous",
+    "blog": "Blog",
+    "getInvolved": "Impliquer"
+  },
+  "languages": {
+    "en": "Anglais",
+    "fr": "Français"
+  },
+  "donateNow": "Faire un don",
+  "volunteer": "Bénévole",
+  "joinUs": "Rejoignez-nous",
+  "learnMore": "En savoir plus",
+  "supportUs": "Soutenez-nous",
+  "homePage": {
+    "headline": "Transformer des vies, promouvoir le bonheur",
+    "subHeadline": "Nous sommes une organisation à but non lucratif dynamique dédiée à créer un impact durable dans les communautés du monde entier.",
+    "whoWeAre": {
+      "headline": "Chez Noble Alms International, nous privilégions la compassion, l'intégrité et l'inclusivité.",
+      "description": "En tant qu'organisation à but non lucratif, nous sommes dédiés à créer un impact positif dans les communautés. Notre mission est de transformer des vies, promouvoir le bonheur et libérer le potentiel à travers des interactions vivantes et des actions, y compris des initiatives éducatives, médicales et caritatives. Nous travaillons sans relâche pour promouvoir l'éducation, la santé et le don d'aumônes, en nous efforçant de créer un monde où chacun a accès au soutien dont il a besoin pour prospérer."
+    },
+    "mission": {
+      "headline": "La mission de notre organisation",
+      "description": "Chez Noble Alms International, nous sommes guidés par la compassion, l'intégrité et l'inclusivité. Ces principes guident nos efforts pour autonomiser les communautés, transformer des vies et créer un changement positif durable à travers l'éducation, la santé et des initiatives de soutien.",
+      "listOne": {
+        "title": "Éducation pour tous",
+        "description": "Dédié à garantir que chaque enfant ait accès à une éducation de qualité."
+      },
+      "listTwo": {
+        "title": "Santé et bien-être",
+        "description": "Notre engagement envers la santé et le bien-être s'étend au-delà des frontières."
+      },
+      "listThree": {
+        "title": "Secours en cas de catastrophe",
+        "description": "En temps de crise, nous réagissons rapidement pour fournir une aide d'urgence."
+      },
+      "listFour": {
+        "title": "Développement communautaire",
+        "description": "Investir dans des projets communautaires durables pour créer un changement positif."
+      }
+    },
+    "stats": {
+      "title": "Ensemble, nous avons eu un impact énorme !",
+      "description": "Des vies touchées et des communautés transformées grâce à nos efforts collectifs."
+    },
+    "projects": {
+      "title": "Projets pour l'organisation de dons de charité",
+      "description": "Ces projets montrent l'engagement de NAI à aborder une gamme diversifiée de problèmes, y compris l'éducation, les soins de santé, l'autonomisation économique, le développement communautaire, le secours d'urgence et la durabilité environnementale."
+    }
+  },
+  "HowUCanHelp": {
+    "headline": "Comment pourriez-vous aider ?",
+    "description": "Vos contributions font une réelle différence. Explorez les moyens par lesquels vous pouvez soutenir notre mission et créer un changement significatif.",
+    "itemOne": {
+      "title": "Dons monétaires",
+      "description": "Soutenez des projets avec vos contributions financières."
+    },
+    "itemTwo": {
+      "title": "Devenez un donateur mensuel",
+      "description": "Assurez un impact continu avec des dons récurrents."
+    },
+    "itemThree": {
+      "title": "Partenariats d'entreprise",
+      "description": "Collaborez avec nous pour promouvoir la responsabilité sociale des entreprises."
+    },
+    "itemFour": {
+      "title": "Offrez votre temps",
+      "description": "Soyez le changement que vous souhaitez voir en vous portant volontaire."
+    }
+  },
+  "joinMovement": "Rejoignez notre mouvement",
+  "AboutPage": {
+    "title": "À propos de Noble Alms International",
+    "description": "Transformer des vies, promouvoir le bonheur et libérer le potentiel à travers l'éducation, la santé et la charité.",
+    "whoWeAre": {
+      "title": "Qui Nous Sommes",
+      "firstLine": "Noble Alms International a été fondée en 2020 avec la mission de transformer des vies, de promouvoir le bonheur et de libérer le potentiel. De débuts modestes, nous avons grandi pour devenir une organisation qui impacte les communautés à travers des actions éducatives, médicales et caritatives.",
+      "secondLine": "Nous sommes fièrement enregistrés à la fois au Ghana et au Canada, avec notre siège social en Ontario. Notre vision reste <strong>ancrée dans le développement fondamental d'individus nobles dans la société grâce à un soutien financier, éducatif et sanitaire.</strong>"
+    },
+    "objectives": {
+      "title": "Nos Objectifs",
+      "description": "Notre priorité principale chez Noble Alms International est de transformer des vies, de promouvoir le bonheur et de libérer le potentiel à travers trois domaines clés : Éducation, Action Médicale et Don d'Aumônes.",
+      "listOne": {
+        "title": "Éducation",
+        "description": "Nous visons à fournir un accès à une éducation de qualité et à des opportunités d'acquisition de compétences à travers nos séminaires Edu-Tour. Ces séminaires se concentrent sur l'orientation professionnelle, le soutien académique et les compétences de vie, permettant aux individus d'atteindre leur plein potentiel. Nous collaborons avec des organisations, des communautés et d'autres parties prenantes pour créer un impact positif à travers ces initiatives éducatives."
+      },
+      "listTwo": {
+        "title": "Action Médicale",
+        "description": "Nous nous engageons à entreprendre des programmes et des activités de santé qui promeuvent le bien-être. À travers des dépistages de santé, de l'éducation et des services de santé, nous visons à améliorer les modes de vie des individus dans des communautés mal desservies, en garantissant l'accès à un soutien médical essentiel."
+      },
+      "listThree": {
+        "title": "Don d'Aumônes",
+        "description": "Notre mission se concentre également sur le don d'aumônes, telles que la nourriture, les vêtements et d'autres essentiels, aux populations vulnérables, y compris les veuves, les aveugles et les sourds. Nous nous efforçons d'avoir un impact positif dans leur vie, en veillant à ce que ceux qui en ont besoin soient soutenus."
+      }
+    },
+    "modeOfOperation": {
+      "title": "Nous Agissons Selon les Objectifs de Développement Durable",
+      "description": "Chez Noble Alms International, nous nous engageons à faire progresser les Objectifs de Développement Durable (ODD). Nos activités sont alignées sur les objectifs suivants, garantissant que nous contribuons de manière significative au développement mondial et au bien-être des communautés que nous servons :",
+      "closingText": "En alignant nos efforts sur ces ODD, nous nous engageons à créer un impact positif et durable tant au niveau local qu'international.",
+      "listOne": {
+        "title": "1. ODD 4 : Éducation de Qualité",
+        "description": "À travers nos séminaires Edu-Tour et nos programmes de sensibilisation éducative, nous fournissons des ressources éducatives vitales, une orientation professionnelle et un soutien académique aux jeunes et aux étudiants, leur permettant d'atteindre leur potentiel."
+      },
+      "listTwo": {
+        "title": "2. ODD 3 : Bonne Santé et Bien-être",
+        "description": "Nos programmes d'action médicale, nos dépistages de santé et nos initiatives de bien-être se concentrent sur l'amélioration de l'accès aux soins de santé et la promotion de vies plus saines dans les communautés mal desservies."
+      },
+      "listThree": {
+        "title": "3. ODD 1 : Pas de Pauvreté",
+        "description": "À travers nos programmes de dons, nous fournissons de la nourriture, des vêtements et des essentiels à ceux qui en ont besoin, contribuant à atténuer la pauvreté et à améliorer les conditions de vie des membres vulnérables de la société."
+      }
+    },
+    "meetOurTeam": "Rencontrez Notre Équipe"
+  },
+  "volunteers": {
+    "title": "Nos Bénévoles",
+    "description": "Rencontrez les incroyables individus qui font une différence dans notre communauté.",
+    "becomeVolunteer": "Devenez Bénévole"
+  },
+  "ContactUsPage": {
+    "title": "Contactez-nous",
+    "description": "Nous sommes une organisation caritative dynamique engagée à avoir un impact positif sur les communautés du monde entier. Que vous ayez une question, que vous souhaitiez en savoir plus sur notre organisation ou que vous souhaitiez vous impliquer, n'hésitez pas à nous contacter.",
+    "form": {
+      "name": {
+        "label": "Nom",
+        "placeholder": "Entrez votre nom"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Entrez votre email"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Entrez votre message"
+      },
+      "submit": {
+        "label": "Envoyez un message"
+      },
+      "title": "Envoyez un message"
+    },
+    "social": {
+      "title": "Connectez-vous avec nous",
+      "description": "Connectez-vous avec notre équipe sympathique via nos réseaux sociaux",
+      "sendMessage": "Envoyez-nous un message sur {platform}"
+    },
+    "callUs": {
+      "title": "Appelez-nous",
+      "description": "Appelez notre équipe du lundi au vendredi de 8h à 17h"
+    },
+    "visitUs": {
+      "title": "Visitez-nous",
+      "description": "Visitez notre bureau au {address}"
+    }
+  },
+  "faq": "Questions Fréquemment Posées (FAQ)",
+  "ProjectsPage": {
+    "description": "Ces projets mettent en avant l'engagement de NAI à aborder une diversité de problèmes, y compris l'éducation, les soins de santé, l'autonomisation économique, le développement communautaire, le secours d'urgence et la durabilité environnementale.",
+    "noProjectsFound": "Aucun projet trouvé",
+    "backToProjects": "Retour aux Projets"
+  },
+  "readMore": "Lire la suite",
+  "all": "Tous",
+  "copyLink": "Copier le lien",
+  "copied": "Copié !",
+  "publishedAt": "Publié le",
+  "shareOn": "Partager sur {platform}",
+  "relatedProjects": "Projets Similaires"
+}

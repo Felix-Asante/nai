@@ -3,6 +3,7 @@ import Container from "@/components/layouts/Container";
 import { Projects } from "@/types/sanity";
 import { motion } from "framer-motion";
 import ProjectsList from "../ProjectsList";
+import { useTranslations } from "next-intl";
 
 type ProjectSectionProps = {
   projects: Projects[];
@@ -15,6 +16,8 @@ export default function ProjectsSection({ projects }: ProjectSectionProps) {
     visible: { opacity: 1, y: 0, transition: { duration: 1 } },
   };
 
+  const translate = useTranslations("homePage.projects");
+
   return (
     <Container className="py-16">
       <motion.div
@@ -25,15 +28,12 @@ export default function ProjectsSection({ projects }: ProjectSectionProps) {
         className="container mx-auto px-4"
       >
         {/* Section Heading */}
-        <div className="flex flex-col xl:flex-row justify-between items-center text-center md:text-left mb-12">
+        <div className="flex flex-col xl:flex-row justify-between items-center text-center md:text-left mb-12 gap-x-6">
           <h2 className="text-4xl font-bold leading-[1.18] text-primary w-full xl:w-[55%]">
-            Projects for the charity donation organization
+            {translate("title")}
           </h2>
           <p className="mt-4 text-gray-600 xl:w-[45%]">
-            These projects showcase NAI&apos;s commitment to addressing a
-            diverse range of issues, including education, healthcare, economic
-            empowerment, community development, emergency relief, and
-            environmental sustainability.
+            {translate("description")}
           </p>
         </div>
 

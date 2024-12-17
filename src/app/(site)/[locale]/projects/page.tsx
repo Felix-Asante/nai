@@ -4,6 +4,7 @@ import { getAllCategories } from "@/lib/sanity/api/category";
 import { getProjects } from "@/lib/sanity/api/projects";
 import ProjectHeader from "@/sections/projects/ProjectHeader";
 import ProjectsList from "@/sections/ProjectsList";
+import { getTranslations } from "next-intl/server";
 
 type Props = {
   searchParams: Promise<{
@@ -19,6 +20,9 @@ export default async function ProjectPage(props: Props) {
     getProjects({ page: page - 1, limit: 12, category }),
     getAllCategories(),
   ]);
+
+  const translate = await getTranslations();
+
   return (
     <main>
       <MainNavbar className="text-neutral-300 bg-white" />
@@ -28,7 +32,7 @@ export default async function ProjectPage(props: Props) {
         {projects.items.length > 0 ? (
           <ProjectsList projects={projects.items} />
         ) : (
-          <p className="text-lg">No project found</p>
+          <p className="text-lg">{translate("ProjectsPage.noProjectsFound")}</p>
         )}
       </Container>
     </main>

@@ -1,15 +1,18 @@
 "use client";
 import MainNavbar from "@/components/navbars/MainNavbar";
+import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function MainHeroSection() {
+  const translate = useTranslations();
+
   return (
     <div>
       {/* Navbar */}
       <MainNavbar />
       <section
-        className="relative lg:h-screen text-neutral-100 overflow-hidden bg-cover bg-center pt-32 pb-20"
+        className="relative lg:h-screen text-neutral-100 overflow-hidden bg-cover bg-center pt-20 pb-20"
         style={{
           backgroundImage: "url('/images/img-6.jpg')",
         }}
@@ -24,24 +27,23 @@ export default function MainHeroSection() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="title font-bold">
-              Noble Alms International - Transforming Lives, Promoting Happiness
+              Noble Alms International - {translate("homePage.headline")}
             </h1>
             <p className="paragraph-large">
-              We are a dynamic charity donation organization committed to making
-              a positive impact on communities around the world
+              {translate("homePage.subHeadline")}
             </p>
             <div className="flex justify-center md:justify-start space-x-4">
               <Link
                 href="/about-us"
                 className="bg-primary text-white px-6 py-3 rounded hover:bg-primary-200"
               >
-                Learn More
+                {translate("learnMore")}
               </Link>
               <Link
                 href="/donate"
                 className="bg-secondary text-white px-6 py-3 rounded hover:bg-secondary-200"
               >
-                Donate Now
+                {translate("donateNow")}
               </Link>
             </div>
           </motion.div>

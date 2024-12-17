@@ -2,8 +2,11 @@
 import Container from "@/components/layouts/Container";
 import MainNavbar from "@/components/navbars/MainNavbar";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export default function ContactHero() {
+  const t = useTranslations("ContactUsPage");
+
   return (
     <div>
       {/* Navbar */}
@@ -23,13 +26,8 @@ export default function ContactHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="title font-bold">Contact us</h1>
-            <p className="text-base md:paragraph-large">
-              We are a dynamic charity organization committed to making a
-              positive impact on communities around the world. Whether you have
-              a question, want to know more about our organization, or would
-              like to get involved, please don&apos;t hesitate to contact us.
-            </p>
+            <h1 className="title font-bold">{t("title")}</h1>
+            <p className="text-base md:paragraph-large">{t("description")}</p>
           </motion.div>
         </Container>
       </section>

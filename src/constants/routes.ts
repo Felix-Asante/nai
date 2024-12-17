@@ -1,6 +1,14 @@
-export const navbarRoutes = [
+import { Formats, TranslationValues } from "next-intl";
+
+type Translator = (
+  key: any,
+  values?: TranslationValues,
+  formats?: Formats
+) => string;
+
+export const navbarRoutes = (translate: Translator) => [
   {
-    name: "About us",
+    name: translate("Navbar.aboutUs"),
     href: "/about-us",
   },
   // {
@@ -8,7 +16,7 @@ export const navbarRoutes = [
   //   href: "/our-mission",
   // },
   {
-    name: "Projects",
+    name: translate("Navbar.projects"),
     href: "/projects",
   },
   // {
@@ -16,11 +24,11 @@ export const navbarRoutes = [
   //   href: "/get-involved",
   // },
   {
-    name: "Contact Us",
+    name: translate("Navbar.contactUs"),
     href: "/contact-us",
   },
   {
-    name: "Blog",
+    name: translate("Navbar.blog"),
     href: "/blog",
   },
 ];

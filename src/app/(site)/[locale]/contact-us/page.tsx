@@ -5,15 +5,17 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { FAQ } from "@/constants/content";
+import { Skeleton } from "@/components/ui/skeleton";
+import { getFAQs } from "@/lib/sanity/api";
 import ContactHero from "@/sections/contact/ContactHero";
 import ContactSection from "@/sections/contact/ContactSection";
-import { getFAQs } from "@/lib/sanity/api";
+import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
-import { Skeleton } from "@/components/ui/skeleton";
 
 export default async function ContactUs() {
   const faqs = await getFAQs();
+  const t = await getTranslations();
+
   return (
     <div>
       <ContactHero />
@@ -36,9 +38,7 @@ export default async function ContactUs() {
           >
             {faqs?.length > 0 ? (
               <>
-                <h3 className="subtitle mb-12">
-                  Frequently Asked Questions (FAQs)
-                </h3>
+                <h3 className="subtitle mb-12">{t("faq")}</h3>
                 <Accordion type="single" collapsible>
                   <div className="grid md:grid-cols-2 md:gap-5 items-start">
                     {faqs.map((faq, index) => (

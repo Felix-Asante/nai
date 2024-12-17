@@ -3,8 +3,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import Container from "@/components/layouts/Container";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export default function AboutHero() {
+  const translate = useTranslations("AboutPage");
+
   return (
     <div>
       {/* Hero Section */}
@@ -15,7 +18,7 @@ export default function AboutHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          About Noble Alms International
+          {translate("title")}
         </motion.h1>
         <motion.p
           className="mt-4 text-xl md:text-3xl"
@@ -23,8 +26,7 @@ export default function AboutHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          Transforming lives, promoting happiness, and unleashing potential
-          through education, health, and charity.
+          {translate("description")}
         </motion.p>
       </Container>
 
@@ -57,21 +59,16 @@ export default function AboutHero() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="subtitle font-bold text-primary">Who We Are</h2>
+            <h2 className="subtitle font-bold text-primary">
+              {translate("whoWeAre.title")}
+            </h2>
             <p className="mt-4 text-lg text-neutral-300 leading-relaxed">
-              Noble Alms International was founded in 2020 with the mission to
-              transform lives, promote happiness, and unleash potential. From
-              humble beginnings, we&apos;ve grown into an organization that
-              impacts communities through educational, medical, and charity
-              outreaches.
+              {translate("whoWeAre.firstLine")}
             </p>
             <p className="mt-4 text-lg text-neutral-300 leading-relaxed">
-              NAI operates under the laws of the Republic of Ghana with the
-              vision:{" "}
-              <strong>
-                Rooting in the foundational development of noble men in the
-                society, through financial, educational, and health support.
-              </strong>
+              {translate.rich("whoWeAre.secondLine", {
+                strong: (chunk) => <strong>{chunk}</strong>,
+              })}
             </p>
           </motion.div>
         </Container>

@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { MISSIONS } from "@/constants/content";
 import Container from "@/components/layouts/Container";
+import { useTranslations } from "next-intl";
 
 export default function MissionSection() {
   const listVariants = {
@@ -19,20 +20,16 @@ export default function MissionSection() {
     visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
   };
 
+  const translate = useTranslations("homePage.mission");
+
   return (
     <Container className="px-6 my-10">
       <div className="bg-primary text-neutral-100 p-6 lg:p-12 rounded-xl">
         <div className="flex flex-col md:flex-row justify-between mb-12 md:mb-14 gap-4">
           <h2 className="text-3xl font-bold  md:w-1/2">
-            The mission of our organization
+            {translate("headline")}
           </h2>
-          <p className="md:w-1/2">
-            {" "}
-            At Noble Alms International, we are driven by compassion, integrity,
-            and inclusivity. These principles guide our efforts to empower
-            communities, transform lives, and create lasting positive change
-            through education, health, and support initiatives.
-          </p>
+          <p className="md:w-1/2">{translate("description")}</p>
         </div>
 
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -44,7 +41,7 @@ export default function MissionSection() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
             >
-              {MISSIONS.map((item, index) => (
+              {MISSIONS(translate).map((item, index) => (
                 <motion.div
                   key={index}
                   className="p-4 bg-primary-300/40 rounded-lg flex items-start space-x-5"

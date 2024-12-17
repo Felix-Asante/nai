@@ -11,6 +11,7 @@ import {
 } from "react-share";
 import { Projects } from "@/types/sanity";
 import { useCopy } from "@/hooks/use-copy";
+import { useTranslations } from "next-intl";
 
 export default function ProjectShareSection({
   project,
@@ -18,11 +19,13 @@ export default function ProjectShareSection({
   project: Projects;
 }) {
   const { copied, copy } = useCopy();
+  const t = useTranslations();
+
   return (
     <div className="my-4 flex flex-col sm:flex-row gap-4 sm:items-center justify-between">
       <div>
         <p className="text-sm">
-          <strong>Pubslished at: </strong>
+          <strong>{t("publishedAt")}: </strong>
           <span className="text-netural-300 text-sm">
             {new Date(project._createdAt).toLocaleDateString()}
           </span>
@@ -35,13 +38,13 @@ export default function ProjectShareSection({
           size="sm"
         >
           <CopyIcon className="w-4 h-4" />
-          <span>{copied ? "Copied!" : "Copy Link"}</span>
+          <span>{copied ? t("copied") : t("copyLink")}</span>
         </Button>
 
         <Button
           variant="ghost"
           size="sm"
-          title="Share on Facebook"
+          title={t("shareOn", { platform: "Facebook" })}
           className="px-0"
         >
           <FacebookShareButton url={window.location.href}>
@@ -58,7 +61,7 @@ export default function ProjectShareSection({
         <Button
           variant="ghost"
           size="sm"
-          title="Share on Twitter"
+          title={t("shareOn", { platform: "X" })}
           className="px-0"
         >
           <TwitterShareButton url={window.location.href}>
@@ -75,7 +78,7 @@ export default function ProjectShareSection({
         <Button
           variant="ghost"
           size="sm"
-          title="Share on Whatsapp"
+          title={t("shareOn", { platform: "Whatsapp" })}
           className="px-0"
         >
           <WhatsappShareButton url={window.location.href}>

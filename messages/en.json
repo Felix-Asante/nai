@@ -1,0 +1,172 @@
+{
+  "Navbar": {
+    "aboutUs": "About Us",
+    "projects": "Projects",
+    "contactUs": "Contact Us",
+    "blog": "Blog",
+    "getInvolved": "Get Involved"
+  },
+  "languages": {
+    "en": "English",
+    "fr": "French"
+  },
+  "donateNow": "Donate Now",
+  "volunteer": "Volunteer",
+  "joinUs": "Join Us",
+  "learnMore": "Learn More",
+  "supportUs": "Support Us",
+  "homePage": {
+    "headline": "Transforming Lives, Promoting Happiness",
+    "subHeadline": "We are a dynamic non-profit organization dedicated to creating a lasting impact in communities around the world.",
+    "whoWeAre": {
+      "headline": "At Noble Alms International, we prioritize compassion, integrity, and inclusivity.",
+      "description": "As a non-profit organization, we are dedicated to creating a positive impact in communities. Our mission is to transform lives, promote happiness, and unleash potential through lively interaction and outreaches, including educational, medical, and charity initiatives. We work tirelessly to promote education, health, and the giving of alms, striving to create a world where everyone has access to the support they need to thrive."
+    },
+    "mission": {
+      "headline": "The mission of our organization",
+      "description": " At Noble Alms International, we are driven by compassion, integrity, and inclusivity. These principles guide our efforts to empower communities, transform lives, and create lasting positive change through education, health, and support initiatives.",
+      "listOne": {
+        "title": "Education for All",
+        "description": "Dedicated to ensuring every child has access to quality education."
+      },
+      "listTwo": {
+        "title": "Health and Wellness",
+        "description": "Our commitment to health and wellness extends across borders."
+      },
+      "listThree": {
+        "title": "Disaster Relief",
+        "description": "In times of crisis, we respond swiftly to provide emergency relief."
+      },
+      "listFour": {
+        "title": "Community Development",
+        "description": "Investing in sustainable community projects to create positive change."
+      }
+    },
+    "stats": {
+      "title": "Together, we've made a tremendous impact!",
+      "description": "Lives impacted and communities transformed through our collective efforts."
+    },
+    "projects": {
+      "title": "Projects for the charity donation organization",
+      "description": "These projects showcase NAI's commitment to addressing a diverse range of issues, including education, healthcare, economic empowerment, community development, emergency relief, and environmental sustainability."
+    }
+  },
+  "HowUCanHelp": {
+    "headline": "How Could You Help?",
+    "description": "Your contributions make a real difference. Explore the ways you can support our mission and create meaningful change.",
+    "itemOne": {
+      "title": "Monetary Donations",
+      "description": "Support projects with your financial contributions."
+    },
+    "itemTwo": {
+      "title": "Become a Monthly Donor",
+      "description": "Ensure continuous impact with recurring donations."
+    },
+    "itemThree": {
+      "title": "Corporate Partnerships",
+      "description": "Collaborate with us to drive corporate social responsibility."
+    },
+    "itemFour": {
+      "title": "Volunteer Your Time",
+      "description": "Be the change you want to see by volunteering."
+    }
+  },
+
+  "joinMovement": "Join our movement",
+  "AboutPage": {
+    "title": " About Noble Alms International",
+    "description": "Transforming lives, promoting happiness, and unleashing potential through education, health, and charity.",
+    "whoWeAre": {
+      "title": "Who We Are",
+      "firstLine": "Noble Alms International was founded in 2020 with the mission to transform lives, promote happiness, and unleash potential. From humble beginnings, we've grown into an organization that impacts communities through educational, medical, and charity outreaches.",
+      "secondLine": "We are proudly registered in both Ghana and Canada, with our headquarters in Ontario. Our vision remains <strong>rooted in the foundational development of noble individuals in society through financial, educational, and health support.</strong>"
+    },
+    "objectives": {
+      "title": "Our Objectives",
+      "description": "Our main priority at Noble Alms International is to transform lives, promote happiness, and unleash potential through three key focus areas: Education, Medical Outreach, and Giving Alms.",
+      "listOne": {
+        "title": "Education",
+        "description": "We aim to provide access to quality education and skills acquisition opportunities through our Edu-Tour seminars. These seminars focus on career guidance, academic support, and life skills, empowering individuals to reach their full potential. We collaborate with organizations, communities, and other stakeholders to create a positive impact through these educational initiatives."
+      },
+      "listTwo": {
+        "title": "Medical Outreach",
+        "description": "We are dedicated to undertaking health programs and activities that promote well-being. Through health screenings, education, and healthcare services, we aim to improve the lifestyles of individuals in undeserved communities, ensuring access to essential medical support."
+      },
+      "listThree": {
+        "title": "Giving Alms",
+        "description": "Our mission also focuses on giving alms-such as food, clothing, and other essentials-to vulnerable populations, including widows, the blind, and the deaf. We strive to make a positive impact in their lives, ensuring that those in need are supported."
+      }
+    },
+    "modeOfOperation": {
+      "title": " We Operate Under SDG Goals",
+      "description": " At Noble Alms International, we are committed to advancing the Sustainable Development Goals (SDGs). Our activities are aligned with the following goals, ensuring that we contribute meaningfully to global development and the well-being of communities we serve:",
+      "closingText": " By aligning our efforts with these SDGs, we are dedicated to creating a positive and lasting impact on both local and global communities.",
+      "listOne": {
+        "title": "1. SDG 4: Quality Education",
+        "description": "Through our Edu-Tour seminars and educational outreach programs, we provide vital educational resources, career guidance, and academic support to youth and students, empowering them to achieve their potential."
+      },
+      "listTwo": {
+        "title": "2. SDG 3: Good Health and Well-being",
+        "description": "Our medical outreach programs, health screenings, and wellness initiatives focus on improving healthcare access and promoting healthier lives in underserved communities."
+      },
+      "listThree": {
+        "title": "3. SDG 1: No Poverty",
+        "description": "Through our alms-giving programs, we provide food, clothing, and essentials to those in need, helping to alleviate poverty and improve living conditions for vulnerable members of society."
+      }
+    },
+    "meetOurTeam": "Meet Our Team"
+  },
+  "volunteers": {
+    "title": "Our Volunteers",
+    "description": "Meet the incredible individuals making a difference in our community.",
+    "becomeVolunteer": "Become a Volunteer"
+  },
+  "ContactUsPage": {
+    "title": "Contact Us",
+    "description": "We are a dynamic charity organization committed to making a positive impact on communities around the world. Whether you have a question, want to know more about our organization, or would like to get involved, please don't hesitate to contact us.",
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Enter your name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Enter your message"
+      },
+      "submit": {
+        "label": "Send as a message"
+      },
+      "title": "Send as a message"
+    },
+    "social": {
+      "title": "Connect with us",
+      "description": "Connect with our friendly team via our social media",
+      "sendMessage": "Message us on {plaftorm}"
+    },
+    "callUs": {
+      "title": "Call Us",
+      "description": "Call our team Monday to Friday from 8am to 5pm"
+    },
+    "visitUs": {
+      "title": "Visit Us",
+      "description": "Visit our office at {address}"
+    }
+  },
+  "faq": "Frequently Asked Questions (FAQs)",
+  "ProjectsPage": {
+    "description": "These projects showcase NAI's commitment to addressing a diverse range of issues, including education, healthcare, economic empowerment, community development, emergency relief, and environmental sustainability.",
+    "noProjectsFound": "No projects found",
+    "backToProjects": "Back to Projects"
+  },
+  "readMore": "Read more",
+  "all": "All",
+  "copyLink": "Copy Link",
+  "copied": "Copied!",
+  "publishedAt": "Published at",
+  "shareOn": "Share on {platform}",
+  "relatedProjects": "Related Projects"
+}

@@ -1,11 +1,14 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import Container from "@/components/layouts/Container";
 import { buttonVariants } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 export default function HomeIntroSection() {
+  const translate = useTranslations();
+
   return (
     <Container className="px-6 py-16 md:py-24">
       <div className="flex flex-col lg:flex-row gap-20 gap-y-12">
@@ -18,22 +21,13 @@ export default function HomeIntroSection() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="subtitle font-bold text-neutral-800">
-            At Noble Alms International, we prioritize compassion, integrity,
-            and inclusivity.
+            {translate("homePage.whoWeAre.headline")}
           </h2>
           <p className="text-neutral-600  leading-relaxed">
-            Noble Alms International is a forward-thinking non-profit
-            organization dedicated to creating a positive impact in communities.
-            Our mission is rooted in the belief that compassion has the power to
-            transform lives. We work tirelessly to bridge gaps in education,
-            health, and empowerment, striving to create a world where everyone
-            has access to the support they need to thrive.
+            {translate("homePage.whoWeAre.description")}
           </p>
-          <Link
-            href="/about-us"
-            className={buttonVariants({ variant: "outline", size: "lg" })}
-          >
-            About Us
+          <Link href="/about-us" className={buttonVariants({ size: "lg" })}>
+            {translate("Navbar.aboutUs")}
           </Link>
         </motion.div>
 

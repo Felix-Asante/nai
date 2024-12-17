@@ -7,6 +7,7 @@ import {
   GraduationCapIcon,
   HeartPulseIcon,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function ObjectiveSection() {
   const sectionVariants = {
@@ -22,6 +23,8 @@ export default function ObjectiveSection() {
       transition: { duration: 0.4, delay: index * 0.2 },
     }),
   };
+
+  const translate = useTranslations("AboutPage.objectives");
 
   return (
     <motion.section
@@ -39,12 +42,10 @@ export default function ObjectiveSection() {
             visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
           }}
         >
-          <h2 className="font-bold text-primary subtitle">Our Objective</h2>
-          <p className=" lg:w-[55%]">
-            Our main priority is to transform lives, promote happiness, and
-            unleash potential through: Education, Health, Women Empowerment,
-            Helping the less endowed.
-          </p>
+          <h2 className="font-bold text-primary subtitle">
+            {translate("title")}
+          </h2>
+          <p className=" lg:w-[55%]">{translate("description")}</p>
         </motion.div>
 
         <motion.div
@@ -65,15 +66,10 @@ export default function ObjectiveSection() {
               <div className="flex items-center justify-center w-10 h-10 rounded-full bg-secondary-200 text-white p-2">
                 <GraduationCapIcon />
               </div>
-              <h3 className="font-bold">Education and skills Training</h3>
+              <h3 className="font-bold">{translate("listOne.title")}</h3>
             </div>
             <p className="text-neutral-300 text-sm mt-3">
-              To provide access to quality education and skills acquisition
-              opportunities, enabling individuals to reach their full potential.
-              We partner with non-profit organizations, communities, and other
-              stakeholders to deliver educational programs, workshops, and
-              projects that promote personal growth, social responsibility, and
-              community development.
+              {translate("listOne.description")}
             </p>
           </motion.div>
 
@@ -87,11 +83,10 @@ export default function ObjectiveSection() {
                 <div className="flex items-center justify-center w-10 h-10 rounded-full bg-secondary-200 text-white p-2">
                   <HeartPulseIcon />
                 </div>
-                <h3 className="font-bold">Health and wellness</h3>
+                <h3 className="font-bold">{translate("listTwo.title")}</h3>
               </div>
               <p className="text-neutral-300 text-sm mt-3">
-                To undertake health programs, activities, and projects that to
-                the well-being of noblemen as they improve their lifestyle.
+                {translate("listTwo.description")}
               </p>
             </motion.div>
 
@@ -104,13 +99,10 @@ export default function ObjectiveSection() {
                 <div className="flex items-center justify-center w-10 h-10 rounded-full bg-secondary-200 text-white p-2">
                   <ChartNoAxesCombinedIcon />
                 </div>
-                <h3 className="font-bold">
-                  Women empowerment & economic sustainability
-                </h3>
+                <h3 className="font-bold">{translate("listThree.title")}</h3>
               </div>
               <p className="text-neutral-300 text-sm mt-3">
-                To empower and enlighten our noblemen, on income-generating
-                activities as this will help in their sustainability growth.
+                {translate("listThree.description")}
               </p>
             </motion.div>
           </div>

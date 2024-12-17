@@ -1,26 +1,22 @@
-export const MISSIONS = [
+export const MISSIONS = (translate: any) => [
   {
-    title: "Education for All",
-    description:
-      "Dedicated to ensuring every child has access to quality education.",
+    title: translate("listOne.title"),
+    description: translate("listOne.description"),
     icon: "📚",
   },
   {
-    title: "Health and Wellness",
-    description:
-      "Our commitment to health and wellness extends across borders.",
+    title: translate("listTwo.title"),
+    description: translate("listTwo.description"),
     icon: "🏥",
   },
   {
-    title: "Disaster Relief",
-    description:
-      "In times of crisis, we respond swiftly to provide emergency relief.",
+    title: translate("listThree.title"),
+    description: translate("listThree.description"),
     icon: "⛑️",
   },
   {
-    title: "Community Development",
-    description:
-      "Investing in sustainable community projects to create positive change.",
+    title: translate("listFour.title"),
+    description: translate("listFour.description"),
     icon: "🌍",
   },
 ];

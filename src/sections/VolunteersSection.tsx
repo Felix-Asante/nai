@@ -2,6 +2,7 @@
 import Container from "@/components/layouts/Container";
 import { cn } from "@/utils";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 const volunteers = [
@@ -31,6 +32,7 @@ export default function VolunteersSection() {
     }),
   };
 
+  const translate = useTranslations("volunteers");
   return (
     <Container>
       <motion.section
@@ -48,11 +50,10 @@ export default function VolunteersSection() {
               visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
             }}
           >
-            <h2 className="text-4xl font-bold text-primary">Our Volunteers</h2>
-            <p className="mt-2 text-neutral-500">
-              Meet the incredible individuals making a difference in our
-              community.
-            </p>
+            <h2 className="text-4xl font-bold text-primary">
+              {translate("title")}
+            </h2>
+            <p className="mt-2 text-neutral-500">{translate("description")}</p>
           </motion.div>
 
           <motion.div
@@ -228,7 +229,7 @@ export default function VolunteersSection() {
               href="/"
               className="bg-primary text-white px-6 py-3 rounded-md hover:bg-primary-200"
             >
-              Become a Volunteer
+              {translate("becomeVolunteer")}
             </Link>
           </div>
         </div>

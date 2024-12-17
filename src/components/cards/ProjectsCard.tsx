@@ -1,8 +1,9 @@
 "use client";
+import { Link } from "@/i18n/routing";
 import { urlFor } from "@/lib/sanity/sanity.image";
 import { Projects } from "@/types/sanity";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 type Props = {
@@ -10,6 +11,8 @@ type Props = {
 };
 
 export default function ProjectsCard({ project }: Props) {
+  const translate = useTranslations();
+
   return (
     <div className="bg-white  overflow-hidden transition-shadow duration-300">
       {/* Project Image */}
@@ -40,7 +43,8 @@ export default function ProjectsCard({ project }: Props) {
           href={`/projects/${project?.slug}`}
           className="mt-4 inline-flex items-center text-primary hover:text-primary-200 duration-300 hover:translate-x-4 font-medium"
         >
-          Read more <span className="ml-2">&rarr;</span>
+          {translate("readMore")}
+          <span className="ml-2">&rarr;</span>
         </Link>
       </div>
     </div>

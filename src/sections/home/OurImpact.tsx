@@ -2,6 +2,7 @@
 import Container from "@/components/layouts/Container";
 import { cn } from "@/utils";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 export default function OurImpact() {
@@ -41,6 +42,8 @@ export default function OurImpact() {
     },
   };
 
+  const translate = useTranslations();
+
   return (
     <section className="py-16">
       <Container className="flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-20 px-4">
@@ -74,7 +77,7 @@ export default function OurImpact() {
           className="text-center"
         >
           <h2 className="text-3xl lg:text-4xl font-semibold text-primary-300">
-            Together, we&apos;ve made a tremendous impact!
+            {translate("homePage.stats.title")}
           </h2>
           <motion.div
             initial="hidden"
@@ -85,16 +88,15 @@ export default function OurImpact() {
             {count.toLocaleString()}+
           </motion.div>
           <p className="mt-2 text-gray-600 text-lg">
-            Lives impacted and communities transformed through our collective
-            efforts.
+            {translate("homePage.stats.description")}
           </p>
           <motion.div
             whileHover={{ scale: 1 }}
             whileTap={{ scale: 0.95 }}
             className="mt-6"
           >
-            <button className="px-6 py-3 bg-primary text-white rounded-lg text-lg hover:bg-primary-300 transition">
-              Join Our Movement
+            <button className="px-6 py-3 capitalize bg-primary text-white rounded-lg text-lg hover:bg-primary-300 transition">
+              {translate("joinMovement")}
             </button>
           </motion.div>
         </motion.div>

@@ -11,6 +11,7 @@ import {
 } from "@/components/EmblaCarouselArrowButtons";
 import { TeamMember } from "@/types/sanity";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 type Props = {
   teamMembers: TeamMember[];
@@ -29,6 +30,8 @@ export default function TeamSection({ teamMembers = [] }: Props) {
     return null;
   }
 
+  const translate = useTranslations();
+
   return (
     <Container className="my-16">
       <div>
@@ -41,7 +44,7 @@ export default function TeamSection({ teamMembers = [] }: Props) {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            Meet Our Team
+            {translate("AboutPage.meetOurTeam")}
           </motion.h2>
           <div className="hidden md:block">
             <div className="flex items-center gap-4">

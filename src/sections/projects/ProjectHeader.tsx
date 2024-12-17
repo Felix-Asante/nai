@@ -4,6 +4,7 @@ import Container from "@/components/layouts/Container";
 import { Categories } from "@/types/sanity";
 import { cn } from "@/utils";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useQueryState } from "nuqs";
 
@@ -36,6 +37,8 @@ export default function ProjectHeader(props: Props) {
     }),
   };
 
+  const translate = useTranslations();
+
   return (
     <motion.header
       className="pt-5 md:pt-12"
@@ -48,16 +51,13 @@ export default function ProjectHeader(props: Props) {
         variants={headerVariants}
       >
         <motion.h2 className="title" variants={headerVariants}>
-          Projects
+          {translate("Navbar.projects")}
         </motion.h2>
         <motion.p
           className="md:paragraph-large md:w-[80%] xl:w-[60%]"
           variants={textVariants}
         >
-          These projects showcase NAI&apos;s commitment to addressing a diverse
-          range of issues, including education, healthcare, economic
-          empowerment, community development, emergency relief, and
-          environmental sustainability.
+          {translate("ProjectsPage.description")}
         </motion.p>
       </motion.div>
 
@@ -78,7 +78,7 @@ export default function ProjectHeader(props: Props) {
                   : "text-neutral-300 font-medium"
               )}
             >
-              All
+              {translate("all")}
             </Link>
           </motion.div>
 
