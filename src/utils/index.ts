@@ -1,3 +1,4 @@
+import { SupportedLanguages } from "@/types";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -14,4 +15,11 @@ export default function getYoutubeId(url: any) {
     return null;
   }
   return match[3];
+}
+
+export function getAlternateLanguage(locale: SupportedLanguages) {
+  if (locale === "en") {
+    return "fr";
+  }
+  return "en";
 }

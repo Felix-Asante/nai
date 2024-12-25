@@ -1,11 +1,11 @@
 "use client";
 
 import Container from "@/components/layouts/Container";
+import { Link } from "@/i18n/routing";
 import { Categories } from "@/types/sanity";
 import { cn } from "@/utils";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import { useQueryState } from "nuqs";
 
 type Props = {

@@ -8,15 +8,15 @@ export const projectType = defineType({
     defineField({
       name: "title",
       title: "Title",
-      type: "string",
+      type: "i18n.string",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "excerpt",
       title: "Excerpt",
-      type: "text",
-      rows: 4,
-      validation: (Rule) => Rule.required().max(200),
+      type: "i18n.text",
+      // rows: 4,
+      // validation: (Rule) => Rule.required().max(200),
     }),
     defineField({
       name: "category",
@@ -63,7 +63,7 @@ export const projectType = defineType({
   ],
   preview: {
     select: {
-      title: "title",
+      title: "title.en",
       media: "mainImage",
     },
   },

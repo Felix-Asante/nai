@@ -15,3 +15,5 @@ export interface QuizValueProps {
   question: string;
   answer: string;
 }
+
+export type SupportedLanguages = "en" | "fr";

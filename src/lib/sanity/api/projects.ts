@@ -1,7 +1,10 @@
 import { CACHE_TAGS } from "@/constants/enum";
-import { sanityFetch } from "../sanity.client";
-import { Projects } from "@/types/sanity";
+import { SupportedLanguages } from "@/types";
+import { ProjectWithTranslation } from "@/types/sanity";
+import { getAlternateLanguage } from "@/utils";
+import { translateProject, translateProjects } from "@/utils/translations";
 import { groq } from "next-sanity";
+import { sanityFetch } from "../sanity.client";
 
 type GetProjectParams = {
   page?: number;
@@ -9,10 +12,27 @@ type GetProjectParams = {
   category?: string;
 };
 type GetProjectResponse = {
-  related: Projects[];
-} & Projects;
+  related: ProjectWithTranslation[];
+} & ProjectWithTranslation;
 
-export async function getProjects(params: GetProjectParams) {
+const projectFields = `_id,
+    _createdAt,
+    "slug": slug.current,
+    title,
+    language,
+    "image": {
+      "url": mainImage.asset->url,
+      "lqip": mainImage.asset->metadata.lqip,
+      "alt": mainImage.asset->alt,
+    },
+    "category": category->title,
+    "excerpt": excerpt,
+    publishedAt`;
+
+export async function getProjects(
+  params: GetProjectParams,
+  locale: SupportedLanguages
+) {
   const { page = 0, limit = 10, category } = params;
 
   const countQuery = groq`count(*[_type == "project"])`;
@@ -25,10 +45,10 @@ export async function getProjects(params: GetProjectParams) {
 
   let categoryRef = null;
   if (category) {
-    const categoryQuery = groq`*[_type == "category" && title == $category][0]._id`;
+    const categoryQuery = groq`*[_type == "category" && title.[$locale] == $category][0]._id`;
     categoryRef = await sanityFetch<string>({
       query: categoryQuery,
-      qParams: { category },
+      qParams: { category, locale },
       tags: [CACHE_TAGS.CATEGORIES],
     });
   }
@@ -36,30 +56,25 @@ export async function getProjects(params: GetProjectParams) {
   // Calculate total pages
   const totalPages = Math.ceil(totalItems / limit);
 
-  const query = groq`*[_type == "project" ${categoryRef ? `&& category._ref == $categoryRef` : ""}] | order(_createdAt desc) [${page * limit}...${(page + 1) * limit}] {
-    _id,
-    _createdAt,
-    "slug": slug.current,
-    title,
-    "image": {
-      "url": mainImage.asset->url,
-      "lqip": mainImage.asset->metadata.lqip,
-      "alt": mainImage.asset->alt,
-    },
-    "category": category->title,
-    "excerpt": excerpt,
-    content,
-    publishedAt
+  const query = groq`*[_type == "project" ${categoryRef ? `&& category._ref == $categoryRef` : ""} ] | order(_createdAt desc) [${page * limit}...${(page + 1) * limit}] {
+    ${projectFields},
+    
   }`;
 
-  const projects = await sanityFetch<Projects[]>({
+  const projects = await sanityFetch<ProjectWithTranslation[]>({
     query,
-    qParams: { page, limit, categoryRef },
+    qParams: {
+      page,
+      limit,
+      categoryRef,
+      language: locale,
+      otherLanguage: getAlternateLanguage(locale),
+    },
     tags: [CACHE_TAGS.PROJECTS],
   });
 
   return {
-    items: projects,
+    items: translateProjects(projects, locale),
     meta: {
       totalItems,
       currentPage: page,
@@ -68,7 +83,10 @@ export async function getProjects(params: GetProjectParams) {
   };
 }
 
-export async function getSingleProject(slug: string) {
+export async function getSingleProject(
+  slug: string,
+  locale: SupportedLanguages
+) {
   const query = groq`*[_type == "project" && slug.current == $slug][0] {
         _id,
         _createdAt,
@@ -96,10 +114,13 @@ export async function getSingleProject(slug: string) {
         }
       }`;
 
-  const project = await sanityFetch<GetProjectResponse>({
+  const { related, ...project } = await sanityFetch<GetProjectResponse>({
     query,
     qParams: { slug },
     tags: [CACHE_TAGS.PROJECT],
   });
-  return project;
+  return {
+    ...translateProject(project, locale),
+    related: translateProjects(related, locale),
+  };
 }

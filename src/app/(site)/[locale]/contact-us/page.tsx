@@ -9,11 +9,18 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { getFAQs } from "@/lib/sanity/api";
 import ContactHero from "@/sections/contact/ContactHero";
 import ContactSection from "@/sections/contact/ContactSection";
+import { SupportedLanguages } from "@/types";
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 
-export default async function ContactUs() {
-  const faqs = await getFAQs();
+type Props = {
+  params: Promise<{
+    locale: SupportedLanguages;
+  }>;
+};
+export default async function ContactUs(props: Props) {
+  const { locale } = await props.params;
+  const faqs = await getFAQs(locale);
   const t = await getTranslations();
 
   return (

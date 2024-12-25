@@ -1,4 +1,39 @@
-export type Projects = {
+type TranslationField = {
+  en?: string;
+  fr?: string;
+};
+
+export type ProjectWithTranslation = {
+  _id: string;
+  _createdAt: string;
+  title: TranslationField;
+  slug: string;
+  excerpt: TranslationField;
+  image: {
+    url: string;
+    lqip: string;
+    alt: string;
+  };
+  category: TranslationField;
+  content: any[];
+  publishedAt: string;
+};
+
+export type CategoriesWithTranslation = {
+  _id: string;
+  _createdAt: string;
+  title: TranslationField;
+  slug: string;
+  description: TranslationField;
+};
+export type FaqWithTranslation = {
+  _id: string;
+  _createdAt: string;
+  question: TranslationField;
+  answer: TranslationField;
+};
+
+type Project = {
   _id: string;
   _createdAt: string;
   title: string;
@@ -12,6 +47,10 @@ export type Projects = {
   category: string;
   content: any[];
   publishedAt: string;
+};
+
+export type Projects = Project & {
+  // translations: Project[];
 };
 
 export type Categories = {

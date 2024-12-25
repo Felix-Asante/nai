@@ -14,7 +14,7 @@ export const teamType = defineType({
     defineField({
       name: "position",
       title: "Position",
-      type: "string",
+      type: "i18n.string",
       validation: (Rule) => Rule.required(),
     }),
     defineField({

@@ -5,9 +5,15 @@ import MissionSection from "@/sections/home/MissionSection";
 import OurImpact from "@/sections/home/OurImpact";
 import ProjectsSection from "@/sections/home/ProjectSection";
 import { getProjects } from "@/lib/sanity/api/projects";
+import { SupportedLanguages } from "@/types";
 
-export default async function LandingPage() {
-  const data = await getProjects({ page: 0, limit: 3 });
+type Props = {
+  params: Promise<{ locale: SupportedLanguages }>;
+};
+
+export default async function LandingPage(props: Props) {
+  const { locale } = await props.params;
+  const data = await getProjects({ page: 0, limit: 3 }, locale);
   return (
     <div>
       <MainHeroSection />

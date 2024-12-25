@@ -57,7 +57,7 @@ export default function MainNavbar(props: Props) {
     // @ts-expect-error
     router.replace({ pathname, params }, { locale: lang });
   };
-  const lang = (params?.locale as string) || "en";
+  const lang = (params?.locale as string) ?? "en";
 
   return (
     <motion.nav

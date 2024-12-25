@@ -1,18 +1,20 @@
+import { CACHE_TAGS } from "@/constants/enum";
+import { SupportedLanguages } from "@/types";
+import { FaqWithTranslation } from "@/types/sanity";
 import { groq } from "next-sanity";
 import { sanityFetch } from "../sanity.client";
-import { CACHE_TAGS } from "@/constants/enum";
-import { FAQ } from "@/types/sanity";
+import { translateFaqs } from "@/utils/translations";
 
-export async function getFAQs() {
+export async function getFAQs(locale: SupportedLanguages) {
   const query = groq`*[_type == "faq"]{
                 _id,
                 _createdAt,
                 question,
                 answer,
             }`;
-  const faqs = await sanityFetch<FAQ[]>({
+  const faqs = await sanityFetch<FaqWithTranslation[]>({
     query,
     tags: [CACHE_TAGS.FAQ],
   });
-  return faqs;
+  return translateFaqs(faqs, locale);
 }
