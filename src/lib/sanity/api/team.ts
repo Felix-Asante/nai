@@ -1,9 +1,10 @@
 import { CACHE_TAGS } from "@/constants/enum";
+import { TeamsWithTranslation } from "@/types/sanity";
 import { groq } from "next-sanity";
 import { sanityFetch } from "../sanity.client";
-import { TeamMember } from "@/types/sanity";
+import { SupportedLanguages } from "@/types";
 
-export async function getAllTeamMembers() {
+export async function getAllTeamMembers(locale: SupportedLanguages) {
   const query = groq`*[_type == "team"] {
         _id,
         name,
@@ -16,9 +17,14 @@ export async function getAllTeamMembers() {
        socials,    
       }`;
 
-  const teamMembers = await sanityFetch<TeamMember[]>({
+  const teamMembers = await sanityFetch<TeamsWithTranslation[]>({
     query,
     tags: [CACHE_TAGS.TEAM],
   });
-  return teamMembers;
+  return teamMembers.map((member) => {
+    return {
+      ...member,
+      position: member.position[locale] || member.position?.en!,
+    };
+  });
 }

@@ -33,6 +33,10 @@ export type FaqWithTranslation = {
   answer: TranslationField;
 };
 
+export type TeamsWithTranslation = Omit<TeamMember, "position"> & {
+  position: TranslationField;
+};
+
 type Project = {
   _id: string;
   _createdAt: string;

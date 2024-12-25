@@ -41,5 +41,13 @@ export default defineConfig({
         },
       ],
     }),
+    documentInternationalization({
+      // Required configuration
+      supportedLanguages: [
+        { id: "fr", title: "French" },
+        { id: "en", title: "English" },
+      ],
+      schemaTypes: ["project"],
+    }),
   ],
 });

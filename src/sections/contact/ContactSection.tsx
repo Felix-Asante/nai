@@ -41,7 +41,15 @@ export default function ContactSection() {
   return (
     <div className="flex flex-col gap-x-8 lg:gap-x-16 gap-y-8 md:flex-row md:items-center">
       <div className="md:w-[65%] lg:w-1/2">
-        <h3 className="subtitle text-primary font-bold mb-5">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d183843.22903553862!2d-79.17369617545307!3d43.947976547634525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d51d21ccd37533%3A0xdd8ceff2f844fcbf!2sOshawa%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sma!4v1735129540270!5m2!1sen!2sma"
+          width="600"
+          height="450"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="rounded-3xl"
+        ></iframe>
+        {/* <h3 className="subtitle text-primary font-bold mb-5">
           {t("form.title")}
         </h3>
         <div className="bg-gray-50 rounded-lg p-4">
@@ -71,7 +79,7 @@ export default function ContactSection() {
               </Button>
             </form>
           </Form>
-        </div>
+        </div> */}
       </div>
       <div className="lg:w-1/2 flex flex-col space-y-4">
         <div>

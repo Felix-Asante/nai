@@ -1,9 +1,9 @@
 "use client";
 import Container from "@/components/layouts/Container";
+import { Link } from "@/i18n/routing";
 import { cn } from "@/utils";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 
 const volunteers = [
   { name: "Alex Johnson", image: "/images/img-11.jpg" },
@@ -226,7 +226,7 @@ export default function VolunteersSection() {
           </motion.div>
           <div className="mt-10 flex justify-center">
             <Link
-              href="/"
+              href="/contact-us"
               className="bg-primary text-white px-6 py-3 rounded-md hover:bg-primary-200"
             >
               {translate("becomeVolunteer")}

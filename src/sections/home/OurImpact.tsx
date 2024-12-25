@@ -1,5 +1,6 @@
 "use client";
 import Container from "@/components/layouts/Container";
+import { Link } from "@/i18n/routing";
 import { cn } from "@/utils";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -93,11 +94,14 @@ export default function OurImpact() {
           <motion.div
             whileHover={{ scale: 1 }}
             whileTap={{ scale: 0.95 }}
-            className="mt-6"
+            className="mt-8"
           >
-            <button className="px-6 py-3 capitalize bg-primary text-white rounded-lg text-lg hover:bg-primary-300 transition">
+            <Link
+              href="/contact-us"
+              className="px-6 py-3 capitalize bg-primary text-white rounded-lg text-lg hover:bg-primary-300 transition"
+            >
               {translate("joinMovement")}
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
 

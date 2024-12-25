@@ -27,8 +27,8 @@ export const navbarRoutes = (translate: Translator) => [
     name: translate("Navbar.contactUs"),
     href: "/contact-us",
   },
-  {
-    name: translate("Navbar.blog"),
-    href: "/blog",
-  },
+  // {
+  //   name: translate("Navbar.blog"),
+  //   href: "/blog",
+  // },
 ];
