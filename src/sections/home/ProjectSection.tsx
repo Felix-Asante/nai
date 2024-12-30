@@ -18,6 +18,8 @@ export default function ProjectsSection({ projects }: ProjectSectionProps) {
 
   const translate = useTranslations("homePage.projects");
 
+  if (projects?.length === 0) return null;
+
   return (
     <Container className="py-16">
       <motion.div
