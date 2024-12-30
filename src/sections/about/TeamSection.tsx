@@ -26,11 +26,11 @@ export default function TeamSection({ teamMembers = [] }: Props) {
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
 
+  const translate = useTranslations();
+
   if (teamMembers.length === 0) {
     return null;
   }
-
-  const translate = useTranslations();
 
   return (
     <Container className="my-16">

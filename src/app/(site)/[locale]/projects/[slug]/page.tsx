@@ -6,18 +6,20 @@ import { Link } from "@/i18n/routing";
 import { getSingleProject } from "@/lib/sanity/api/projects";
 import { urlFor } from "@/lib/sanity/sanity.image";
 import ProjectShareSection from "@/sections/projects/ProjectShareSection";
+import { SupportedLanguages } from "@/types";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 type Props = {
   params: Promise<{
     slug: string;
+    locale: SupportedLanguages;
   }>;
 };
 
 export async function generateMetadata(props: Props) {
-  const params = await props.params;
-  const project = await getSingleProject(params.slug);
+  const { slug, locale } = await props.params;
+  const project = await getSingleProject(slug, locale);
 
   return {
     title: `NAI-${project.title}`,
@@ -37,8 +39,8 @@ export async function generateMetadata(props: Props) {
   };
 }
 export default async function SingleProject(props: Props) {
-  const params = await props.params;
-  const project = await getSingleProject(params.slug);
+  const { slug, locale } = await props.params;
+  const project = await getSingleProject(slug, locale);
   const translate = await getTranslations();
 
   return (
