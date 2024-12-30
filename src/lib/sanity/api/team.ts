@@ -10,9 +10,11 @@ export async function getAllTeamMembers(locale: SupportedLanguages) {
         name,
           position,
         "image": {
-          "url": image.asset->url,
+          "url": image.asset,
           "lqip": image.asset->metadata.lqip,
           "alt": image.asset->alt,
+          "hotspot":image.hotspot,
+          "crop":image.crop
         },
        socials,    
       }`;

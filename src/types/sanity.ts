@@ -37,6 +37,20 @@ export type TeamsWithTranslation = Omit<TeamMember, "position"> & {
   position: TranslationField;
 };
 
+type Hotspot = {
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+};
+
+type Crop = {
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+};
+
 type Project = {
   _id: string;
   _createdAt: string;
@@ -47,6 +61,8 @@ type Project = {
     url: string;
     lqip: string;
     alt: string;
+    hotspot: Hotspot;
+    crop: Crop;
   };
   category: string;
   content: any[];
@@ -74,6 +90,8 @@ export type TeamMember = {
     url: string;
     lqip: string;
     alt: string;
+    hotspot: Hotspot;
+    crop: Crop;
   };
   socials: {
     facebook?: string;
