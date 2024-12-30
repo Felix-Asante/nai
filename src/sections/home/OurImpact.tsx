@@ -50,7 +50,7 @@ export default function OurImpact() {
       <Container className="flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-20 px-4">
         {/* Left Images */}
         <div className="flex flex-row md:flex-col lg:gap-24 gap-5 lg:w-[20%]">
-          {["/images/img-1.jpg", "/images/img-2.jpg"].map((src, index) => (
+          {["/images/img-12.jpg", "/images/img-1.jpg"].map((src, index) => (
             <motion.div
               key={index}
               initial="hidden"
@@ -107,7 +107,7 @@ export default function OurImpact() {
 
         {/* Right Images */}
         <div className="flex flex-row md:flex-col lg:gap-24 gap-5 lg:w-[20%] relative">
-          {["/images/img-3.jpg", "/images/img-4.jpg"].map((src, index) => (
+          {["/images/img-3.jpg", "/images/img-15.jpg"].map((src, index) => (
             <motion.div
               key={index}
               initial="hidden"
