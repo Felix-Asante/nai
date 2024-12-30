@@ -127,7 +127,7 @@ export const projectType = defineType({
       title: "Slug",
       type: "slug",
       options: {
-        source: "title",
+        source: "title.en",
         maxLength: 96,
         documentInternationalization: {
           exclude: true,
