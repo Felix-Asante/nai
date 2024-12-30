@@ -11,7 +11,7 @@ export default function GlobalError({
   console.log(error.message);
   return (
     <html>
-      <body>
+      <body className="flex items-center justify-center flex-col w-full h-full gap-5">
         <h2>Something went wrong!</h2>
         <Button onClick={() => reset()}>Try again</Button>
       </body>
