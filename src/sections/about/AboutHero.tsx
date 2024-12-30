@@ -44,7 +44,7 @@ export default function AboutHero() {
               <Image
                 width={100}
                 height={100}
-                src={`/images/img-1.jpg`}
+                src={`/images/img-28.jpg`}
                 alt={`NAI image 1`}
                 className="w-full h-full object-cover"
                 unoptimized

@@ -3,7 +3,7 @@ import Button from "@/components/Button";
 import FormInput from "@/components/FormInput";
 import TextAreaInput from "@/components/TextAreaInput";
 import { Form } from "@/components/ui/form";
-import { SocialMediaIcons } from "@/constants";
+import { contactDetails, SocialMediaIcons } from "@/constants";
 import { MapPinIcon, PhoneIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -43,7 +43,7 @@ export default function ContactSection() {
       <div className="md:w-[65%] lg:w-1/2">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d183843.22903553862!2d-79.17369617545307!3d43.947976547634525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d51d21ccd37533%3A0xdd8ceff2f844fcbf!2sOshawa%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sma!4v1735129540270!5m2!1sen!2sma"
-          width="600"
+          width="100%"
           height="450"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
@@ -111,30 +111,35 @@ export default function ContactSection() {
           <h4 className="font-bold">{t("callUs.title")}</h4>
           <p className="text-neutral-300 text-sm">{t("callUs.description")}</p>
           <div className="flex flex-col gap-1 font-medium text-sm mt-3">
-            <a href="tel:+14374281909" className="hover:underline">
-              + 1 437 428 1909
-            </a>
-            <a href="tel:+233558450707" className="hover:underline">
-              + 233 (0) 558450707
-            </a>
-            <a href="tel:+13432540665" className="hover:underline">
-              +1 343 254 0665
-            </a>
+            {contactDetails.phoneNumbers.map((item) => (
+              <a
+                href={`tel:${item.tel}`}
+                key={item.text}
+                className="hover:underline"
+              >
+                {item.text}
+              </a>
+            ))}
           </div>
         </div>
         <div>
           <h4 className="font-bold">{t("visitUs.title")}</h4>
           <p className="text-neutral-300 text-sm">
-            {t("visitUs.description", { address: "123 Main Street, Accra" })}
+            {t("visitUs.description", {
+              address: contactDetails.address.headQuaters,
+            })}
           </p>
-          <Link
-            className="flex items-center gap-2 font-medium text-sm mt-3"
-            href="https://www.google.com/maps"
-            target="_blank"
-          >
-            <MapPinIcon size={16} />
-            <span className="hover:underline">123 Main Street, Accra</span>
-          </Link>
+          {contactDetails.address.branches.map((item) => (
+            <Link
+              className="flex items-center gap-2 font-medium text-sm mt-3"
+              href={item.googleMapUrl}
+              target="_blank"
+              key={item.address}
+            >
+              <MapPinIcon size={16} />
+              <span className="hover:underline">{item.address}</span>
+            </Link>
+          ))}
         </div>
       </div>
     </div>

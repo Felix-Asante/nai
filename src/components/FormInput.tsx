@@ -31,7 +31,11 @@ export default function FormInput(props: FormInputProps) {
           <FormControl>
             <Input placeholder={placeholder} {...field} {...inputProps} />
           </FormControl>
-          {description && <FormDescription>{description}</FormDescription>}
+          {description && (
+            <FormDescription className="text-destructive">
+              {description}
+            </FormDescription>
+          )}
           <FormMessage />
         </FormItem>
       )}

@@ -11,6 +11,7 @@
     "fr": "French"
   },
   "donateNow": "Donate Now",
+  "donate": "Donate",
   "volunteer": "Volunteer",
   "joinUs": "Join Us",
   "learnMore": "Learn More",
@@ -168,5 +169,10 @@
   "copied": "Copied!",
   "publishedAt": "Published at",
   "shareOn": "Share on {platform}",
-  "relatedProjects": "Related Projects"
+  "relatedProjects": "Related Projects",
+  "errors": {
+    "something-went-wrong": "Something went wrong",
+    "invalidEmail": "Invalid email"
+  },
+  "subscriptionSuccess": "Success! Now check your email to confirm your subscription."
 }

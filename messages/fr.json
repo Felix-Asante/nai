@@ -11,6 +11,7 @@
     "fr": "Français"
   },
   "donateNow": "Faire un don",
+  "donate": "Faire un don",
   "volunteer": "Bénévole",
   "joinUs": "Rejoignez-nous",
   "learnMore": "En savoir plus",
@@ -167,5 +168,10 @@
   "copied": "Copié !",
   "publishedAt": "Publié le",
   "shareOn": "Partager sur {platform}",
-  "relatedProjects": "Projets Similaires"
+  "relatedProjects": "Projets Similaires",
+  "errors": {
+    "something-went-wrong": "Quelque chose n'a pas fonctionné",
+    "invalidEmail": "Email invalide"
+  },
+  "subscriptionSuccess": "Succès ! Vérifiez maintenant votre email pour confirmer votre abonnement."
 }
