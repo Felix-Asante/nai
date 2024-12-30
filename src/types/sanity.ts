@@ -61,8 +61,6 @@ type Project = {
     url: string;
     lqip: string;
     alt: string;
-    hotspot: Hotspot;
-    crop: Crop;
   };
   category: string;
   content: any[];
