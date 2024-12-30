@@ -16,9 +16,9 @@ export function translateProject(
 
   return {
     ...project,
-    title: title[locale] ?? title.en!,
-    excerpt: excerpt[locale] ?? excerpt.en!,
-    category: category[locale] ?? category.en!,
+    title: title?.[locale] ?? title.en!,
+    excerpt: excerpt?.[locale] ?? excerpt.en!,
+    category: category?.[locale] ?? category.en!,
   };
   // if (!project?.translations?.length) {
   //   return project;
@@ -50,8 +50,8 @@ function translateCategory(
   const { title, description } = category;
   return {
     ...category,
-    title: title[locale] ?? title.en!,
-    description: description[locale] ?? description.en!,
+    title: title?.[locale] ?? title.en!,
+    description: description?.[locale] ?? description?.en!,
   };
 }
 
@@ -68,8 +68,8 @@ export function translateFaqs(
   return faqs.map((faq) => {
     return {
       ...faq,
-      question: faq.question[locale] ?? faq.question.en!,
-      answer: faq.answer[locale] ?? faq.answer.en!,
+      question: faq.question?.[locale] ?? faq.question.en!,
+      answer: faq.answer?.[locale] ?? faq.answer.en!,
     };
   });
 }

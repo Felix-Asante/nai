@@ -73,7 +73,7 @@ export default async function SingleProject(props: Props) {
           </div>
         </div>
         {project?.related?.length > 0 && (
-          <div className="mt-7">
+          <div className="mt-16">
             <h3 className="text-3xl font-semibold mb-4">
               {translate("relatedProjects")}
             </h3>
