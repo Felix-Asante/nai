@@ -6,6 +6,7 @@ import OurImpact from "@/sections/home/OurImpact";
 import ProjectsSection from "@/sections/home/ProjectSection";
 import { getProjects } from "@/lib/sanity/api/projects";
 import { SupportedLanguages } from "@/types";
+import ModeOfOperation from "@/sections/about/ModeOfOperation";
 
 type Props = {
   params: Promise<{ locale: SupportedLanguages }>;
@@ -18,7 +19,8 @@ export default async function LandingPage(props: Props) {
     <div>
       <MainHeroSection />
       <HomeIntroSection />
-      <MissionSection />
+      {/* <MissionSection /> */}
+      <ModeOfOperation />
       <HowUCanHelp />
       <OurImpact />
       <ProjectsSection projects={data.items} />

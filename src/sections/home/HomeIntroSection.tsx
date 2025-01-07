@@ -10,7 +10,7 @@ export default function HomeIntroSection() {
   const translate = useTranslations();
 
   return (
-    <Container className="px-6 py-16 md:py-24">
+    <Container className="px-6 py-16 md:pt-24 md:pb-10">
       <div className="flex flex-col lg:flex-row gap-20 gap-y-12">
         {/* Text Section */}
         <motion.div

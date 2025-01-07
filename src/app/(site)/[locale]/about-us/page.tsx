@@ -22,7 +22,7 @@ export default async function AboutPage(props: Props) {
       <MainNavbar className="text-neutral-300 bg-white" />
       <AboutHero />
       <ObjectiveSection />
-      <ModeOfOperation />
+      {/* <ModeOfOperation /> */}
       <HowUCanHelp />
       <TeamSection teamMembers={teamMembers} />
       <VolunteersSection />
