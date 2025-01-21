@@ -172,7 +172,16 @@
   "relatedProjects": "Related Projects",
   "errors": {
     "something-went-wrong": "Something went wrong",
-    "invalidEmail": "Invalid email"
+    "invalidEmail": "Invalid email",
+    "bad-request": "Bad request"
   },
-  "subscriptionSuccess": "Success! Now check your email to confirm your subscription."
+  "subscriptionSuccess": "Success! Now check your email to confirm your subscription.",
+  "becomeVolunteer": {
+    "name": "Name",
+    "fullName": "Full Name",
+    "email": "Email address",
+    "phone": "Phone",
+    "country": "Country",
+    "send-request": "Send Request"
+  }
 }

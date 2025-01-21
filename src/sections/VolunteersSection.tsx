@@ -1,9 +1,18 @@
 "use client";
+import Button from "@/components/Button";
 import Container from "@/components/layouts/Container";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Link } from "@/i18n/routing";
 import { cn } from "@/utils";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import VolunteerForm from "./VolunteerForm";
 
 const volunteers = [
   { name: "Alex Johnson", image: "/images/img-11.jpg" },
@@ -225,12 +234,22 @@ export default function VolunteersSection() {
             </div>
           </motion.div>
           <div className="mt-10 flex justify-center">
-            <Link
-              href="/contact-us"
-              className="bg-primary text-white px-6 py-3 rounded-md hover:bg-primary-200"
-            >
-              {translate("becomeVolunteer")}
-            </Link>
+            <Dialog>
+              <DialogTrigger>
+                <Button
+                  size="lg"
+                  // className="bg-primary text-white px-6 py-3 rounded-md hover:bg-primary-200"
+                >
+                  {translate("becomeVolunteer")}
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle> {translate("becomeVolunteer")}</DialogTitle>
+                </DialogHeader>
+                <VolunteerForm />
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </motion.section>

@@ -26,6 +26,9 @@ body {
   .subtitle {
     @apply text-3xl md:text-4xl font-bold leading-[1.18];
   }
+  .PhoneInputCountry {
+    @apply !border !border-input !bg-background !px-3 !py-2 !text-sm !rounded-sm;
+  }
 }
 
 /* embla carousel styles  */

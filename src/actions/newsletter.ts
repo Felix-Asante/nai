@@ -1,8 +1,14 @@
 "use server";
 
 import { apiEndpoints } from "@/lib/api";
-import { subscribeNewsLetterRules } from "@/validations";
+import {
+  becomeVolunteerInput,
+  becomeVolunteerRules,
+  subscribeNewsLetterRules,
+} from "@/validations";
 import { getTranslations } from "next-intl/server";
+import { MailtrapClient } from "mailtrap";
+import { getErrorMessage } from "@/utils";
 
 export async function subscribeToNewsLetter(email: string) {
   const translate = await getTranslations();
@@ -29,6 +35,46 @@ export async function subscribeToNewsLetter(email: string) {
     const results = await response?.json();
     console.log(results);
   } catch (error) {
+    return { error: translate("errors.something-went-wrong") };
+  }
+}
+
+export async function sendVolunteerEmail(data: becomeVolunteerInput) {
+  const translate = await getTranslations();
+  try {
+    const validation = becomeVolunteerRules.safeParse(data);
+
+    if (!validation.success) {
+      return { error: translate("errors.bad-request") };
+    }
+
+    console.log(data);
+
+    const emailAuthToken = process.env.EMAIL_TOKEN!;
+    const emailClient = new MailtrapClient({ token: emailAuthToken });
+
+    const sender = {
+      name: "NAI Website",
+      email: process.env.EMAIL_SENDER_ADDRESS!,
+    };
+
+    console.log(sender);
+
+    const response = await emailClient.send({
+      from: sender,
+      to: [{ email: process.env.EMAIL_RECEIVER_ADDRESS! }],
+      subject: "New Volunteer",
+      text: `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nCountry: ${data.country}`,
+    });
+
+    if (!response.success) {
+      console.log(
+        `FAILED TO SEND VOLUNTEER REQUEST MESSAGE ${data.email} - ${data.name} - ${data.country} - ${data.phone}`
+      );
+      return { error: translate("errors.something-went-wrong") };
+    }
+  } catch (error) {
+    console.log(getErrorMessage(error));
     return { error: translate("errors.something-went-wrong") };
   }
 }

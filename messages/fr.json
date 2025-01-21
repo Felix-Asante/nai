@@ -171,7 +171,16 @@
   "relatedProjects": "Projets Similaires",
   "errors": {
     "something-went-wrong": "Quelque chose n'a pas fonctionné",
-    "invalidEmail": "Email invalide"
+    "invalidEmail": "Email invalide",
+    "bad-request": "Demande incorrecte"
   },
-  "subscriptionSuccess": "Succès ! Vérifiez maintenant votre email pour confirmer votre abonnement."
+  "subscriptionSuccess": "Succès ! Vérifiez maintenant votre email pour confirmer votre abonnement.",
+  "becomeVolunteer": {
+    "name": "Nom",
+    "fullName": "Nom Complet",
+    "email": "Addresse email",
+    "phone": "Phone",
+    "country": "Pays",
+    "send-request": "Envoyer la demande"
+  }
 }
