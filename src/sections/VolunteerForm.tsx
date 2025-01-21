@@ -55,7 +55,7 @@ export default function VolunteerForm() {
         });
       } else {
         toast({
-          description: translate("subscriptionSuccess"),
+          description: translate("becomeVolunteer.success-message"),
         });
         form.reset();
       }

@@ -181,6 +181,7 @@
     "email": "Addresse email",
     "phone": "Phone",
     "country": "Pays",
-    "send-request": "Envoyer la demande"
+    "send-request": "Envoyer la demande",
+    "success-message": "Nous avons recu votre demande. Nous vous contacterons bientot."
   }
 }
