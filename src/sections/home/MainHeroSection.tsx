@@ -39,12 +39,12 @@ export default function MainHeroSection() {
               >
                 {translate("learnMore")}
               </Link>
-              <Link
+              {/* <Link
                 href="/donate"
                 className="bg-secondary text-white px-6 py-3 rounded hover:bg-secondary-200"
               >
                 {translate("donateNow")}
-              </Link>
+              </Link> */}
             </div>
           </motion.div>
           <motion.img

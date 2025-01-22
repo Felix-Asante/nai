@@ -79,7 +79,7 @@ export default function HowUCanHelp() {
           ))}
         </div>
         <div className="mt-16 flex justify-center">
-          <Link href="/donate" className={buttonVariants({ size: "lg" })}>
+          <Link href="/contact-us" className={buttonVariants({ size: "lg" })}>
             {translate("supportUs")}
           </Link>
         </div>
