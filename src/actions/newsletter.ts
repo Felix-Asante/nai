@@ -9,6 +9,7 @@ import {
 import { getTranslations } from "next-intl/server";
 import { MailtrapClient } from "mailtrap";
 import { getErrorMessage } from "@/utils";
+import { Resend } from "resend";
 
 export async function subscribeToNewsLetter(email: string) {
   const translate = await getTranslations();
@@ -51,23 +52,21 @@ export async function sendVolunteerEmail(data: becomeVolunteerInput) {
     console.log(data);
 
     const emailAuthToken = process.env.EMAIL_TOKEN!;
-    const emailClient = new MailtrapClient({ token: emailAuthToken });
+    const emailClient = new Resend(emailAuthToken);
 
     const sender = {
       name: "NAI Website",
       email: process.env.EMAIL_SENDER_ADDRESS!,
     };
 
-    console.log(sender);
-
-    const response = await emailClient.send({
-      from: sender,
-      to: [{ email: process.env.EMAIL_RECEIVER_ADDRESS! }],
+    const response = await emailClient.emails.send({
+      from: sender.email,
+      to: process.env.EMAIL_RECEIVER_ADDRESS!,
       subject: "New Volunteer",
-      text: `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nCountry: ${data.country}`,
+      html: `Name: ${data.name}<br/>Email: ${data.email}<br/>Phone: ${data.phone}<br/>Country: ${data.country}`,
     });
 
-    if (!response.success) {
+    if (response?.error) {
       console.log(
         `FAILED TO SEND VOLUNTEER REQUEST MESSAGE ${data.email} - ${data.name} - ${data.country} - ${data.phone}`
       );

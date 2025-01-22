@@ -43,6 +43,7 @@
     "react-hook-form": "^7.54.0",
     "react-phone-number-input": "^3.4.11",
     "react-share": "^5.1.1",
+    "resend": "^4.1.1",
     "sanity": "3",
     "sanity-plugin-i18n-fields": "^1.0.0",
     "sanity-plugin-internationalized-array": "^3.1.0",

@@ -13,6 +13,7 @@ import { cn } from "@/utils";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import VolunteerForm from "./VolunteerForm";
+import { useState } from "react";
 
 const volunteers = [
   { name: "Alex Johnson", image: "/images/img-11.jpg" },
@@ -42,6 +43,8 @@ export default function VolunteersSection() {
   };
 
   const translate = useTranslations("volunteers");
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <Container>
       <motion.section
@@ -234,11 +237,12 @@ export default function VolunteersSection() {
             </div>
           </motion.div>
           <div className="mt-10 flex justify-center">
-            <Dialog>
+            <Dialog open={isOpen} onOpenChange={setIsOpen}>
               <DialogTrigger>
                 <Button
                   size="lg"
                   // className="bg-primary text-white px-6 py-3 rounded-md hover:bg-primary-200"
+                  onClick={() => setIsOpen(true)}
                 >
                   {translate("becomeVolunteer")}
                 </Button>
@@ -247,7 +251,9 @@ export default function VolunteersSection() {
                 <DialogHeader>
                   <DialogTitle> {translate("becomeVolunteer")}</DialogTitle>
                 </DialogHeader>
-                <VolunteerForm />
+                <VolunteerForm
+                  toggleModal={(state: boolean) => setIsOpen(state)}
+                />
               </DialogContent>
             </Dialog>
           </div>

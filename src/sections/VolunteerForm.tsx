@@ -26,16 +26,20 @@ import { useTranslations } from "next-intl";
 import { sendVolunteerEmail } from "@/actions/newsletter";
 import { getErrorMessage } from "@/utils";
 
-export default function VolunteerForm() {
+type VolunteerFormProps = {
+  toggleModal: (state: boolean) => void;
+};
+export default function VolunteerForm(props: VolunteerFormProps) {
   const params = useParams();
   const locale = params?.locale || "en";
   const lang = locale === "en" ? en : fr;
 
   const [isSubscribing, setIsSubscribing] = React.useState(false);
+  const { toggleModal } = props;
 
   const COUNTRIES = getCountries().map((country) => ({
     label: lang[country],
-    value: country,
+    value: en[country],
   }));
 
   const form = useForm<becomeVolunteerInput>({
@@ -58,6 +62,7 @@ export default function VolunteerForm() {
           description: translate("becomeVolunteer.sucess-message"),
         });
         form.reset();
+        toggleModal(false);
       }
     } catch (error) {
       toast({
