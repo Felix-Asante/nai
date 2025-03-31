@@ -5,6 +5,7 @@ import { categoryType } from "./categoryType";
 import { projectType, localizedBlockContent } from "./projectsType";
 import { teamType } from "./teamType";
 import { faqType } from "./faqType";
+import { galleryType } from "./galleryType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -14,5 +15,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     projectType,
     teamType,
     faqType,
+    galleryType,
   ],
 };

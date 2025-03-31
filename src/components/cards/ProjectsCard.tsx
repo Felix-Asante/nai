@@ -3,15 +3,27 @@ import { Link } from "@/i18n/routing";
 import { urlFor } from "@/lib/sanity/sanity.image";
 import { Projects } from "@/types/sanity";
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import React from "react";
 
 type Props = {
   project: Projects;
+  isUpcoming?: boolean;
 };
 
-export default function ProjectsCard({ project }: Props) {
+export default function ProjectsCard({ project, isUpcoming = false }: Props) {
   const translate = useTranslations();
+  const locale = useLocale();
+
+  const date = project?.date
+    ? new Intl.DateTimeFormat(locale, {
+        month: "short",
+        day: "2-digit",
+      }).format(new Date(project?.date))
+    : null;
+
+  const isUpcomingProject =
+    project?.date && new Date() < new Date(project?.date);
 
   return (
     <div className="bg-white  overflow-hidden transition-shadow duration-300">
@@ -25,6 +37,22 @@ export default function ProjectsCard({ project }: Props) {
             scale: 1.1,
           }}
         />
+        {isUpcomingProject && !isUpcoming && (
+          <div className="absolute top-2 left-2">
+            <div className="bg-primary rounded-sm text-white py-1 px-2">
+              Upcoming
+            </div>
+          </div>
+        )}
+
+        {isUpcoming && (
+          <div className="absolute top-2 right-2">
+            <div className="rounded-lg p-3 bg-primary text-white font-bold text-center text-lg md:text-xl">
+              <p> {date?.split(" ")?.at(1)}</p>
+              <p> {date?.split(" ")?.at(0)}</p>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Project Content */}

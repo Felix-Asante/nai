@@ -4,7 +4,8 @@
     "projects": "Projects",
     "contactUs": "Contact Us",
     "blog": "Blog",
-    "getInvolved": "Get Involved"
+    "getInvolved": "Get Involved",
+    "gallery": "Gallery"
   },
   "languages": {
     "en": "English",
@@ -49,6 +50,7 @@
     },
     "projects": {
       "title": "Projects for the charity donation organization",
+      "upcoming": "Upcoming Projects",
       "description": "These projects showcase NAI's commitment to addressing a diverse range of issues, including education, healthcare, economic empowerment, community development, emergency relief, and environmental sustainability."
     }
   },
@@ -184,5 +186,9 @@
     "country": "Country",
     "send-request": "Send Request",
     "sucess-message": "We have received your request. We will get back to you soon."
+  },
+  "gallery": {
+    "title": "Our Impact Gallery",
+    "description": "Explore the stories, projects, and communities that make our mission possible."
   }
 }

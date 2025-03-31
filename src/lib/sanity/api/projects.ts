@@ -27,7 +27,14 @@ const projectFields = `_id,
     },
     "category": category->title,
     "excerpt": excerpt,
-    publishedAt`;
+    publishedAt,
+    date,
+    "gallery": gallery[] {
+      _type,
+      "url": asset->url,
+      alt
+    }
+    `;
 
 export async function getProjects(
   params: GetProjectParams,
@@ -101,6 +108,12 @@ export async function getSingleProject(
          excerpt,
         content,
         publishedAt,
+        date,
+        "gallery": gallery[] {
+          _type,
+          "url": asset->url,
+          alt
+        },
         "related": *[_type == "project" && category._ref == ^.category._ref && slug.current != $slug] [0..3]{
          _id,
           "slug": slug.current,
@@ -123,4 +136,16 @@ export async function getSingleProject(
     ...translateProject(project, locale),
     related: translateProjects(related, locale),
   };
+}
+
+export async function getUpcomingProjects(locale: SupportedLanguages) {
+  const query = groq`*[_type == "project" && date <= now() ] | order(date asc) [0..3] {
+    ${projectFields},
+  }`;
+  const projects = await sanityFetch<ProjectWithTranslation[]>({
+    query,
+    qParams: {},
+    tags: [CACHE_TAGS.PROJECTS],
+  });
+  return translateProjects(projects, locale);
 }

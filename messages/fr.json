@@ -4,7 +4,8 @@
     "projects": "Projets",
     "contactUs": "Contactez-nous",
     "blog": "Blog",
-    "getInvolved": "Impliquer"
+    "getInvolved": "Impliquer",
+    "gallery": "Galerie"
   },
   "languages": {
     "en": "Anglais",
@@ -49,6 +50,7 @@
     },
     "projects": {
       "title": "Projets pour l'organisation de dons de charité",
+      "upcoming": "Projets à venir",
       "description": "Ces projets montrent l'engagement de NAI à aborder une gamme diversifiée de problèmes, y compris l'éducation, les soins de santé, l'autonomisation économique, le développement communautaire, le secours d'urgence et la durabilité environnementale."
     }
   },
@@ -183,5 +185,9 @@
     "country": "Pays",
     "send-request": "Envoyer la demande",
     "success-message": "Nous avons recu votre demande. Nous vous contacterons bientot."
+  },
+  "gallery": {
+    "title": "Notre galerie d'impact",
+    "description": "Découvrez les histoires, projets et communautés qui rendent notre mission possible."
   }
 }

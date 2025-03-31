@@ -1,5 +1,4 @@
-import { defineField, defineType, defineArrayMember } from "sanity";
-import { internationalizedArray } from "sanity-plugin-internationalized-array";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
 export const localizedBlockContent = defineType({
   title: "Localized Block Content",
@@ -171,9 +170,57 @@ export const projectType = defineType({
       readOnly: true,
       hidden: true,
     }),
-
+    defineField({
+      name: "gallery",
+      type: "array",
+      title: "Gallery",
+      of: [
+        {
+          name: "image",
+          type: "image",
+          title: "Image",
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            {
+              name: "alt",
+              type: "string",
+              title: "Alternative text",
+            },
+          ],
+        },
+        {
+          name: "video",
+          type: "file",
+          title: "Video",
+          options: {
+            accept: "video/*",
+          },
+          fields: [
+            {
+              name: "alt",
+              type: "string",
+              title: "Alternative text",
+            },
+          ],
+        },
+      ],
+      options: {
+        layout: "grid",
+      },
+    }),
     defineField({
       name: "publishedAt",
+      type: "datetime",
+      options: {
+        documentInternationalization: {
+          exclude: true,
+        },
+      },
+    }),
+    defineField({
+      name: "date",
       type: "datetime",
       options: {
         documentInternationalization: {

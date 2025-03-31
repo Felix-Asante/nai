@@ -58,6 +58,13 @@ export const teamType = defineType({
           type: "url",
           description: "X profile link (eg:https://x.com/{profile_id})",
         }),
+        defineField({
+          name: "linkedin",
+          title: "LinkedIn",
+          type: "url",
+          description:
+            "LinkedIn profile link (eg:https://www.linkedin.com/in/{profile-name})",
+        }),
       ],
     }),
   ],

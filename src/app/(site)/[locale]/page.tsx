@@ -1,12 +1,11 @@
+import { getUpcomingProjects } from "@/lib/sanity/api/projects";
+import ModeOfOperation from "@/sections/about/ModeOfOperation";
 import HomeIntroSection from "@/sections/home/HomeIntroSection";
 import HowUCanHelp from "@/sections/home/HowUCanHelp";
 import MainHeroSection from "@/sections/home/MainHeroSection";
-import MissionSection from "@/sections/home/MissionSection";
 import OurImpact from "@/sections/home/OurImpact";
 import ProjectsSection from "@/sections/home/ProjectSection";
-import { getProjects } from "@/lib/sanity/api/projects";
 import { SupportedLanguages } from "@/types";
-import ModeOfOperation from "@/sections/about/ModeOfOperation";
 
 type Props = {
   params: Promise<{ locale: SupportedLanguages }>;
@@ -14,16 +13,16 @@ type Props = {
 
 export default async function LandingPage(props: Props) {
   const { locale } = await props.params;
-  const data = await getProjects({ page: 0, limit: 3 }, locale);
+  const data = await getUpcomingProjects(locale);
   return (
     <div>
       <MainHeroSection />
       <HomeIntroSection />
       {/* <MissionSection /> */}
       <ModeOfOperation />
+      <ProjectsSection projects={data} />
       <HowUCanHelp />
       <OurImpact />
-      <ProjectsSection projects={data.items} />
     </div>
   );
 }

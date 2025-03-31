@@ -17,6 +17,12 @@ export type ProjectWithTranslation = {
   category: TranslationField;
   content: any[];
   publishedAt: string;
+  date: string;
+  gallery: {
+    _type: string;
+    url: string;
+    alt: string;
+  }[];
 };
 
 export type CategoriesWithTranslation = {
@@ -65,6 +71,12 @@ type Project = {
   category: string;
   content: any[];
   publishedAt: string;
+  date: string;
+  gallery: {
+    _type: string;
+    url: string;
+    alt: string;
+  }[];
 };
 
 export type Projects = Project & {
@@ -105,4 +117,10 @@ export type FAQ = {
   _createdAt: string;
   question: string;
   answer: string;
+};
+
+export type Gallery = {
+  _type: string;
+  url: string;
+  alt: string;
 };

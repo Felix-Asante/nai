@@ -5,10 +5,12 @@ import DisplayPortableText from "@/components/portableText";
 import { Link } from "@/i18n/routing";
 import { getSingleProject } from "@/lib/sanity/api/projects";
 import { urlFor } from "@/lib/sanity/sanity.image";
+import ProjectGallery from "@/sections/ProjectGallery";
 import ProjectShareSection from "@/sections/projects/ProjectShareSection";
 import { SupportedLanguages } from "@/types";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
+import { Gallery, Item } from "react-photoswipe-gallery";
 
 type Props = {
   params: Promise<{
@@ -67,9 +69,11 @@ export default async function SingleProject(props: Props) {
           />
 
           <ProjectShareSection project={project} />
-
           <div className="my-5">
             <DisplayPortableText value={project?.content} />
+          </div>
+          <div className="mb-5">
+            <ProjectGallery gallery={project.gallery} />
           </div>
         </div>
         {project?.related?.length > 0 && (

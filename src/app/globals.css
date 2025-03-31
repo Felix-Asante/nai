@@ -49,7 +49,7 @@ body {
 }
 .embla__slide {
   transform: translate3d(0, 0, 0);
-  flex: 0 0 70%;
+  flex: 0 0 80%;
   min-width: 0;
   padding-left: var(--slide-spacing);
 }
@@ -58,11 +58,17 @@ body {
   .embla__slide {
     flex: 0 0 33%;
   }
+  .embla__slide.upcoming_projects {
+    flex: 0 0 50%;
+  }
 }
 
 @media screen and (min-width: 991px) {
   .embla__slide {
     flex: 0 0 25%;
+  }
+  .embla__slide.upcoming_projects {
+    flex: 0 0 33.33%;
   }
 }
 

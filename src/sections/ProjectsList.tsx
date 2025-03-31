@@ -6,6 +6,7 @@ import React from "react";
 
 type Props = {
   projects: Projects[];
+  isUpcoming?: boolean;
 };
 export default function ProjectsList({ projects }: Props) {
   return (
