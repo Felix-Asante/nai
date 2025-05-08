@@ -6,7 +6,7 @@ export const SocialMediaIcons = {
 };
 
 export const contactDetails = {
-  emails: ["noblealmsi@gmail.com"],
+  emails: ["contact@noblealmsinternational.com"],
   phoneNumbers: [
     { tel: "+14374281909", text: "+ 1 437 428 1909" },
     { tel: "+233558450707", text: "+ 233 (0) 558450707" },
