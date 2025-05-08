@@ -247,7 +247,7 @@ export default function VolunteersSection() {
                   {translate("becomeVolunteer")}
                 </Button>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent onPointerDownOutside={(e) => e.preventDefault()}>
                 <DialogHeader>
                   <DialogTitle> {translate("becomeVolunteer")}</DialogTitle>
                 </DialogHeader>
