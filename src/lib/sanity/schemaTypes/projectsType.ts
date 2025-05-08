@@ -156,7 +156,7 @@ export const projectType = defineType({
       name: "content",
       title: "Content",
       type: "blockContent",
-      validation: (Rule) => Rule.required(),
+      // validation: (Rule) => Rule.required(),
     }),
     // defineField({
     //   name: "content",
