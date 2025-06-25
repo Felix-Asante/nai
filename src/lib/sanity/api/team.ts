@@ -38,21 +38,21 @@ export async function getAllTeamMembers(locale: SupportedLanguages) {
         [
           "Executive Member / President",
           "Membre exécutif / Président",
-        ].includes(member.position.toLowerCase())
+        ].includes(member.position)
       ) {
         orderedTeamMembers[0] = member;
       } else if (
         [
           "Executive Member / Vice President",
           "Membre exécutif / Vice-Président",
-        ].includes(member.position.toLowerCase())
+        ].includes(member.position)
       ) {
         orderedTeamMembers[1] = member;
       } else if (
         [
           "Executive Member / Financial Secretary",
           "Membre exécutif / Secrétaire Financier",
-        ].includes(member.position.toLowerCase())
+        ].includes(member.position)
       ) {
         orderedTeamMembers[2] = member;
       } else {
