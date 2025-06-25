@@ -94,12 +94,14 @@ export default function MainNavbar(props: Props) {
             </li>
           ))}
 
-          {/* <Link
+          <Link
             href="/donate"
-            className={`px-4 py-2 hidden lg:inline-block rounded ${"bg-secondary text-white hover:bg-secondary-200"}`}
+            className={buttonVariants({
+              className: `px-4 py-2 hidden lg:inline-block rounded ${"bg-secondary text-white hover:bg-secondary-200 rounded-full"}`,
+            })}
           >
             {translate("donateNow")}
-          </Link> */}
+          </Link>
           <Popover>
             <PopoverTrigger asChild>
               <ShadcnButton variant="ghost">
