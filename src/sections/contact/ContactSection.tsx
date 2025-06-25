@@ -18,24 +18,24 @@ export default function ContactSection() {
   const socialAccounts = [
     {
       label: t("social.sendMessage", { platform: "WhatsApp" }),
-      link: "https://wa.me/2332412111928",
+      link: "https://wa.me/14374281909",
       icon: SocialMediaIcons.whatsapp,
     },
     {
       label: t("social.sendMessage", { platform: "Facebook" }),
-      link: "https://facebook.com",
+      link: "https://www.facebook.com/noblealmsi",
       icon: SocialMediaIcons.facebook,
     },
     {
       label: t("social.sendMessage", { platform: "Instagram" }),
-      link: "https://instagram.com",
+      link: "https://www.instagram.com/noblealmsinternational?igsh=MTI2cGI1M2x2MzlieA%3D%3D&utm_source=qr",
       icon: SocialMediaIcons.instagram,
     },
-    {
-      label: t("social.sendMessage", { platform: "X" }),
-      link: "https://twitter.com",
-      icon: SocialMediaIcons.x,
-    },
+    // {
+    //   label: t("social.sendMessage", { platform: "X" }),
+    //   link: "https://twitter.com",
+    //   icon: SocialMediaIcons.x,
+    // },
   ];
 
   return (
