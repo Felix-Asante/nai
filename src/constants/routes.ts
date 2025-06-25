@@ -24,12 +24,12 @@ export const navbarRoutes = (translate: Translator) => [
   //   href: "/get-involved",
   // },
   {
-    name: translate("Navbar.contactUs"),
-    href: "/contact-us",
-  },
-  {
     name: translate("Navbar.gallery"),
     href: "/gallery",
+  },
+  {
+    name: translate("Navbar.contactUs"),
+    href: "/contact-us",
   },
 ];
 
