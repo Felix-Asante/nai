@@ -1,10 +1,11 @@
 import Button from "@/components/Button";
 import Container from "@/components/layouts/Container";
 import MainNavbar from "@/components/navbars/MainNavbar";
+import { buttonVariants } from "@/components/ui/button";
 import { DonationForm } from "@/sections/DonationForm";
 import HowUCanHelp from "@/sections/home/HowUCanHelp";
 import { CheckIcon } from "lucide-react";
-import React from "react";
+import { Link } from "@/i18n/routing";
 
 export default function DonationPage() {
   return (
@@ -12,7 +13,7 @@ export default function DonationPage() {
       <header className="relative h-[80vh] w-full bg-[url('/images/img-30.jpg')] bg-cover bg-center bg-no-repeat">
         <MainNavbar className="text-white" />
         <div className="absolute top-0 left-0 w-full h-full -z[10] bg-black/70" />
-        <div className="flex flex-col items-center justify-center gap-3 h-full relative text-center z-10 w-full mx-auto lg:w-[70%]">
+        <div className="flex flex-col items-center justify-center gap-3 h-[80%] relative text-center z-10 w-full mx-auto lg:w-[70%]">
           <h1 className="title font-bold text-white uppercase">
             Together we can make a difference
           </h1>
@@ -20,9 +21,16 @@ export default function DonationPage() {
             Your generosity powers our work to empower others. Every donation,
             no matter the size, makes a meaningful impact.
           </p>
-          <Button size="lg" className="mt-4" variant="secondary">
+          <Link
+            href="#donate"
+            className={buttonVariants({
+              size: "lg",
+              variant: "secondary",
+              className: "mt-4",
+            })}
+          >
             Donate Now
-          </Button>
+          </Link>
         </div>
       </header>
 
@@ -58,7 +66,9 @@ export default function DonationPage() {
       </section>
 
       <HowUCanHelp />
-      <DonationForm />
+      <section id="donate">
+        <DonationForm />
+      </section>
     </div>
   );
 }

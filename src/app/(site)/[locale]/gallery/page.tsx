@@ -5,7 +5,8 @@ import GalleryList from "@/sections/Gallery";
 import Container from "@/components/layouts/Container";
 import GalleryHeader from "@/sections/about/gallery/GalleryHeader";
 import { HeartPulseIcon } from "lucide-react";
-import Button from "@/components/Button";
+import { buttonVariants } from "@/components/ui/button";
+import { Link } from "@/i18n/routing";
 
 export default async function GalleryPage() {
   const gallery = await getGallery();
@@ -40,13 +41,16 @@ export default async function GalleryPage() {
               <span>Empower communities through education and resources</span>
             </li>
           </ul>
-          <Button
-            variant="secondary"
-            className="font-bold bg-secondary-200"
-            size="lg"
+          <Link
+            href="/donate#donate"
+            className={buttonVariants({
+              size: "lg",
+              variant: "secondary",
+              className: "font-bold bg-secondary",
+            })}
           >
             Donate Now
-          </Button>
+          </Link>
         </div>
       </Container>
     </div>

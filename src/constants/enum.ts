@@ -5,4 +5,5 @@ export enum CACHE_TAGS {
   TEAM = "team",
   CATEGORIES = "categories",
   FAQ = "faq",
+  PARTNERS = "partners",
 }
