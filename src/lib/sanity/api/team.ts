@@ -34,18 +34,27 @@ export async function getAllTeamMembers(locale: SupportedLanguages) {
       };
     })
     .forEach((member) => {
-      if (["president", "président"].includes(member.position.toLowerCase())) {
+      if (
+        [
+          "Executive Member / President",
+          "Membre exécutif / Président",
+        ].includes(member.position.toLowerCase())
+      ) {
         orderedTeamMembers[0] = member;
-      } else if (["vice", "vice"].includes(member.position.toLowerCase())) {
+      } else if (
+        [
+          "Executive Member / Vice President",
+          "Membre exécutif / Vice-Président",
+        ].includes(member.position.toLowerCase())
+      ) {
         orderedTeamMembers[1] = member;
       } else if (
-        ["secretary", "secretaire"].includes(member.position.toLowerCase())
+        [
+          "Executive Member / Financial Secretary",
+          "Membre exécutif / Secrétaire Financier",
+        ].includes(member.position.toLowerCase())
       ) {
         orderedTeamMembers[2] = member;
-      } else if (
-        ["financial", "financier"].includes(member.position.toLowerCase())
-      ) {
-        orderedTeamMembers[3] = member;
       } else {
         orderedTeamMembers.push(member);
       }
