@@ -23,10 +23,33 @@ export async function getAllTeamMembers(locale: SupportedLanguages) {
     query,
     tags: [CACHE_TAGS.TEAM],
   });
-  return teamMembers.map((member) => {
-    return {
-      ...member,
-      position: member.position[locale] || member.position?.en!,
-    };
-  });
+
+  // quick fix
+  const orderedTeamMembers: any[] = [];
+  teamMembers
+    .map((member) => {
+      return {
+        ...member,
+        position: member.position[locale] || member.position?.en!,
+      };
+    })
+    .forEach((member) => {
+      if (["president", "président"].includes(member.position.toLowerCase())) {
+        orderedTeamMembers[0] = member;
+      } else if (["vice", "vice"].includes(member.position.toLowerCase())) {
+        orderedTeamMembers[1] = member;
+      } else if (
+        ["secretary", "secretaire"].includes(member.position.toLowerCase())
+      ) {
+        orderedTeamMembers[2] = member;
+      } else if (
+        ["financial", "financier"].includes(member.position.toLowerCase())
+      ) {
+        orderedTeamMembers[3] = member;
+      } else {
+        orderedTeamMembers.push(member);
+      }
+    });
+
+  return orderedTeamMembers;
 }
