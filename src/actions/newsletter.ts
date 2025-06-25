@@ -67,6 +67,7 @@ export async function sendVolunteerEmail(data: becomeVolunteerInput) {
     });
 
     if (response?.error) {
+      console.log(response.error);
       console.log(
         `FAILED TO SEND VOLUNTEER REQUEST MESSAGE ${data.email} - ${data.name} - ${data.country} - ${data.phone}`
       );
