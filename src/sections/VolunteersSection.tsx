@@ -1,6 +1,8 @@
 "use client";
 import Button from "@/components/Button";
 import Container from "@/components/layouts/Container";
+import Reveal from "@/components/Reveal";
+import SectionHeading from "@/components/SectionHeading";
 import {
   Dialog,
   DialogContent,
@@ -8,9 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Link } from "@/i18n/routing";
 import { cn } from "@/utils";
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import VolunteerForm from "./VolunteerForm";
 import { useState } from "react";
@@ -27,238 +27,70 @@ const volunteers = [
 ];
 
 export default function VolunteersSection() {
-  // Animation Variants
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.2 } },
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: (index: number) => ({
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.5, delay: index * 0.1 },
-    }),
-  };
-
   const translate = useTranslations("volunteers");
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Container>
-      <motion.section
-        className="pt-5 mb-32 bg-neutral-100"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={sectionVariants}
-      >
-        <div className="container mx-auto">
-          <motion.div
-            className="text-center mb-12"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-            }}
-          >
-            <h2 className="text-4xl font-bold text-primary">
-              {translate("title")}
-            </h2>
-            <p className="mt-2 text-neutral-500">{translate("description")}</p>
-          </motion.div>
+    <section className="section-y bg-neutral-200/40">
+      <Container>
+        <SectionHeading
+          align="center"
+          eyebrow="The people"
+          title={translate("title")}
+          description={translate("description")}
+        />
 
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-4 gap-6"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-            }}
-          >
-            <div className="flex flex-col sm:flex-row md:flex-col gap-6 w-full h-full md:mt-16">
-              <motion.div
-                className={cn("relative group shrink-0 flex-1")}
-                variants={imageVariants}
-                custom={0}
-              >
-                <img
-                  src={volunteers[0].image}
-                  alt={volunteers[0].name}
-                  className={cn(
-                    "w-full object-cover h-64 md:h-full rounded-3xl"
-                  )}
-                />
-
-                <div className="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl">
-                  <p className="text-white text-lg font-semibold">
-                    {volunteers[0].name}
-                  </p>
-                </div>
-              </motion.div>
-              <motion.div
-                className={cn("relative group shrink-0 flex-1")}
-                variants={imageVariants}
-                custom={1}
-              >
-                <img
-                  src={volunteers[1].image}
-                  alt={volunteers[1].name}
-                  className={cn(
-                    "w-full object-cover rounded-3xl h-64  md:h-[150px] lg:h-[220px] xl:h-[295px] 2xl:h-[395px]"
-                  )}
-                />
-
-                <div className="absolute h-64  md:h-[150px] lg:h-[220px] xl:h-[295px] 2xl:h-[395px] inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl">
-                  <p className="text-white text-lg font-semibold">
-                    {volunteers[1].name}
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-            <div className="flex flex-col sm:flex-row md:flex-col gap-6 w-full h-full">
-              <motion.div
-                className={cn("relative group shrink-0 flex-1")}
-                variants={imageVariants}
-                custom={2}
-              >
-                <img
-                  src={volunteers[2].image}
-                  alt={volunteers[2].name}
-                  className={cn(
-                    "w-full object-cover rounded-3xl h-64 md:h-full"
-                  )}
-                />
-
-                <div className="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl">
-                  <p className="text-white text-lg font-semibold">
-                    {volunteers[2].name}
-                  </p>
-                </div>
-              </motion.div>
-              <motion.div
-                className={cn("relative group shrink-0 flex-1")}
-                variants={imageVariants}
-                custom={3}
-              >
-                <img
-                  src={volunteers[3].image}
-                  alt={volunteers[3].name}
-                  className={cn(
-                    "w-full object-cover rounded-3xl h-64 md:h-full"
-                  )}
-                />
-
-                <div className="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl">
-                  <p className="text-white text-lg font-semibold">
-                    {volunteers[3].name}
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-            <div className="flex flex-col sm:flex-row md:flex-col gap-6 w-full h-full">
-              <motion.div
-                className={cn("relative group shrink-0 flex-1")}
-                variants={imageVariants}
-                custom={4}
-              >
-                <img
-                  src={volunteers[4].image}
-                  alt={volunteers[4].name}
-                  className={cn(
-                    "w-full object-cover rounded-3xl h-64 md:h-full"
-                  )}
-                />
-
-                <div className="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl">
-                  <p className="text-white text-lg font-semibold">
-                    {volunteers[4].name}
-                  </p>
-                </div>
-              </motion.div>
-              <motion.div
-                className={cn("relative group shrink-0 flex-1")}
-                variants={imageVariants}
-                custom={5}
-              >
-                <img
-                  src={volunteers[5].image}
-                  alt={volunteers[5].name}
-                  className={cn(
-                    "w-full object-cover rounded-3xl h-64 md:h-full"
-                  )}
-                />
-
-                <div className="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl">
-                  <p className="text-white text-lg font-semibold">
-                    {volunteers[5].name}
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-            <div className="flex flex-col sm:flex-row md:flex-col gap-6 w-full h-full md:mt-16">
-              <motion.div
-                className={cn("relative group shrink-0 flex-1")}
-                variants={imageVariants}
-                custom={6}
-              >
-                <img
-                  src={volunteers[6].image}
-                  alt={volunteers[6].name}
-                  className={cn(
-                    "w-full object-cover rounded-3xl h-64 md:h-full"
-                  )}
-                />
-
-                <div className="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl">
-                  <p className="text-white text-lg font-semibold">
-                    {volunteers[6].name}
-                  </p>
-                </div>
-              </motion.div>
-              <motion.div
-                className={cn("relative group shrink-0 flex-1")}
-                variants={imageVariants}
-                custom={7}
-              >
-                <img
-                  src={volunteers[7].image}
-                  alt={volunteers[7].name}
-                  className={cn(
-                    "w-full object-cover rounded-3xl h-64 md:h-[150px] lg:h-[220px] xl:h-[295px] 2xl:h-[395px]"
-                  )}
-                />
-
-                <div className="absolute inset-0 h-64 md:h-[150px] lg:h-[220px] xl:h-[295px] 2xl:h-[395px] bg-primary bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl">
-                  <p className="text-white text-lg font-semibold">
-                    {volunteers[7].name}
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-          <div className="mt-10 flex justify-center">
-            <Dialog open={isOpen} onOpenChange={setIsOpen}>
-              <DialogTrigger>
-                <Button
-                  size="lg"
-                  // className="bg-primary text-white px-6 py-3 rounded-md hover:bg-primary-200"
-                  onClick={() => setIsOpen(true)}
-                >
-                  {translate("becomeVolunteer")}
-                </Button>
-              </DialogTrigger>
-              <DialogContent onPointerDownOutside={(e) => e.preventDefault()}>
-                <DialogHeader>
-                  <DialogTitle> {translate("becomeVolunteer")}</DialogTitle>
-                </DialogHeader>
-                <VolunteerForm
-                  toggleModal={(state: boolean) => setIsOpen(state)}
-                />
-              </DialogContent>
-            </Dialog>
-          </div>
+        <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+          {volunteers.map((volunteer, index) => (
+            <Reveal
+              key={volunteer.name}
+              delay={(index % 4) * 0.08}
+              className={cn(
+                "relative group overflow-hidden rounded-2xl shadow-soft",
+                index % 2 === 0 ? "aspect-[3/4]" : "aspect-[4/5]"
+              )}
+            >
+              <img
+                src={volunteer.image}
+                alt={volunteer.name}
+                className="w-full h-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.05]"
+              />
+              <div
+                className="absolute inset-0 bg-gradient-to-t from-primary-900/75 via-primary-900/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"
+                aria-hidden
+              />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <p className="text-white text-sm md:text-base font-semibold">
+                  {volunteer.name}
+                </p>
+                <p className="text-white/75 text-xs">Volunteer</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
-      </motion.section>
-    </Container>
+
+        <div className="mt-12 flex justify-center">
+          <Dialog open={isOpen} onOpenChange={setIsOpen}>
+            <DialogTrigger asChild>
+              <Button
+                size="lg"
+                onClick={() => setIsOpen(true)}
+                className="rounded-full px-6 h-12 bg-primary-700 hover:bg-primary-800"
+              >
+                {translate("becomeVolunteer")}
+              </Button>
+            </DialogTrigger>
+            <DialogContent onPointerDownOutside={(e) => e.preventDefault()}>
+              <DialogHeader>
+                <DialogTitle>{translate("becomeVolunteer")}</DialogTitle>
+              </DialogHeader>
+              <VolunteerForm
+                toggleModal={(state: boolean) => setIsOpen(state)}
+              />
+            </DialogContent>
+          </Dialog>
+        </div>
+      </Container>
+    </section>
   );
 }

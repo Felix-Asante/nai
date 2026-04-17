@@ -1,28 +1,27 @@
 "use client";
 import { navbarRoutes } from "@/constants/routes";
-import { motion, AnimatePresence } from "framer-motion";
-import { AlignJustifyIcon, XIcon } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { MenuIcon, XIcon, ChevronDownIcon } from "lucide-react";
 import Image from "next/image";
 import { Link, usePathname, useRouter } from "@/i18n/routing";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { buttonVariants, ShadcnButton } from "../ui/button";
-import Button from "../Button";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "../ui/popover";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
+import { cn } from "@/utils";
 
-type Props = {
-  className?: string;
+const flags: Record<string, { src: string; label: string }> = {
+  en: { src: "/icons/uk.png", label: "EN" },
+  fr: { src: "/icons/france.png", label: "FR" },
 };
 
-const flags: { [lang: string]: string } = {
-  en: "/icons/uk.png",
-  fr: "/icons/france.png",
-};
-
-export default function MainNavbar(props: Props) {
-  const { className = "" } = props;
-  const [isSticky, setIsSticky] = useState(false);
+export default function MainNavbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const translate = useTranslations();
   const pathname = usePathname();
@@ -30,134 +29,261 @@ export default function MainNavbar(props: Props) {
   const router = useRouter();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 8);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [isMenuOpen]);
 
-  const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mql = window.matchMedia("(min-width: 1024px)");
+    const handle = (e: MediaQueryListEvent | MediaQueryList) => {
+      if (e.matches) setIsMenuOpen(false);
+    };
+    handle(mql);
+    mql.addEventListener("change", handle);
+    return () => mql.removeEventListener("change", handle);
+  }, []);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  const closeMenu = () => setIsMenuOpen(false);
+
+  const setLanguage = (newLang: string) => {
+    // @ts-expect-error next-intl typed router limitation
+    router.replace({ pathname, params }, { locale: newLang });
   };
 
-  const setLanguage = (lang: string) => {
-    // @ts-expect-error
-    router.replace({ pathname, params }, { locale: lang });
-  };
   const lang = (params?.locale as string) ?? "en";
+  const routes = useMemo(() => navbarRoutes(translate), [translate]);
 
   return (
-    <motion.nav
-      className={`sticky top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isSticky
-          ? "bg-neutral-100 text-neutral-300 shadow-md"
-          : "bg-transparent text-neutral-100"
-      }, ${className}`}
+    <>
+    <header
+      className={cn(
+        "sticky top-0 left-0 right-0 z-50 transition-all duration-300",
+        "bg-white/95 backdrop-blur-md text-neutral-700",
+        isScrolled
+          ? "shadow-[0_4px_24px_rgba(11,60,117,0.08)] border-b border-neutral-200/60"
+          : "border-b border-transparent"
+      )}
     >
-      <div className="container mx-auto flex justify-between items-center py-4 px-6">
-        {/* Logo */}
-        <Link href="/">
+      <nav
+        className="container mx-auto flex items-center justify-between h-16 md:h-20 gap-6"
+        aria-label="Primary"
+      >
+        <Link
+          href="/"
+          className="flex items-center gap-3 shrink-0"
+          aria-label="Noble Alms International — Home"
+          onClick={closeMenu}
+        >
           <Image
             src="/images/logo.jpg"
             alt="Noble Alms International"
-            width={50}
-            height={50}
+            width={44}
+            height={44}
             unoptimized
             priority
-            className="object-contain"
+            className="object-contain rounded-md"
           />
+          <span className="hidden sm:flex flex-col leading-tight">
+            <span className="text-sm md:text-base font-semibold tracking-tight text-primary-700">
+              Noble Alms
+            </span>
+            <span className="text-[11px] md:text-xs font-medium text-neutral-500">
+              International
+            </span>
+          </span>
         </Link>
 
-        {/* Navigation Links */}
-        <ul className="flex items-center space-x-6">
-          {navbarRoutes(translate).map((route) => (
-            <li key={route.name}>
-              <Link
-                href={route.href}
-                className="hidden lg:inline-block hover:underline hover:text-primary transition-colors duration-300"
+        <ul className="hidden lg:flex items-center gap-1">
+          {routes.map((route) => {
+            const isActive =
+              pathname === route.href ||
+              (route.href !== "/" && pathname.startsWith(route.href));
+            return (
+              <li key={route.name}>
+                <Link
+                  href={route.href}
+                  className={cn(
+                    "relative inline-flex items-center px-3.5 py-2 text-sm font-medium rounded-md transition-colors",
+                    isActive
+                      ? "text-primary-700"
+                      : "text-neutral-600 hover:text-primary-700"
+                  )}
+                >
+                  {route.name}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute left-3.5 right-3.5 -bottom-px h-0.5 rounded-full bg-secondary"
+                      transition={{ type: "spring", stiffness: 360, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+
+        <div className="flex items-center gap-2">
+          <Popover>
+            <PopoverTrigger asChild>
+              <ShadcnButton
+                variant="ghost"
+                size="sm"
+                className="hidden sm:inline-flex h-9 gap-1.5 rounded-full px-2.5 text-neutral-600 hover:text-primary-700"
+                aria-label="Change language"
               >
-                {route.name}
-              </Link>
-            </li>
-          ))}
+                <img
+                  src={flags[lang].src}
+                  alt=""
+                  className="w-5 h-5 rounded-full object-cover"
+                />
+                <span className="text-xs font-semibold">
+                  {flags[lang].label}
+                </span>
+                <ChevronDownIcon className="w-3.5 h-3.5 opacity-60" />
+              </ShadcnButton>
+            </PopoverTrigger>
+            <PopoverContent className="w-44 p-1.5" align="end">
+              {(["en", "fr"] as const).map((l) => (
+                <button
+                  key={l}
+                  onClick={() => setLanguage(l)}
+                  className={cn(
+                    "w-full flex items-center gap-2.5 px-3 py-2 text-sm rounded-md hover:bg-muted transition-colors",
+                    lang === l && "bg-muted font-medium"
+                  )}
+                >
+                  <img
+                    src={flags[l].src}
+                    alt=""
+                    className="w-5 h-5 rounded-full object-cover"
+                  />
+                  <span>{translate(`languages.${l}`)}</span>
+                </button>
+              ))}
+            </PopoverContent>
+          </Popover>
 
           <Link
             href="/donate"
-            className={buttonVariants({
-              className: `px-4 py-2 hidden lg:inline-block rounded ${"bg-secondary text-white hover:bg-secondary-200 rounded-full"}`,
-            })}
+            className={cn(
+              buttonVariants({ size: "default" }),
+              "hidden sm:inline-flex h-10 rounded-full px-5 bg-secondary text-white hover:bg-secondary-600 shadow-sm shadow-secondary/30"
+            )}
           >
             {translate("donateNow")}
           </Link>
-          <Popover>
-            <PopoverTrigger asChild>
-              <ShadcnButton variant="ghost">
-                <img src={flags[lang]} alt={`${lang} flag`} className="w-10" />
-              </ShadcnButton>
-            </PopoverTrigger>
-            <PopoverContent className="px-0 w-fit" align="end">
-              <div className=" flex flex-col items-start space-y-3">
-                <Button variant="ghost" onClick={() => setLanguage("en")}>
-                  <img src={flags.en} alt={`${lang} flag`} className="w-8" />
-                  <span>{translate("languages.en")}</span>
-                </Button>
-                <Button variant="ghost" onClick={() => setLanguage("fr")}>
-                  <img src={flags.fr} alt={`${lang} flag`} className="w-8" />
-                  <span>{translate("languages.fr")}</span>
-                </Button>
-              </div>
-            </PopoverContent>
-          </Popover>
-          <Button size="icon" onClick={toggleMenu} className="lg:hidden">
-            {isMenuOpen ? (
-              <XIcon className="w-10 h-10" />
-            ) : (
-              <AlignJustifyIcon className="w-10 h-10" />
-            )}
-          </Button>
-        </ul>
-      </div>
-      {isMenuOpen && (
-        <AnimatePresence>
-          <motion.ul
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="flex flex-col bg-white p-5 absolute top-20 left-0 max-h-screen h-screen w-full"
+
+          <button
+            onClick={() => setIsMenuOpen((v) => !v)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+            className="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-md text-primary-700 hover:bg-primary-50 transition-colors"
           >
-            {navbarRoutes(translate).map((route) => (
-              <li key={route.name} className="border-b py-3">
-                <Link
-                  href={route.href}
-                  className="hover:text-secondary capitalize font-semibold transition-colors duration-300"
-                >
-                  {route.name}
-                </Link>
-              </li>
-            ))}
-            <Link
-              href="/donate"
-              className={buttonVariants({ size: "lg", className: "mt-7" })}
+            {isMenuOpen ? (
+              <XIcon className="w-6 h-6" />
+            ) : (
+              <MenuIcon className="w-6 h-6" />
+            )}
+          </button>
+        </div>
+      </nav>
+    </header>
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="lg:hidden fixed inset-x-0 top-16 md:top-20 bottom-0 bg-white z-40 overflow-y-auto overscroll-contain"
+          >
+            <motion.ul
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.25, delay: 0.05 }}
+              className="flex flex-col px-6 py-4 divide-y divide-neutral-200"
             >
-              {translate("donateNow")}
-            </Link>
-          </motion.ul>
-        </AnimatePresence>
-      )}
-    </motion.nav>
+              {routes.map((route) => {
+                const isActive =
+                  pathname === route.href ||
+                  (route.href !== "/" && pathname.startsWith(route.href));
+                return (
+                  <li key={route.name}>
+                    <Link
+                      href={route.href}
+                      onClick={closeMenu}
+                      className={cn(
+                        "flex items-center justify-between py-4 text-lg font-semibold transition-colors",
+                        isActive
+                          ? "text-primary-700"
+                          : "text-neutral-700 hover:text-primary-700"
+                      )}
+                    >
+                      {route.name}
+                      {isActive && (
+                        <span className="h-2 w-2 rounded-full bg-secondary" />
+                      )}
+                    </Link>
+                  </li>
+                );
+              })}
+              <li className="pt-6 pb-2 flex flex-col gap-3">
+                <Link
+                  href="/donate"
+                  onClick={closeMenu}
+                  className={cn(
+                    buttonVariants({ size: "lg" }),
+                    "w-full rounded-full bg-secondary text-white hover:bg-secondary-600"
+                  )}
+                >
+                  {translate("donateNow")}
+                </Link>
+                <div className="flex items-center gap-2 pt-2 justify-center">
+                  {(["en", "fr"] as const).map((l) => (
+                    <button
+                      key={l}
+                      onClick={() => {
+                        setLanguage(l);
+                        closeMenu();
+                      }}
+                      className={cn(
+                        "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors",
+                        lang === l
+                          ? "border-primary-700 text-primary-700 bg-primary-50"
+                          : "border-neutral-200 text-neutral-600 hover:border-primary-300"
+                      )}
+                    >
+                      <img
+                        src={flags[l].src}
+                        alt=""
+                        className="w-4 h-4 rounded-full object-cover"
+                      />
+                      {translate(`languages.${l}`)}
+                    </button>
+                  ))}
+                </div>
+              </li>
+            </motion.ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

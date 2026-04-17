@@ -1,130 +1,125 @@
 "use client";
 import Container from "@/components/layouts/Container";
+import Reveal from "@/components/Reveal";
+import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
 import { cn } from "@/utils";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { ArrowRightIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-export default function OurImpact() {
+type Stat = {
+  value: number;
+  suffix?: string;
+  label: string;
+};
+
+function useCountUp(target: number, duration = 1600, start = false) {
   const [count, setCount] = useState(0);
 
-  // Animate the counter number
   useEffect(() => {
-    const target = 139364; // Target number
-    const duration = 2000; // Animation duration in ms
-    const increment = Math.ceil(target / (duration / 16)); // Increment per frame (60 FPS)
+    if (!start) return;
+    let raf = 0;
+    const startTime = performance.now();
+    const ease = (t: number) => 1 - Math.pow(1 - t, 3);
 
-    let current = 0;
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
-      }
-      setCount(current);
-    }, 16);
+    const tick = (now: number) => {
+      const t = Math.min((now - startTime) / duration, 1);
+      setCount(Math.floor(target * ease(t)));
+      if (t < 1) raf = requestAnimationFrame(tick);
+      else setCount(target);
+    };
 
-    return () => clearInterval(timer);
-  }, []);
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [target, duration, start]);
 
-  // Animation variants
-  const textVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
-  };
+  return count;
+}
 
-  const imageVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.8, delay: 0.3 },
-    },
-  };
+function StatItem({ stat, index, active }: { stat: Stat; index: number; active: boolean }) {
+  const value = useCountUp(stat.value, 1600, active);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      animate={active ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      className={cn(
+        "p-6 md:p-8",
+        index !== 0 && "md:border-l md:border-white/15"
+      )}
+    >
+      <div className="text-4xl md:text-5xl font-bold tracking-tight">
+        {value.toLocaleString()}
+        {stat.suffix ?? "+"}
+      </div>
+      <div className="mt-2 text-sm md:text-base text-white/75">{stat.label}</div>
+    </motion.div>
+  );
+}
 
+export default function OurImpact() {
   const translate = useTranslations();
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.3 });
+
+  const stats: Stat[] = [
+    { value: 139364, label: translate("homePage.stats.description") },
+    { value: 60, label: "Community projects" },
+    { value: 3, label: "Countries served" },
+    { value: 2400, label: "Active supporters" },
+  ];
 
   return (
-    <section className="py-16">
-      <Container className="flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-20 px-4">
-        {/* Left Images */}
-        <div className="flex flex-row md:flex-col lg:gap-24 gap-5 lg:w-[20%]">
-          {["/images/img-12.jpg", "/images/img-1.jpg"].map((src, index) => (
-            <motion.div
-              key={index}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={imageVariants}
-            >
-              <img
-                src={src}
-                alt={`Impact ${index + 1}`}
-                className={cn(
-                  "rounded-lg shadow-md w-full h-48 lg:h-60 object-cover"
-                )}
-              />
-            </motion.div>
-          ))}
-        </div>
+    <section className="section-y">
+      <Container>
+        <div className="relative rounded-3xl overflow-hidden bg-primary-700 text-white">
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-20"
+            style={{ backgroundImage: "url('/images/img-3.jpg')" }}
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-br from-primary-800/95 via-primary-700/90 to-primary-500/70"
+            aria-hidden
+          />
 
-        {/* Center Text */}
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          viewport={{ once: true }}
-          variants={textVariants}
-          className="text-center"
-        >
-          <h2 className="text-3xl lg:text-4xl font-semibold text-primary-300">
-            {translate("homePage.stats.title")}
-          </h2>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={textVariants}
-            className="mt-6 text-6xl lg:text-8xl font-bold text-primary-300"
-          >
-            {count.toLocaleString()}+
-          </motion.div>
-          <p className="mt-2 text-gray-600 text-lg">
-            {translate("homePage.stats.description")}
-          </p>
-          <motion.div
-            whileHover={{ scale: 1 }}
-            whileTap={{ scale: 0.95 }}
-            className="mt-8"
-          >
-            <Link
-              href="/contact-us"
-              className="px-6 py-3 capitalize bg-primary text-white rounded-lg text-lg hover:bg-primary-300 transition"
-            >
-              {translate("joinMovement")}
-            </Link>
-          </motion.div>
-        </motion.div>
+          <div className="relative px-6 md:px-12 lg:px-16 py-14 md:py-20">
+            <div className="grid lg:grid-cols-12 gap-10 items-end">
+              <div className="lg:col-span-7">
+                <Reveal>
+                  <span className="eyebrow text-secondary-200 before:bg-secondary-200/70">
+                    Our impact
+                  </span>
+                  <h2 className="mt-4 headline text-white max-w-2xl">
+                    {translate("homePage.stats.title")}
+                  </h2>
+                </Reveal>
+              </div>
+              <Reveal delay={0.15} className="lg:col-span-5 lg:text-right">
+                <Link
+                  href="/contact-us"
+                  className={cn(
+                    buttonVariants({ size: "lg" }),
+                    "rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600"
+                  )}
+                >
+                  {translate("joinMovement")}
+                  <ArrowRightIcon className="w-4 h-4" />
+                </Link>
+              </Reveal>
+            </div>
 
-        {/* Right Images */}
-        <div className="flex flex-row md:flex-col lg:gap-24 gap-5 lg:w-[20%] relative">
-          {["/images/img-3.jpg", "/images/img-15.jpg"].map((src, index) => (
-            <motion.div
-              key={index}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={imageVariants}
-              className={index === 1 ? "" : ""}
+            <div
+              ref={ref}
+              className="mt-12 grid grid-cols-2 md:grid-cols-4 rounded-2xl bg-white/5 ring-1 ring-white/10 overflow-hidden"
             >
-              <img
-                src={src}
-                alt={`Impact ${index + 3}`}
-                className={cn(
-                  "rounded-lg shadow-md w-full h-48 lg:h-60 object-cover"
-                )}
-              />
-            </motion.div>
-          ))}
+              {stats.map((stat, i) => (
+                <StatItem key={stat.label} stat={stat} index={i} active={inView} />
+              ))}
+            </div>
+          </div>
         </div>
       </Container>
     </section>

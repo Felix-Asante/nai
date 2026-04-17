@@ -2,7 +2,8 @@
 import { Link } from "@/i18n/routing";
 import { urlFor } from "@/lib/sanity/sanity.image";
 import { Projects } from "@/types/sanity";
-import { motion } from "framer-motion";
+import { cn } from "@/utils";
+import { ArrowRightIcon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import React from "react";
 
@@ -15,66 +16,73 @@ export default function ProjectsCard({ project, isUpcoming = false }: Props) {
   const translate = useTranslations();
   const locale = useLocale();
 
-  const date = project?.date
+  const formattedDate = project?.date
     ? new Intl.DateTimeFormat(locale, {
         month: "short",
         day: "2-digit",
-      }).format(new Date(project?.date))
+      }).format(new Date(project.date))
     : null;
 
   const isUpcomingProject =
-    project?.date && new Date() < new Date(project?.date);
+    project?.date && new Date() < new Date(project.date);
+
+  const href = `/projects/${project?.slug}`;
 
   return (
-    <div className="bg-white  overflow-hidden transition-shadow duration-300">
-      {/* Project Image */}
-      <div className="relative overflow-hidden rounded-2xl">
-        <motion.img
+    <Link
+      href={href}
+      className={cn(
+        "group flex flex-col card-surface card-hover overflow-hidden h-full"
+      )}
+    >
+      <div className="relative aspect-[4/3] overflow-hidden">
+        <img
           src={urlFor(project?.image.url).url()}
           alt={project.image.alt || project.title}
-          className="w-full h-56 object-cover transition-transform duration-300"
-          whileHover={{
-            scale: 1.1,
-          }}
+          className="w-full h-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.04]"
         />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-primary-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          aria-hidden
+        />
+
         {isUpcomingProject && !isUpcoming && (
-          <div className="absolute top-2 left-2">
-            <div className="bg-primary rounded-sm text-white py-1 px-2">
-              Upcoming
-            </div>
-          </div>
+          <span className="absolute top-3 left-3 inline-flex items-center rounded-full bg-secondary text-white text-[11px] font-semibold uppercase tracking-wider px-3 py-1 shadow-md">
+            Upcoming
+          </span>
         )}
 
-        {isUpcoming && (
-          <div className="absolute top-2 right-2">
-            <div className="rounded-lg p-3 bg-primary text-white font-bold text-center text-lg md:text-xl">
-              <p> {date?.split(" ")?.at(1)}</p>
-              <p> {date?.split(" ")?.at(0)}</p>
+        {isUpcoming && formattedDate && (
+          <div className="absolute top-3 right-3 rounded-xl bg-white/95 backdrop-blur px-3 py-2 shadow-md text-center">
+            <div className="text-lg font-bold leading-none text-primary-700">
+              {formattedDate.split(" ")[1]}
+            </div>
+            <div className="text-[10px] font-semibold uppercase tracking-wider text-neutral-500 mt-0.5">
+              {formattedDate.split(" ")[0]}
             </div>
           </div>
         )}
       </div>
 
-      {/* Project Content */}
-      <div className="pr-6 py-6">
-        <h3 className="text-sm font-medium text-primary">
-          {project?.category}
-        </h3>
-        <Link
-          href={`/projects/${project?.slug}`}
-          className="mt-2 text-xl font-semibold text-gray-800 hover:text-primary-300"
-        >
+      <div className="flex flex-col flex-1 p-6">
+        {project?.category && (
+          <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
+            {project.category}
+          </span>
+        )}
+        <h3 className="mt-2 text-lg md:text-xl font-semibold text-primary-700 group-hover:text-primary-500 transition-colors leading-snug">
           {project?.title}
-        </Link>
-        <p className="mt-4 text-gray-600">{project?.excerpt}</p>
-        <Link
-          href={`/projects/${project?.slug}`}
-          className="mt-4 inline-flex items-center text-primary hover:text-primary-200 duration-300 hover:translate-x-4 font-medium"
-        >
+        </h3>
+        {project?.excerpt && (
+          <p className="mt-3 text-sm text-neutral-500 leading-relaxed line-clamp-3">
+            {project.excerpt}
+          </p>
+        )}
+        <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary-700">
           {translate("readMore")}
-          <span className="ml-2">&rarr;</span>
-        </Link>
+          <ArrowRightIcon className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+        </span>
       </div>
-    </div>
+    </Link>
   );
 }

@@ -1,28 +1,26 @@
 "use client";
 import Container from "@/components/layouts/Container";
+import Reveal from "@/components/Reveal";
+import SectionHeading from "@/components/SectionHeading";
 import { Projects } from "@/types/sanity";
-import { motion } from "framer-motion";
-import ProjectsList from "../ProjectsList";
-import { useTranslations } from "next-intl";
-import ProjectsCard from "@/components/cards/ProjectsCard";
 import useEmblaCarousel from "embla-carousel-react";
 import {
   NextButton,
   PrevButton,
   usePrevNextButtons,
 } from "@/components/EmblaCarouselArrowButtons";
+import ProjectsCard from "@/components/cards/ProjectsCard";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/utils";
+import { ArrowRightIcon } from "lucide-react";
 
 type ProjectSectionProps = {
   projects: Projects[];
 };
 
 export default function ProjectsSection({ projects }: ProjectSectionProps) {
-  // Animation Variants
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
-  };
-
   const translate = useTranslations("homePage.projects");
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start" });
   const {
@@ -32,60 +30,60 @@ export default function ProjectsSection({ projects }: ProjectSectionProps) {
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
 
-  const prevButtonClassName = "absolute top-[20%] -left-5";
-  const nextButtonClassName = "absolute top-[20%] -right-5";
-
-  if (projects?.length === 0) return null;
+  if (!projects?.length) return null;
 
   return (
-    <Container className="pt-16">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={sectionVariants}
-        className="container mx-auto px-4"
-      >
-        {/* Section Heading */}
-        <div className="flex flex-col xl:flex-row justify-between items-center text-center md:text-left mb-12 gap-x-6">
-          <h2 className="text-4xl font-bold leading-[1.18] text-primary w-full xl:w-[55%]">
-            {translate("upcoming")}
-          </h2>
-          <p className="mt-4 text-gray-600 xl:w-[45%]">
-            {translate("description")}
-          </p>
+    <section className="section-y bg-white">
+      <Container>
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-10 md:mb-14">
+          <div className="lg:max-w-2xl">
+            <SectionHeading
+              eyebrow="What's next"
+              title={translate("upcoming")}
+              description={translate("description")}
+            />
+          </div>
+          <div className="hidden md:flex items-center gap-4">
+            <PrevButton
+              onClick={onPrevButtonClick}
+              disabled={prevBtnDisabled}
+              btnClassName={prevBtnDisabled ? "opacity-40 cursor-not-allowed" : ""}
+            />
+            <NextButton
+              onClick={onNextButtonClick}
+              disabled={nextBtnDisabled}
+              btnClassName={nextBtnDisabled ? "opacity-40 cursor-not-allowed" : ""}
+            />
+          </div>
         </div>
 
-        <div className="embla relative">
-          <div className="embla__viewport" ref={emblaRef}>
-            <div className="embla__container">
-              {projects.map((project, index) => (
-                <div className="embla__slide upcoming_projects" key={index}>
-                  <ProjectsCard project={project} isUpcoming />
-                </div>
-              ))}
+        <Reveal>
+          <div className="embla">
+            <div className="embla__viewport" ref={emblaRef}>
+              <div className="embla__container">
+                {projects.map((project, index) => (
+                  <div className="embla__slide upcoming_projects" key={index}>
+                    <ProjectsCard project={project} isUpcoming />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-          <PrevButton
-            onClick={onPrevButtonClick}
-            disabled={prevBtnDisabled}
-            btnClassName={
-              prevBtnDisabled
-                ? `${prevButtonClassName} hidden cursor-not-allowed`
-                : prevButtonClassName
-            }
-          />
-          <NextButton
-            onClick={onNextButtonClick}
-            disabled={nextBtnDisabled}
-            btnClassName={
-              nextBtnDisabled
-                ? `${nextButtonClassName} hidden cursor-not-allowed`
-                : nextButtonClassName
-            }
-          />
+        </Reveal>
+
+        <div className="mt-12 flex justify-center">
+          <Link
+            href="/projects"
+            className={cn(
+              buttonVariants({ variant: "outline", size: "lg" }),
+              "rounded-full px-6 h-12 border-primary-200 text-primary-700 hover:bg-primary-50"
+            )}
+          >
+            View all projects
+            <ArrowRightIcon className="w-4 h-4" />
+          </Link>
         </div>
-      </motion.div>
-    </Container>
+      </Container>
+    </section>
   );
 }

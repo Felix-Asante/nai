@@ -1,27 +1,21 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Container from "@/components/layouts/Container";
-import React from "react";
+import SectionHeading from "@/components/SectionHeading";
+import Reveal from "@/components/Reveal";
 import { useTranslations } from "next-intl";
+import {
+  BookOpenIcon,
+  HeartPulseIcon,
+  HandHeartIcon,
+} from "lucide-react";
+
+const icons = [BookOpenIcon, HeartPulseIcon, HandHeartIcon];
 
 export default function ModeOfOperation() {
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: (index: number) => ({
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.4, delay: index * 0.2 },
-    }),
-  };
   const translate = useTranslations("AboutPage.modeOfOperation");
 
-  const GOALS = [
+  const goals = [
     {
       title: translate("listOne.title"),
       description: translate("listOne.description"),
@@ -37,64 +31,55 @@ export default function ModeOfOperation() {
   ];
 
   return (
-    <motion.section
-      className="mt-16"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      variants={sectionVariants}
-    >
+    <section className="section-y">
       <Container>
-        <motion.div
-          className="rounded-xl relative"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={sectionVariants}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-85 rounded-xl z-[1]"></div>
+        <div className="relative rounded-3xl overflow-hidden bg-brand-gradient text-white">
+          <div
+            className="absolute inset-0 bg-[radial-gradient(60%_80%_at_100%_0%,rgba(244,81,30,0.25),transparent_60%)]"
+            aria-hidden
+          />
+          <div className="relative p-8 md:p-14 lg:p-16 grid lg:grid-cols-12 gap-10">
+            <div className="lg:col-span-5">
+              <SectionHeading
+                eyebrow="Our framework"
+                tone="light"
+                title={translate("title")}
+                description={translate("description")}
+              />
+            </div>
 
-          <div className="relative z-10 p-8 lg:p-10">
-            <motion.h2
-              className="subtitle mb-5"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-              }}
-            >
-              {translate("title")}
-            </motion.h2>
-            <p className="text-neutral-100 font-medium paragraph-large mb-7">
-              {translate("description")}
-            </p>
-
-            <motion.ol
-              className="flex flex-col space-y-7"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={{
-                visible: { transition: { staggerChildren: 0.2 } },
-              }}
-            >
-              {GOALS.map((text, index) => (
-                <motion.li
-                  key={index}
-                  className="text-neutral-100 font-medium paragraph-large"
-                  custom={index}
-                  variants={itemVariants}
-                >
-                  <strong>{text.title}</strong>
-                  <p> {text.description}</p>
-                </motion.li>
-              ))}
-            </motion.ol>
-            <p className=" font-medium paragraph-large mt-7">
-              {translate("closingText")}
-            </p>
+            <div className="lg:col-span-7">
+              <div className="grid gap-4">
+                {goals.map((goal, i) => {
+                  const Icon = icons[i] ?? BookOpenIcon;
+                  return (
+                    <Reveal key={i} delay={i * 0.1}>
+                      <div className="flex gap-5 rounded-2xl bg-white/10 backdrop-blur-sm ring-1 ring-white/15 p-5 md:p-6 hover:bg-white/15 transition-colors">
+                        <div className="shrink-0 w-12 h-12 rounded-xl bg-white/15 ring-1 ring-white/25 flex items-center justify-center">
+                          <Icon className="w-5 h-5 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-lg text-white">
+                            {goal.title}
+                          </h3>
+                          <p className="mt-1.5 text-white/80 text-sm md:text-base leading-relaxed">
+                            {goal.description}
+                          </p>
+                        </div>
+                      </div>
+                    </Reveal>
+                  );
+                })}
+              </div>
+              <Reveal delay={0.35}>
+                <p className="mt-6 text-white/75 text-sm md:text-base leading-relaxed">
+                  {translate("closingText")}
+                </p>
+              </Reveal>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </Container>
-    </motion.section>
+    </section>
   );
 }

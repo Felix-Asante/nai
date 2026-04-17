@@ -1,50 +1,59 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
 import Container from "@/components/layouts/Container";
 import { buttonVariants } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
+import { ArrowRightIcon } from "lucide-react";
+import Reveal from "@/components/Reveal";
+import { cn } from "@/utils";
 
 export default function HomeIntroSection() {
   const translate = useTranslations();
 
   return (
-    <Container className="px-6 py-16 md:pt-24 md:pb-10">
-      <div className="flex flex-col lg:flex-row gap-20 gap-y-12">
-        {/* Text Section */}
-        <motion.div
-          className="space-y-6 lg:w-1/2"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="subtitle font-bold text-neutral-800">
-            {translate("homePage.whoWeAre.headline")}
-          </h2>
-          <p className="text-neutral-600  leading-relaxed">
-            {translate("homePage.whoWeAre.description")}
-          </p>
-          <Link href="/about-us" className={buttonVariants({ size: "lg" })}>
-            {translate("Navbar.aboutUs")}
-          </Link>
-        </motion.div>
+    <section className="section-y bg-white">
+      <Container>
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          <Reveal className="lg:col-span-6 order-2 lg:order-1">
+            <span className="eyebrow">Who we are</span>
+            <h2 className="mt-4 headline text-primary-700">
+              {translate("homePage.whoWeAre.headline")}
+            </h2>
+            <p className="mt-5 lead">
+              {translate("homePage.whoWeAre.description")}
+            </p>
+            <Link
+              href="/about-us"
+              className={cn(
+                buttonVariants({ size: "lg" }),
+                "mt-8 rounded-full px-6 h-12 bg-primary-700 hover:bg-primary-800"
+              )}
+            >
+              {translate("Navbar.aboutUs")}
+              <ArrowRightIcon className="w-4 h-4" />
+            </Link>
+          </Reveal>
 
-        <motion.div
-          className="lg:w-1/2"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <img
-            src="/images/img-31.jpg"
-            alt="About Us - Noble Alms International"
-            className="rounded-lg shadow-lg w-full"
-          />
-        </motion.div>
-      </div>
-    </Container>
+          <Reveal delay={0.15} className="lg:col-span-6 order-1 lg:order-2">
+            <div className="relative">
+              <div
+                className="absolute -top-6 -left-6 w-24 h-24 rounded-2xl bg-secondary/15 hidden md:block"
+                aria-hidden
+              />
+              <div
+                className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl bg-primary-100 hidden md:block"
+                aria-hidden
+              />
+              <img
+                src="/images/img-31.jpg"
+                alt="Noble Alms community outreach"
+                className="relative w-full rounded-3xl shadow-elevated object-cover aspect-[4/3]"
+              />
+            </div>
+          </Reveal>
+        </div>
+      </Container>
+    </section>
   );
 }

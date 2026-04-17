@@ -1,5 +1,4 @@
 import Container from "@/components/layouts/Container";
-import MainNavbar from "@/components/navbars/MainNavbar";
 import { getAllCategories } from "@/lib/sanity/api/category";
 import { getProjects } from "@/lib/sanity/api/projects";
 import ProjectHeader from "@/sections/projects/ProjectHeader";
@@ -30,16 +29,21 @@ export default async function ProjectPage(props: Props) {
 
   return (
     <main>
-      <MainNavbar className="text-neutral-300 bg-white" />
       <ProjectHeader categories={categories} />
 
-      <Container className="my-10">
-        {projects.items.length > 0 ? (
-          <ProjectsList projects={projects.items} />
-        ) : (
-          <p className="text-lg">{translate("ProjectsPage.noProjectsFound")}</p>
-        )}
-      </Container>
+      <section className="section-y bg-white">
+        <Container>
+          {projects.items.length > 0 ? (
+            <ProjectsList projects={projects.items} />
+          ) : (
+            <div className="min-h-[240px] flex items-center justify-center text-center">
+              <p className="text-lg text-neutral-500">
+                {translate("ProjectsPage.noProjectsFound")}
+              </p>
+            </div>
+          )}
+        </Container>
+      </section>
     </main>
   );
 }

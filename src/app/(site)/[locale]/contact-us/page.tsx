@@ -9,6 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { getFAQs } from "@/lib/sanity/api";
 import ContactHero from "@/sections/contact/ContactHero";
 import ContactSection from "@/sections/contact/ContactSection";
+import SectionHeading from "@/components/SectionHeading";
 import { SupportedLanguages } from "@/types";
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
@@ -18,22 +19,27 @@ type Props = {
     locale: SupportedLanguages;
   }>;
 };
+
 export default async function ContactUs(props: Props) {
   const { locale } = await props.params;
   const faqs = await getFAQs(locale);
   const t = await getTranslations();
 
   return (
-    <div>
+    <main>
       <ContactHero />
-      <Container className="my-8">
-        <section className="py-10">
+
+      <section className="section-y bg-white">
+        <Container>
           <ContactSection />
-        </section>
-        <section className="mt-8 mb-20">
+        </Container>
+      </section>
+
+      <section className="section-y bg-neutral-200/40">
+        <Container>
           <Suspense
             fallback={
-              <div className="grid grid-cols-1 gap-5">
+              <div className="grid md:grid-cols-2 gap-5">
                 {Array.from({ length: 4 }).map((_, index) => (
                   <Skeleton
                     className="h-[125px] w-full rounded-xl"
@@ -45,28 +51,36 @@ export default async function ContactUs(props: Props) {
           >
             {faqs?.length > 0 ? (
               <>
-                <h3 className="subtitle mb-12">{t("faq")}</h3>
-                <Accordion type="single" collapsible>
-                  <div className="grid md:grid-cols-2 md:gap-5 items-start">
-                    {faqs.map((faq, index) => (
-                      <AccordionItem
-                        value={`item-${index}`}
-                        key={index}
-                        className=" md:border md:rounded-lg md:p-3 md:bg-gray-50"
-                      >
-                        <AccordionTrigger className="text-lg md:text-xl font-bold">
-                          {faq.question}
-                        </AccordionTrigger>
-                        <AccordionContent>{faq.answer}</AccordionContent>
-                      </AccordionItem>
-                    ))}
-                  </div>
-                </Accordion>
+                <SectionHeading
+                  align="center"
+                  eyebrow="Answers"
+                  title={t("faq")}
+                />
+                <div className="mt-12 max-w-4xl mx-auto">
+                  <Accordion type="single" collapsible>
+                    <div className="grid md:grid-cols-2 gap-4 items-start">
+                      {faqs.map((faq, index) => (
+                        <AccordionItem
+                          value={`item-${index}`}
+                          key={index}
+                          className="card-surface px-5"
+                        >
+                          <AccordionTrigger className="text-base md:text-lg font-semibold text-primary-700 hover:no-underline text-left">
+                            {faq.question}
+                          </AccordionTrigger>
+                          <AccordionContent className="text-neutral-500 text-sm md:text-base leading-relaxed">
+                            {faq.answer}
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </div>
+                  </Accordion>
+                </div>
               </>
             ) : null}
           </Suspense>
-        </section>
-      </Container>
-    </div>
+        </Container>
+      </section>
+    </main>
   );
 }

@@ -1,18 +1,13 @@
 "use client";
-import Button from "@/components/Button";
-import FormInput from "@/components/FormInput";
-import TextAreaInput from "@/components/TextAreaInput";
-import { Form } from "@/components/ui/form";
 import { contactDetails, SocialMediaIcons } from "@/constants";
-import { MapPinIcon, PhoneIcon } from "lucide-react";
+import { MapPinIcon, PhoneIcon, MailIcon, MessageCircleIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";
+import Reveal from "@/components/Reveal";
 
 export default function ContactSection() {
-  const form = useForm();
   const t = useTranslations("ContactUsPage");
 
   const socialAccounts = [
@@ -28,120 +23,147 @@ export default function ContactSection() {
     },
     {
       label: t("social.sendMessage", { platform: "Instagram" }),
-      link: "https://www.instagram.com/noblealmsinternational?igsh=MTI2cGI1M2x2MzlieA%3D%3D&utm_source=qr",
+      link: "https://www.instagram.com/noblealmsinternational",
       icon: SocialMediaIcons.instagram,
     },
-    // {
-    //   label: t("social.sendMessage", { platform: "X" }),
-    //   link: "https://twitter.com",
-    //   icon: SocialMediaIcons.x,
-    // },
   ];
 
   return (
-    <div className="flex flex-col gap-x-8 lg:gap-x-16 gap-y-8 md:flex-row md:items-center">
-      <div className="md:w-[65%] lg:w-1/2">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d183843.22903553862!2d-79.17369617545307!3d43.947976547634525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d51d21ccd37533%3A0xdd8ceff2f844fcbf!2sOshawa%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sma!4v1735129540270!5m2!1sen!2sma"
-          width="100%"
-          height="450"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          className="rounded-3xl"
-        ></iframe>
-        {/* <h3 className="subtitle text-primary font-bold mb-5">
-          {t("form.title")}
-        </h3>
-        <div className="bg-gray-50 rounded-lg p-4">
-          <Form {...form}>
-            <form className="flex flex-col gap-4">
-              <FormInput
-                name="name"
-                label={t("form.name.label")}
-                placeholder={t("form.name.placeholder")}
-                className="bg-transparent"
-              />
-              <FormInput
-                name="email"
-                label={t("form.email.label")}
-                placeholder={t("form.email.placeholder")}
-                className="bg-transparent"
-              />
-              <TextAreaInput
-                control={form.control}
-                name="message"
-                label={t("form.message.label")}
-                placeholder={t("form.message.placeholder")}
-              />
+    <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+      <Reveal className="lg:col-span-7">
+        <div className="rounded-3xl overflow-hidden shadow-elevated ring-1 ring-neutral-200 h-full min-h-[420px]">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d183843.22903553862!2d-79.17369617545307!3d43.947976547634525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d51d21ccd37533%3A0xdd8ceff2f844fcbf!2sOshawa%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sma!4v1735129540270!5m2!1sen!2sma"
+            width="100%"
+            height="100%"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="w-full h-full min-h-[420px]"
+            title="Noble Alms International map"
+          />
+        </div>
+      </Reveal>
 
-              <Button type="submit" size="lg" className="my-5">
-                {t("form.submit.label")}
-              </Button>
-            </form>
-          </Form>
-        </div> */}
-      </div>
-      <div className="lg:w-1/2 flex flex-col space-y-4">
-        <div>
-          <h4 className="font-bold">{t("social.title")}</h4>
-          <p className="text-neutral-300 text-sm">{t("social.description")}</p>
-          <div className="flex flex-col space-y-2 mt-4">
-            {socialAccounts.map((item) => (
-              <Link
-                target="_blank"
-                href={item.link}
-                key={item.label}
-                className="flex items-center gap-2 fotn-medium text-sm"
-              >
-                <Image
-                  src={item.icon}
-                  alt={item.label}
-                  width={20}
-                  height={20}
-                  unoptimized
-                  priority
-                />
-                <span className="hover:underline">{item.label}</span>
-              </Link>
-            ))}
+      <Reveal delay={0.15} className="lg:col-span-5">
+        <div className="flex flex-col gap-4">
+          {/* Social */}
+          <div className="card-surface p-6 md:p-7">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-primary-50 text-primary-700 flex items-center justify-center">
+                <MessageCircleIcon className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-primary-700">
+                  {t("social.title")}
+                </h3>
+                <p className="text-sm text-neutral-500">
+                  {t("social.description")}
+                </p>
+              </div>
+            </div>
+            <div className="mt-4 flex flex-col gap-2">
+              {socialAccounts.map((item) => (
+                <Link
+                  target="_blank"
+                  href={item.link}
+                  key={item.label}
+                  className="group flex items-center gap-3 text-sm text-neutral-700 hover:text-primary-700 transition-colors"
+                >
+                  <Image
+                    src={item.icon}
+                    alt=""
+                    width={20}
+                    height={20}
+                    unoptimized
+                  />
+                  <span className="group-hover:underline">{item.label}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Phone */}
+          <div className="card-surface p-6 md:p-7">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-secondary-50 text-secondary-600 flex items-center justify-center">
+                <PhoneIcon className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-primary-700">{t("callUs.title")}</h3>
+                <p className="text-sm text-neutral-500">
+                  {t("callUs.description")}
+                </p>
+              </div>
+            </div>
+            <div className="mt-4 flex flex-col gap-1 text-sm">
+              {contactDetails.phoneNumbers.map((item) => (
+                <a
+                  href={`tel:${item.tel}`}
+                  key={item.text}
+                  className="text-neutral-700 hover:text-primary-700 hover:underline"
+                >
+                  {item.text}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Email */}
+          <div className="card-surface p-6 md:p-7">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
+                <MailIcon className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-primary-700">Email us</h3>
+                <p className="text-sm text-neutral-500">
+                  We usually reply within 24 hours
+                </p>
+              </div>
+            </div>
+            <div className="mt-4 flex flex-col gap-1 text-sm">
+              {contactDetails.emails.map((email) => (
+                <a
+                  key={email}
+                  href={`mailto:${email}`}
+                  className="text-neutral-700 hover:text-primary-700 hover:underline"
+                >
+                  {email}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Visit */}
+          <div className="card-surface p-6 md:p-7">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-violet-50 text-violet-700 flex items-center justify-center">
+                <MapPinIcon className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-primary-700">{t("visitUs.title")}</h3>
+                <p className="text-sm text-neutral-500">
+                  {t("visitUs.description", {
+                    address: contactDetails.address.headQuaters,
+                  })}
+                </p>
+              </div>
+            </div>
+            <div className="mt-4 flex flex-col gap-1 text-sm">
+              {contactDetails.address.branches.map((item) => (
+                <Link
+                  href={item.googleMapUrl}
+                  target="_blank"
+                  key={item.address}
+                  className="text-neutral-700 hover:text-primary-700 hover:underline"
+                >
+                  {item.address}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
-
-        <div>
-          <h4 className="font-bold">{t("callUs.title")}</h4>
-          <p className="text-neutral-300 text-sm">{t("callUs.description")}</p>
-          <div className="flex flex-col gap-1 font-medium text-sm mt-3">
-            {contactDetails.phoneNumbers.map((item) => (
-              <a
-                href={`tel:${item.tel}`}
-                key={item.text}
-                className="hover:underline"
-              >
-                {item.text}
-              </a>
-            ))}
-          </div>
-        </div>
-        <div>
-          <h4 className="font-bold">{t("visitUs.title")}</h4>
-          <p className="text-neutral-300 text-sm">
-            {t("visitUs.description", {
-              address: contactDetails.address.headQuaters,
-            })}
-          </p>
-          {contactDetails.address.branches.map((item) => (
-            <Link
-              className="flex items-center gap-2 font-medium text-sm mt-3"
-              href={item.googleMapUrl}
-              target="_blank"
-              key={item.address}
-            >
-              <MapPinIcon size={16} />
-              <span className="hover:underline">{item.address}</span>
-            </Link>
-          ))}
-        </div>
-      </div>
+      </Reveal>
     </div>
   );
 }

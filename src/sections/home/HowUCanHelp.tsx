@@ -1,86 +1,100 @@
 "use client";
 import Container from "@/components/layouts/Container";
+import Reveal from "@/components/Reveal";
+import SectionHeading from "@/components/SectionHeading";
 import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
-import { motion } from "framer-motion";
+import { cn } from "@/utils";
+import {
+  ArrowRightIcon,
+  BanknoteIcon,
+  HandshakeIcon,
+  HeartIcon,
+  RefreshCcwIcon,
+  type LucideIcon,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 
-const helpOptions = (translate: any) => [
-  {
-    title: translate("HowUCanHelp.itemOne.title"),
-    description: translate("HowUCanHelp.itemOne.description"),
-    icon: "💸",
-  },
-  {
-    title: translate("HowUCanHelp.itemTwo.title"),
-    description: translate("HowUCanHelp.itemTwo.description"),
-    icon: "🔄",
-  },
-  {
-    title: translate("HowUCanHelp.itemThree.title"),
-    description: translate("HowUCanHelp.itemThree.description"),
-    icon: "🤝",
-  },
-  {
-    title: translate("HowUCanHelp.itemFour.title"),
-    description: translate("HowUCanHelp.itemFour.description"),
-    icon: "🙌",
-  },
-];
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: index * 0.2, duration: 0.6 },
-  }),
+type HelpOption = {
+  title: string;
+  description: string;
+  Icon: LucideIcon;
+  accent: string;
 };
 
 export default function HowUCanHelp() {
   const translate = useTranslations();
 
-  return (
-    <section className="py-16 bg-gray-50 my-24">
-      <Container className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="text-center mb-10"
-        >
-          <h2 className="text-4xl font-bold text-primary-300 mb-4">
-            {translate("HowUCanHelp.headline")}
-          </h2>
-          <p className="text-gray-600 text-lg md:w-[80%] mx-auto">
-            {translate("HowUCanHelp.description")}
-          </p>
-        </motion.div>
+  const options: HelpOption[] = [
+    {
+      title: translate("HowUCanHelp.itemOne.title"),
+      description: translate("HowUCanHelp.itemOne.description"),
+      Icon: BanknoteIcon,
+      accent: "bg-primary-50 text-primary-700",
+    },
+    {
+      title: translate("HowUCanHelp.itemTwo.title"),
+      description: translate("HowUCanHelp.itemTwo.description"),
+      Icon: RefreshCcwIcon,
+      accent: "bg-secondary-50 text-secondary-600",
+    },
+    {
+      title: translate("HowUCanHelp.itemThree.title"),
+      description: translate("HowUCanHelp.itemThree.description"),
+      Icon: HandshakeIcon,
+      accent: "bg-emerald-50 text-emerald-700",
+    },
+    {
+      title: translate("HowUCanHelp.itemFour.title"),
+      description: translate("HowUCanHelp.itemFour.description"),
+      Icon: HeartIcon,
+      accent: "bg-violet-50 text-violet-700",
+    },
+  ];
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {helpOptions(translate).map((option, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={index}
-              className="bg-white rounded-lg border border-primary-100 p-6 text-center transition-shadow duration-300"
-            >
-              <div className="flex  mb-4">
-                <div className="text-4xl">{option.icon}</div>
+  return (
+    <section className="section-y bg-neutral-200/40">
+      <Container>
+        <SectionHeading
+          align="center"
+          eyebrow="Get involved"
+          title={translate("HowUCanHelp.headline")}
+          description={translate("HowUCanHelp.description")}
+        />
+
+        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {options.map((option, index) => (
+            <Reveal key={option.title} delay={index * 0.08}>
+              <div className="card-surface card-hover h-full p-6 flex flex-col">
+                <div
+                  className={cn(
+                    "w-12 h-12 rounded-xl flex items-center justify-center",
+                    option.accent
+                  )}
+                >
+                  <option.Icon className="w-5 h-5" />
+                </div>
+                <h3 className="mt-5 text-lg font-semibold text-primary-700">
+                  {option.title}
+                </h3>
+                <p className="mt-2 text-sm text-neutral-500 leading-relaxed">
+                  {option.description}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-primary mb-2 text-left">
-                {option.title}
-              </h3>
-              <p className="text-neutral-300 text-left">{option.description}</p>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
-        <div className="mt-16 flex justify-center">
-          <Link href="/contact-us" className={buttonVariants({ size: "lg" })}>
+
+        <div className="mt-12 flex justify-center">
+          <Link
+            href="/contact-us"
+            className={cn(
+              buttonVariants({ size: "lg" }),
+              "rounded-full px-6 h-12 bg-primary-700 hover:bg-primary-800"
+            )}
+          >
             {translate("supportUs")}
+            <ArrowRightIcon className="w-4 h-4" />
           </Link>
         </div>
       </Container>
