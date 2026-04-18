@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { cn } from "@/utils";
 
 type Props = {
@@ -14,12 +14,16 @@ type Props = {
   descriptionClassName?: string;
 };
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.55,
+      delay: i * 0.08,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
   }),
 };
 
