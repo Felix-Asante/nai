@@ -7,4 +7,5 @@ export enum CACHE_TAGS {
   FAQ = "faq",
   PARTNERS = "partners",
   PARTNER_INQUIRIES = "partnerInquiries",
+  VOLUNTEER_APPLICATIONS = "volunteerApplications",
 }

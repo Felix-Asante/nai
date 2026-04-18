@@ -192,7 +192,8 @@
     "social": {
       "title": "Connectez-vous avec nous",
       "description": "Connectez-vous avec notre équipe sympathique via nos réseaux sociaux",
-      "sendMessage": "Envoyez-nous un message sur {platform}"
+      "sendMessage": "Envoyez-nous un message sur {platform}",
+      "followUs": "Suivez-nous sur {platform}"
     },
     "callUs": {
       "title": "Appelez-nous",

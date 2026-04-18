@@ -63,55 +63,61 @@ export const partnerInquiryType = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "firstName",
+      title: "First name",
+      type: "string",
+    }),
+    defineField({
+      name: "lastName",
+      title: "Last name",
+      type: "string",
+    }),
+    defineField({
+      name: "workEmail",
+      title: "Work email",
+      type: "string",
+    }),
+    defineField({
       name: "organizationName",
       title: "Organization name",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      description: "Optional",
     }),
     defineField({
       name: "contactName",
-      title: "Contact person",
+      title: "Contact person (legacy)",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      hidden: true,
     }),
     defineField({
       name: "email",
-      title: "Email",
+      title: "Email (legacy)",
       type: "string",
-      validation: (Rule) => Rule.required().email(),
+      hidden: true,
     }),
     defineField({
       name: "phone",
-      title: "Phone",
+      title: "Phone (legacy)",
       type: "string",
+      hidden: true,
     }),
     defineField({
       name: "website",
-      title: "Website",
+      title: "Website (legacy)",
       type: "url",
+      hidden: true,
     }),
     defineField({
       name: "partnershipType",
-      title: "Partnership type",
+      title: "Partnership type (legacy)",
       type: "string",
-      options: {
-        list: [
-          { title: "Strategic Giving", value: "strategic-giving" },
-          { title: "Cause Marketing", value: "cause-marketing" },
-          { title: "Employee Engagement", value: "employee-engagement" },
-          { title: "Gifts In Kind", value: "gifts-in-kind" },
-          { title: "Event Partnership", value: "event-partnership" },
-          { title: "Other", value: "other" },
-        ],
-      },
-      validation: (Rule) => Rule.required(),
+      hidden: true,
     }),
     defineField({
       name: "message",
       title: "Message",
       type: "text",
       rows: 4,
-      validation: (Rule) => Rule.required().min(10),
     }),
     defineField({
       name: "status",
@@ -137,14 +143,16 @@ export const partnerInquiryType = defineType({
   ],
   preview: {
     select: {
-      title: "organizationName",
-      subtitle: "partnershipType",
-      media: "status",
+      firstName: "firstName",
+      lastName: "lastName",
+      workEmail: "workEmail",
+      organization: "organizationName",
     },
-    prepare({ title, subtitle }) {
+    prepare({ firstName, lastName, workEmail, organization }) {
+      const name = [firstName, lastName].filter(Boolean).join(" ");
       return {
-        title,
-        subtitle: subtitle ? `Interest: ${subtitle}` : "New inquiry",
+        title: name || workEmail || "New inquiry",
+        subtitle: organization || workEmail || "Corporate partnership inquiry",
       };
     },
   },

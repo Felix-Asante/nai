@@ -2,32 +2,32 @@ import React from "react";
 import Container from "./layouts/Container";
 import NewsLetterSection from "@/sections/NewsLetterSection";
 import Image from "next/image";
-import { footerRoutes } from "@/constants/routes";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
-import { contactDetails, SocialMediaIcons } from "@/constants";
-import { MapPinIcon, PhoneIcon, MailIcon } from "lucide-react";
+import { charityInfo, contactDetails, socialLinks } from "@/constants";
+import {
+  BadgeCheckIcon,
+  MailIcon,
+  MapPinIcon,
+  PhoneIcon,
+} from "lucide-react";
 
 export default async function Footer() {
   const t = await getTranslations();
-  const navLinks = footerRoutes(t);
 
-  const socials = [
-    {
-      name: "Facebook",
-      href: "https://www.facebook.com/noblealmsi",
-      icon: SocialMediaIcons.facebook,
-    },
-    {
-      name: "Instagram",
-      href: "https://www.instagram.com/noblealmsinternational",
-      icon: SocialMediaIcons.instagram,
-    },
-    {
-      name: "WhatsApp",
-      href: "https://wa.me/14374281909",
-      icon: SocialMediaIcons.whatsapp,
-    },
+  const waysToHelp = [
+    { name: t("donate"), href: "/donate" },
+    { name: "Monthly giving", href: "/donate?frequency=monthly" },
+    { name: "Sponsor a project", href: "/donate#sponsor" },
+    { name: "Corporate partners", href: "/partners" },
+    { name: "Careers & Volunteers", href: "/volunteer" },
+  ];
+
+  const explore = [
+    { name: t("Navbar.aboutUs"), href: "/about-us" },
+    { name: t("Navbar.projects"), href: "/projects" },
+    { name: t("Navbar.gallery"), href: "/gallery" },
+    { name: t("Navbar.contactUs"), href: "/contact-us" },
   ];
 
   return (
@@ -39,9 +39,9 @@ export default async function Footer() {
       <Container className="relative pt-16 md:pt-20 pb-8">
         <NewsLetterSection />
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mt-14 pt-10 border-t border-white/10">
-          <div className="md:col-span-5">
-            <div className="flex items-center gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 mt-14 pt-10 border-t border-white/10">
+          <div className="md:col-span-4">
+            <Link href="/" className="inline-flex items-center gap-3 group">
               <Image
                 src="/images/logo.jpg"
                 alt="Noble Alms International"
@@ -55,38 +55,77 @@ export default async function Footer() {
                 <div className="font-semibold">Noble Alms</div>
                 <div className="text-sm text-white/70">International</div>
               </div>
-            </div>
+            </Link>
+
             <p className="mt-5 text-sm md:text-base text-white/75 leading-relaxed max-w-sm">
               Transforming lives, promoting happiness, and unleashing potential
               through education, health, and charity — across borders.
             </p>
 
-            <div className="mt-6 flex items-center gap-3">
-              {socials.map((s) => (
+            <div className="mt-6 flex flex-wrap items-center gap-2.5">
+              {socialLinks.map((s) => (
                 <a
                   key={s.name}
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.name}
+                  title={s.name}
                   className="w-10 h-10 rounded-full bg-white/10 ring-1 ring-white/15 hover:bg-white hover:ring-white flex items-center justify-center transition-colors group"
                 >
                   <img
                     src={s.icon}
                     alt=""
+                    aria-hidden
                     className="w-5 h-5 opacity-90 group-hover:opacity-100"
                   />
                 </a>
               ))}
             </div>
+
+            <div className="mt-7 inline-flex items-start gap-2.5 rounded-xl bg-white/5 ring-1 ring-white/10 px-4 py-3 max-w-sm">
+              <BadgeCheckIcon
+                className="w-4 h-4 mt-0.5 shrink-0 text-secondary-200"
+                aria-hidden
+              />
+              <p className="text-xs md:text-sm text-white/80 leading-relaxed">
+                Registered charitable organization in {" "}
+                {charityInfo.registrationLocation}.
+                <br />
+                <span className="text-white/60">
+                  Charity Reg. No.{" "}
+                  <span className="font-mono tracking-wide text-white/90">
+                    {charityInfo.registrationNumber}
+                  </span>
+                </span>
+              </p>
+            </div>
           </div>
 
-          <div className="md:col-span-3">
+          <div className="md:col-span-2">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white/80 mb-4">
-              Quick links
+              Ways to help
             </h4>
             <ul className="space-y-3 text-sm">
-              {navLinks.map((item) => (
+              {waysToHelp.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="text-white/80 hover:text-white transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="md:col-span-2">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-white/80 mb-4">
+              Explore
+            </h4>
+            <ul className="space-y-3 text-sm">
+              {explore.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
@@ -107,30 +146,53 @@ export default async function Footer() {
               {contactDetails.emails.map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
                   <MailIcon className="w-4 h-4 mt-0.5 shrink-0 text-secondary-200" />
-                  <a href={`mailto:${item}`} className="hover:text-white transition-colors">
+                  <a
+                    href={`mailto:${item}`}
+                    className="hover:text-white transition-colors"
+                  >
                     {item}
                   </a>
                 </li>
               ))}
+            </ul>
+
+            <p className="mt-5 text-xs uppercase tracking-wider text-white/50">
+              You can also call us on
+            </p>
+            <ul className="mt-2 space-y-2 text-sm text-white/80">
               {contactDetails.phoneNumbers.map((item) => (
                 <li key={item.tel} className="flex items-start gap-2.5">
                   <PhoneIcon className="w-4 h-4 mt-0.5 shrink-0 text-secondary-200" />
-                  <a href={`tel:${item.tel}`} className="hover:text-white transition-colors">
+                  <a
+                    href={`tel:${item.tel}`}
+                    className="hover:text-white transition-colors"
+                  >
                     {item.text}
                   </a>
                 </li>
               ))}
-              <li className="flex items-start gap-2.5">
-                <MapPinIcon className="w-4 h-4 mt-0.5 shrink-0 text-secondary-200" />
-                <span>{contactDetails.address.headQuaters}</span>
-              </li>
             </ul>
+
+            <div className="mt-5 flex items-start gap-2.5 text-sm text-white/80">
+              <MapPinIcon className="w-4 h-4 mt-0.5 shrink-0 text-secondary-200" />
+              <span>{contactDetails.address.headQuaters}</span>
+            </div>
           </div>
         </div>
 
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row gap-3 md:items-center md:justify-between text-xs text-white/60">
-          <p>© {new Date().getFullYear()} Noble Alms International. All rights reserved.</p>
-          <p>Registered in Ghana & Canada</p>
+          <p>
+            © {new Date().getFullYear()} Noble Alms International. All rights
+            reserved.
+          </p>
+          <p className="md:text-right">
+            Noble Alms International is a registered charitable organization in{" "}
+            {charityInfo.registrationLocation}. Charity Reg. No.{" "}
+            <span className="font-mono text-white/80">
+              {charityInfo.registrationNumber}
+            </span>
+            .
+          </p>
         </div>
       </Container>
     </footer>

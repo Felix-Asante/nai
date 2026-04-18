@@ -3,64 +3,71 @@ import Container from "@/components/layouts/Container";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import {
-  BriefcaseIcon,
-  CalendarHeartIcon,
   GiftIcon,
+  GlobeIcon,
   HandCoinsIcon,
+  HandshakeIcon,
   MegaphoneIcon,
   UsersIcon,
   type LucideIcon,
 } from "lucide-react";
 
 type Option = {
+  emoji: string;
   title: string;
   description: string;
   Icon: LucideIcon;
-  tag: string;
+  accent: string;
 };
 
 const options: Option[] = [
   {
-    tag: "Strategic Giving",
-    title: "Strategic giving",
+    emoji: "💼",
+    title: "Strategic Giving",
     description:
-      "Multi-year commitments aligned with your corporate social responsibility goals and our priority programmes.",
+      "Make a meaningful impact by aligning your financial contributions with programs that reflect your company's values and social priorities. Your support can be directed toward education, health, or community development initiatives.",
     Icon: HandCoinsIcon,
+    accent: "bg-primary-50 text-primary-700",
   },
   {
-    tag: "Cause Marketing",
-    title: "Cause marketing",
+    emoji: "📢",
+    title: "Cause Support & Sponsorship",
     description:
-      "Co-branded campaigns and product partnerships that drive awareness, sales, and real social outcomes together.",
+      "Support specific projects, campaigns, or outreach programs such as educational seminars, medical missions, or community relief efforts. This allows your organization to see direct and visible impact.",
     Icon: MegaphoneIcon,
+    accent: "bg-secondary-50 text-secondary-600",
   },
   {
-    tag: "Employee Engagement",
-    title: "Employee engagement",
+    emoji: "🎁",
+    title: "In-Kind Corporate Donations",
     description:
-      "Workplace giving, matched donations, team volunteering days and immersive learning experiences for your teams.",
-    Icon: UsersIcon,
-  },
-  {
-    tag: "Gifts In Kind",
-    title: "Gifts in kind",
-    description:
-      "Donate products, services or expertise — from medical supplies and technology to pro-bono consulting hours.",
+      "Support our programs by donating goods or resources such as educational materials, medical supplies, or essential items. These contributions are directly distributed to communities in need.",
     Icon: GiftIcon,
+    accent: "bg-emerald-50 text-emerald-700",
   },
   {
-    tag: "Event Partnership",
-    title: "Event partnerships",
+    emoji: "🌍",
+    title: "Brand Visibility & Recognition",
     description:
-      "Sponsor flagship events, field visits and donor experiences that bring your brand close to the impact.",
-    Icon: CalendarHeartIcon,
+      "Partnering with Noble Alms International provides opportunities for brand recognition through sponsored initiatives, events, and outreach programs — helping your organization demonstrate social impact.",
+    Icon: GlobeIcon,
+    accent: "bg-sky-50 text-sky-700",
   },
   {
-    tag: "Custom",
-    title: "A custom partnership",
+    emoji: "👥",
+    title: "Employee Engagement",
     description:
-      "Have a specific idea? Our partnerships team will design a bespoke engagement tailored to your goals.",
-    Icon: BriefcaseIcon,
+      "Encourage team participation through volunteer programs, outreach activities, and community engagement opportunities. This strengthens team culture while contributing to meaningful social change.",
+    Icon: UsersIcon,
+    accent: "bg-rose-50 text-rose-700",
+  },
+  {
+    emoji: "🤝",
+    title: "Long-Term Strategic Partnerships",
+    description:
+      "Build long-term relationships that go beyond one-time contributions. Work with us to develop sustainable programs that align with both corporate goals and community needs.",
+    Icon: HandshakeIcon,
+    accent: "bg-secondary-50 text-secondary-600",
   },
 ];
 
@@ -72,30 +79,38 @@ export default function PartnershipTypes() {
           align="center"
           eyebrow="Ways to partner"
           title="Find the shape of partnership that fits you"
-          description="Every organisation is unique. Choose the engagement model that matches your vision — or combine several for deeper impact."
+          description="We offer flexible partnership opportunities designed to align with your business objectives and social responsibility goals."
         />
 
         <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {options.map((option, i) => (
-            <Reveal key={option.title} delay={(i % 3) * 0.08}>
-              <div className="card-surface card-hover h-full p-7 flex flex-col">
-                <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-xl bg-secondary-50 text-secondary-600 flex items-center justify-center">
-                    <option.Icon className="w-5 h-5" />
+          {options.map((option, i) => {
+            const Icon = option.Icon;
+            return (
+              <Reveal key={option.title} delay={(i % 3) * 0.08}>
+                <div className="card-surface card-hover h-full p-7 flex flex-col">
+                  <div className="flex items-center justify-between">
+                    <div
+                      className={
+                        "w-12 h-12 rounded-xl flex items-center justify-center " +
+                        option.accent
+                      }
+                    >
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <span aria-hidden className="text-2xl leading-none">
+                      {option.emoji}
+                    </span>
                   </div>
-                  <span className="text-[11px] uppercase tracking-[0.14em] font-semibold text-primary-700/60">
-                    {option.tag}
-                  </span>
+                  <h3 className="mt-5 text-lg font-semibold text-primary-700">
+                    {option.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-neutral-500 leading-relaxed flex-1">
+                    {option.description}
+                  </p>
                 </div>
-                <h3 className="mt-5 text-lg font-semibold text-primary-700">
-                  {option.title}
-                </h3>
-                <p className="mt-2 text-sm text-neutral-500 leading-relaxed flex-1">
-                  {option.description}
-                </p>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            );
+          })}
         </div>
       </Container>
     </section>

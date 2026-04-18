@@ -2,41 +2,17 @@ import Container from "@/components/layouts/Container";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { buttonVariants } from "@/components/ui/button";
+import DonateDetailedSections from "@/sections/donate/DonateDetailedSections";
 import { DonationForm } from "@/sections/DonationForm";
-import HowUCanHelp from "@/sections/home/HowUCanHelp";
 import { cn } from "@/utils";
-import {
-  ArrowRightIcon,
-  HeartHandshakeIcon,
-  ShieldCheckIcon,
-  TargetIcon,
-  UsersIcon,
-} from "lucide-react";
+import { ArrowRightIcon, HeartHandshakeIcon } from "lucide-react";
 import { Link } from "@/i18n/routing";
 
-const reasons = [
-  {
-    title: "Direct impact",
-    description:
-      "Your contributions directly support our programs and initiatives on the ground.",
-    Icon: TargetIcon,
-    accent: "bg-primary-50 text-primary-700",
-  },
-  {
-    title: "Transparency",
-    description:
-      "We ensure 80% of your donation goes directly to our charitable programs.",
-    Icon: ShieldCheckIcon,
-    accent: "bg-emerald-50 text-emerald-700",
-  },
-  {
-    title: "Community",
-    description:
-      "Become part of a global movement of compassion and generosity.",
-    Icon: UsersIcon,
-    accent: "bg-secondary-50 text-secondary-600",
-  },
-];
+export const metadata = {
+  title: "Donate — Noble Alms International",
+  description:
+    "Support Noble Alms International with a one-time gift, become a monthly donor, or sponsor a specific project.",
+};
 
 export default function DonationPage() {
   return (
@@ -85,45 +61,30 @@ export default function DonationPage() {
                 <ArrowRightIcon className="w-4 h-4" />
               </Link>
             </div>
+
+            <nav
+              aria-label="Ways to give"
+              className="mt-10 flex flex-wrap items-center justify-center gap-2 md:gap-3 text-sm"
+            >
+              {[
+                { href: "#monetary", label: "Monetary gifts" },
+                { href: "#monthly", label: "Monthly donor" },
+                { href: "#sponsor", label: "Sponsor a project" },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 ring-1 ring-white/20 text-white/90 hover:text-white transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
           </div>
         </Container>
       </header>
 
-      <section className="section-y bg-white">
-        <Container>
-          <SectionHeading
-            align="center"
-            eyebrow="Why donate"
-            title="Your giving, multiplied"
-            description="We steward every contribution with care — so that your generosity reaches those who need it most."
-          />
-
-          <div className="mt-14 grid md:grid-cols-3 gap-5">
-            {reasons.map((reason, i) => (
-              <Reveal key={reason.title} delay={i * 0.08}>
-                <div className="card-surface card-hover h-full p-6 md:p-7">
-                  <div
-                    className={cn(
-                      "w-12 h-12 rounded-xl flex items-center justify-center",
-                      reason.accent
-                    )}
-                  >
-                    <reason.Icon className="w-5 h-5" />
-                  </div>
-                  <h3 className="mt-5 text-lg font-semibold text-primary-700">
-                    {reason.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-neutral-500 leading-relaxed">
-                    {reason.description}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <HowUCanHelp />
+      <DonateDetailedSections />
 
       <section id="donate" className="section-y bg-neutral-200/40 scroll-mt-24">
         <Container>

@@ -1,5 +1,5 @@
 "use client";
-import { contactDetails, SocialMediaIcons } from "@/constants";
+import { contactDetails, socialLinks, SocialMediaIcons } from "@/constants";
 import { MapPinIcon, PhoneIcon, MailIcon, MessageCircleIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,16 +16,11 @@ export default function ContactSection() {
       link: "https://wa.me/14374281909",
       icon: SocialMediaIcons.whatsapp,
     },
-    {
-      label: t("social.sendMessage", { platform: "Facebook" }),
-      link: "https://www.facebook.com/noblealmsi",
-      icon: SocialMediaIcons.facebook,
-    },
-    {
-      label: t("social.sendMessage", { platform: "Instagram" }),
-      link: "https://www.instagram.com/noblealmsinternational",
-      icon: SocialMediaIcons.instagram,
-    },
+    ...socialLinks.map((s) => ({
+      label: t("social.followUs", { platform: s.name }),
+      link: s.href,
+      icon: s.icon,
+    })),
   ];
 
   return (
@@ -111,7 +106,7 @@ export default function ContactSection() {
           {/* Email */}
           <div className="card-surface p-6 md:p-7">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-primary-50 text-primary-700 flex items-center justify-center">
                 <MailIcon className="w-5 h-5" />
               </div>
               <div>
@@ -137,7 +132,7 @@ export default function ContactSection() {
           {/* Visit */}
           <div className="card-surface p-6 md:p-7">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-violet-50 text-violet-700 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-secondary-50 text-secondary-600 flex items-center justify-center">
                 <MapPinIcon className="w-5 h-5" />
               </div>
               <div>

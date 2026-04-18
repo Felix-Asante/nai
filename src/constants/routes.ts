@@ -47,6 +47,10 @@ export const footerRoutes = (translate: Translator) => [
     href: "/partners",
   },
   {
+    name: "Careers & Volunteers",
+    href: "/volunteer",
+  },
+  {
     name: translate("Navbar.contactUs"),
     href: "/contact-us",
   },

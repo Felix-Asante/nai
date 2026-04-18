@@ -29,13 +29,11 @@ export async function submitPartnerInquiry(input: PartnerInquiryInput) {
 
     await writeClient.create({
       _type: "partnerInquiry",
-      organizationName: data.organizationName,
-      contactName: data.contactName,
-      email: data.email,
-      phone: data.phone || undefined,
-      website: data.website || undefined,
-      partnershipType: data.partnershipType,
-      message: data.message,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      workEmail: data.workEmail,
+      organizationName: data.organizationName || undefined,
+      message: data.message || undefined,
       status: "new",
       submittedAt,
     });
@@ -52,17 +50,18 @@ export async function submitPartnerInquiry(input: PartnerInquiryInput) {
         await emailClient.emails.send({
           from: sender,
           to: recipient,
-          subject: `New partner inquiry — ${data.organizationName}`,
+          subject: `New partner inquiry — ${data.firstName} ${data.lastName}`,
           html: `
             <h2>New Partner Inquiry</h2>
-            <p><strong>Organization:</strong> ${escape(data.organizationName)}</p>
-            <p><strong>Contact:</strong> ${escape(data.contactName)}</p>
-            <p><strong>Email:</strong> ${escape(data.email)}</p>
-            <p><strong>Phone:</strong> ${escape(data.phone || "—")}</p>
-            <p><strong>Website:</strong> ${escape(data.website || "—")}</p>
-            <p><strong>Partnership type:</strong> ${escape(data.partnershipType)}</p>
-            <p><strong>Message:</strong></p>
-            <p>${escape(data.message).replaceAll("\n", "<br/>")}</p>
+            <p><strong>First name:</strong> ${escape(data.firstName)}</p>
+            <p><strong>Last name:</strong> ${escape(data.lastName)}</p>
+            <p><strong>Work email:</strong> ${escape(data.workEmail)}</p>
+            <p><strong>Organization:</strong> ${escape(data.organizationName || "—")}</p>
+            ${
+              data.message
+                ? `<p><strong>Message:</strong></p><p>${escape(data.message).replaceAll("\n", "<br/>")}</p>`
+                : ""
+            }
           `,
         });
       } catch (mailError) {

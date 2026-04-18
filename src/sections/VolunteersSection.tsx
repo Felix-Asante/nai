@@ -1,12 +1,11 @@
 "use client";
-import Button from "@/components/Button";
 import Container from "@/components/layouts/Container";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
-import VolunteerDialog from "@/components/VolunteerDialog";
+import { buttonVariants } from "@/components/ui/button";
+import { Link } from "@/i18n/routing";
 import { cn } from "@/utils";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
 import { HeartHandshakeIcon } from "lucide-react";
 
 const volunteers = [
@@ -22,7 +21,6 @@ const volunteers = [
 
 export default function VolunteersSection() {
   const translate = useTranslations("volunteers");
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <section className="section-y bg-neutral-200/40">
@@ -64,17 +62,17 @@ export default function VolunteersSection() {
         </div>
 
         <div className="mt-12 flex justify-center">
-          <Button
-            size="lg"
-            onClick={() => setIsOpen(true)}
-            className="rounded-full px-6 h-12 bg-primary-700 hover:bg-primary-800"
-            startContent={<HeartHandshakeIcon className="w-4 h-4" />}
+          <Link
+            href="/volunteer"
+            className={cn(
+              buttonVariants({ size: "lg" }),
+              "rounded-full px-6 h-12 bg-primary-700 hover:bg-primary-800 text-white"
+            )}
           >
+            <HeartHandshakeIcon className="w-4 h-4" />
             {translate("becomeVolunteer")}
-          </Button>
+          </Link>
         </div>
-
-        <VolunteerDialog open={isOpen} onOpenChange={setIsOpen} />
       </Container>
     </section>
   );

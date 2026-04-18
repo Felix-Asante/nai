@@ -193,7 +193,8 @@
     "social": {
       "title": "Connect with us",
       "description": "Connect with our friendly team via our social media",
-      "sendMessage": "Message us on {platform}"
+      "sendMessage": "Message us on {platform}",
+      "followUs": "Follow us on {platform}"
     },
     "callUs": {
       "title": "Call Us",

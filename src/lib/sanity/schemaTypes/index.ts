@@ -7,6 +7,7 @@ import { teamType } from "./teamType";
 import { faqType } from "./faqType";
 import { galleryType } from "./galleryType";
 import { partnersType, partnerInquiryType } from "./partners";
+import { volunteerApplicationType } from "./volunteerApplications";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -19,5 +20,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     galleryType,
     partnersType,
     partnerInquiryType,
+    volunteerApplicationType,
   ],
 };

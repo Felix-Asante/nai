@@ -6,7 +6,7 @@ import { apiVersion, dataset, projectId } from "@/utils/env";
 let cached: SanityClient | null = null;
 
 export function getSanityWriteClient(): SanityClient | null {
-  const token = process.env.SANITY_WRITE_TOKEN?.trim();
+  const token = process.env.SANITY_API_WRITE_TOKEN?.trim();
   if (!token) {
     return null;
   }

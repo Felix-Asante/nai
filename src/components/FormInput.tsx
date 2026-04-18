@@ -5,7 +5,6 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from "./ui/form";
 import { Input, InputProps } from "./ui/input";
 import { useFormContext } from "react-hook-form";
@@ -25,9 +24,13 @@ export default function FormInput(props: FormInputProps) {
       control={control}
       name={name}
       defaultValue={props?.defaultValue}
-      render={({ field }) => (
+      render={({ field, fieldState }) => (
         <FormItem>
-          {label && <FormLabel>{label}</FormLabel>}
+          {label && (
+            <FormLabel className={fieldState.error ? "text-destructive" : ""}>
+              {label}
+            </FormLabel>
+          )}
           <FormControl>
             <Input placeholder={placeholder} {...field} {...inputProps} />
           </FormControl>
@@ -36,7 +39,11 @@ export default function FormInput(props: FormInputProps) {
               {description}
             </FormDescription>
           )}
-          <FormMessage />
+          {fieldState.error?.message ? (
+            <p className="text-sm font-medium text-destructive" role="alert">
+              {fieldState.error.message}
+            </p>
+          ) : null}
         </FormItem>
       )}
     />

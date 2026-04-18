@@ -1,11 +1,12 @@
 import PageHero from "@/components/PageHero";
 import { buttonVariants } from "@/components/ui/button";
 import { getPartners } from "@/lib/sanity/api/partners";
-import PartnerBenefits from "@/sections/partners/PartnerBenefits";
 import PartnerInquiryForm from "@/sections/partners/PartnerInquiryForm";
 import PartnerProcess from "@/sections/partners/PartnerProcess";
 import PartnersGrid from "@/sections/partners/PartnersGrid";
+import PartnersIntro from "@/sections/partners/PartnersIntro";
 import PartnershipTypes from "@/sections/partners/PartnershipTypes";
+import WhyPartner from "@/sections/partners/WhyPartner";
 import { cn } from "@/utils";
 import { ArrowRightIcon, HandshakeIcon } from "lucide-react";
 import Link from "next/link";
@@ -13,7 +14,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Corporate Partnerships — Noble Alms International",
   description:
-    "Partner with Noble Alms International to deliver measurable impact across education, health and livelihoods.",
+    "Partner with Noble Alms International to deliver measurable impact across education, health and humanitarian support.",
 };
 
 export default async function PartnersPage() {
@@ -49,10 +50,11 @@ export default async function PartnersPage() {
         </Link>
       </PageHero>
 
-      <PartnerBenefits />
+      <PartnersIntro />
       <div id="partnership-types">
         <PartnershipTypes />
       </div>
+      <WhyPartner />
       <PartnerProcess />
       <PartnersGrid partners={partners} />
       <PartnerInquiryForm />

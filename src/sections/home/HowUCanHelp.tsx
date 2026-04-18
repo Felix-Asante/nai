@@ -2,7 +2,6 @@
 import Container from "@/components/layouts/Container";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
-import VolunteerDialog from "@/components/VolunteerDialog";
 import { Link } from "@/i18n/routing";
 import { cn } from "@/utils";
 import {
@@ -14,7 +13,6 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
 
 type HelpOption = {
   title: string;
@@ -22,14 +20,12 @@ type HelpOption = {
   Icon: LucideIcon;
   accent: string;
   cta: string;
-} & (
-  | { action: "link"; href: string }
-  | { action: "volunteer" }
-);
+  action: "link";
+  href: string;
+};
 
 export default function HowUCanHelp() {
   const translate = useTranslations();
-  const [volunteerOpen, setVolunteerOpen] = useState(false);
 
   const options: HelpOption[] = [
     {
@@ -65,7 +61,8 @@ export default function HowUCanHelp() {
       Icon: HeartIcon,
       accent: "bg-violet-50 text-violet-700",
       cta: "Start volunteering",
-      action: "volunteer",
+      action: "link",
+      href: "/volunteer",
     },
   ];
 
@@ -110,22 +107,12 @@ export default function HowUCanHelp() {
                 delay={index * 0.08}
                 className="group h-full"
               >
-                {option.action === "link" ? (
-                  <Link
-                    href={option.href}
-                    className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 rounded-2xl"
-                  >
-                    {content}
-                  </Link>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => setVolunteerOpen(true)}
-                    className="block h-full w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 rounded-2xl"
-                  >
-                    {content}
-                  </button>
-                )}
+                <Link
+                  href={option.href}
+                  className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 rounded-2xl"
+                >
+                  {content}
+                </Link>
               </Reveal>
             );
           })}
@@ -141,8 +128,6 @@ export default function HowUCanHelp() {
           </Link>
         </div>
       </Container>
-
-      <VolunteerDialog open={volunteerOpen} onOpenChange={setVolunteerOpen} />
     </section>
   );
 }
