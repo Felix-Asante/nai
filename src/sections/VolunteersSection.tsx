@@ -39,7 +39,7 @@ export default function VolunteersSection() {
               delay={(index % 4) * 0.08}
               className={cn(
                 "relative group overflow-hidden rounded-2xl shadow-soft",
-                index % 2 === 0 ? "aspect-[3/4]" : "aspect-[4/5]"
+                index % 2 === 0 ? "aspect-[3/4]" : "aspect-[4/5]",
               )}
             >
               <img
@@ -51,14 +51,14 @@ export default function VolunteersSection() {
                 className="absolute inset-0 bg-gradient-to-t from-primary-900/75 via-primary-900/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"
                 aria-hidden
               />
-              <div className="absolute bottom-0 left-0 right-0 p-4">
+              {/* <div className="absolute bottom-0 left-0 right-0 p-4">
                 <p className="text-white text-sm md:text-base font-semibold">
                   {volunteer.name}
                 </p>
                 <p className="text-white/75 text-xs">
                   {translate("roleLabel")}
                 </p>
-              </div>
+              </div> */}
             </Reveal>
           ))}
         </div>
@@ -68,7 +68,7 @@ export default function VolunteersSection() {
             href="/volunteer"
             className={cn(
               buttonVariants({ size: "lg" }),
-              "rounded-full px-6 h-12 bg-primary-700 hover:bg-primary-800 text-white"
+              "rounded-full px-6 h-12 bg-primary-700 hover:bg-primary-800 text-white",
             )}
           >
             <HeartHandshakeIcon className="w-4 h-4" />

@@ -14,7 +14,7 @@ type Props = {
 
 export default function TeamSection({ teamMembers = [] }: Props) {
   const translate = useTranslations();
-  if (teamMembers.length === 0) return null;
+  if (!teamMembers || teamMembers.length === 0) return null;
 
   return (
     <section className="section-y bg-white">
@@ -46,28 +46,32 @@ export default function TeamSection({ teamMembers = [] }: Props) {
                   <h3 className="text-base font-semibold text-primary-700 leading-tight">
                     {member.name}
                   </h3>
-                  <p className="text-sm text-neutral-500 mt-1">{member.position}</p>
+                  <p className="text-sm text-neutral-500 mt-1">
+                    {member.position}
+                  </p>
                   {member.socials && (
                     <div className="flex gap-3 mt-4">
-                      {Object.entries(member.socials).map(([platform, link]) => (
-                        <a
-                          key={platform}
-                          href={link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={translate(
-                            "AboutPage.socialOnPlatform",
-                            { name: member.name, platform }
-                          )}
-                          className="text-neutral-400 hover:text-primary-700 transition-colors"
-                        >
-                          <img
-                            src={`/icons/${platform}.svg`}
-                            alt=""
-                            className="w-4 h-4 opacity-70 hover:opacity-100 transition"
-                          />
-                        </a>
-                      ))}
+                      {Object.entries(member.socials).map(
+                        ([platform, link]) => (
+                          <a
+                            key={platform}
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={translate(
+                              "AboutPage.socialOnPlatform",
+                              { name: member.name, platform },
+                            )}
+                            className="text-neutral-400 hover:text-primary-700 transition-colors"
+                          >
+                            <img
+                              src={`/icons/${platform}.svg`}
+                              alt=""
+                              className="w-4 h-4 opacity-70 hover:opacity-100 transition"
+                            />
+                          </a>
+                        ),
+                      )}
                     </div>
                   )}
                 </div>

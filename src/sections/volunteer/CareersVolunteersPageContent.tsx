@@ -33,7 +33,12 @@ const skillIcons = [
   CalendarCheck2Icon,
 ] as const;
 
-const whyIcons = [SparklesIcon, UsersIcon, HandHeartIcon, CheckCircle2Icon] as const;
+const whyIcons = [
+  SparklesIcon,
+  UsersIcon,
+  HandHeartIcon,
+  CheckCircle2Icon,
+] as const;
 
 export default function CareersVolunteersPageContent() {
   const t = useTranslations("VolunteerPage");
@@ -63,13 +68,13 @@ export default function CareersVolunteersPageContent() {
           </span>
         }
         description={t("hero.description")}
-        image="/images/img-20.jpg"
+        image="/images/img-31.jpg"
       >
         <Link
           href="#register"
           className={cn(
             buttonVariants({ size: "lg" }),
-            "rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600 shadow-lg shadow-secondary/30"
+            "rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600 shadow-lg shadow-secondary/30",
           )}
         >
           <HandHeartIcon className="w-4 h-4" />
@@ -79,7 +84,7 @@ export default function CareersVolunteersPageContent() {
           href="#roles"
           className={cn(
             buttonVariants({ size: "lg", variant: "outline" }),
-            "rounded-full px-6 h-12 border-white/40 bg-white/10 text-white hover:bg-white hover:text-primary-700"
+            "rounded-full px-6 h-12 border-white/40 bg-white/10 text-white hover:bg-white hover:text-primary-700",
           )}
         >
           {t("hero.openRoles")}
@@ -91,7 +96,9 @@ export default function CareersVolunteersPageContent() {
         <Container>
           <div className="max-w-3xl mx-auto text-center">
             <span className="eyebrow justify-center">{t("intro.eyebrow")}</span>
-            <h2 className="mt-4 headline text-primary-700">{t("intro.title")}</h2>
+            <h2 className="mt-4 headline text-primary-700">
+              {t("intro.title")}
+            </h2>
             <div className="mt-6 space-y-5 text-base md:text-lg leading-relaxed text-neutral-600">
               <p>{t("intro.p1")}</p>
               <p>{t("intro.p2")}</p>
@@ -146,7 +153,7 @@ export default function CareersVolunteersPageContent() {
                 href="#register"
                 className={cn(
                   buttonVariants({ size: "lg" }),
-                  "rounded-full px-5 h-11 bg-primary-700 hover:bg-primary-800 text-white shrink-0"
+                  "rounded-full px-5 h-11 bg-primary-700 hover:bg-primary-800 text-white shrink-0",
                 )}
               >
                 {t("openRoles.cta")}
@@ -188,7 +195,7 @@ export default function CareersVolunteersPageContent() {
                   href="#register"
                   className={cn(
                     buttonVariants({ size: "lg" }),
-                    "rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600 text-white shadow-lg shadow-secondary/30"
+                    "rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600 text-white shadow-lg shadow-secondary/30",
                   )}
                 >
                   <HandHeartIcon className="w-4 h-4" />
@@ -306,7 +313,7 @@ export default function CareersVolunteersPageContent() {
                 href="mailto:info@noblealmsinternational.com"
                 className={cn(
                   buttonVariants({ size: "lg", variant: "outline" }),
-                  "rounded-full px-5 h-11 border-primary-200 text-primary-700 hover:bg-primary-50"
+                  "rounded-full px-5 h-11 border-primary-200 text-primary-700 hover:bg-primary-50",
                 )}
               >
                 info@noblealmsinternational.com
