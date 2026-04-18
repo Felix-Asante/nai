@@ -60,7 +60,7 @@ export async function submitVolunteerApplication(
       submittedAt,
     });
 
-    revalidateTag(CACHE_TAGS.VOLUNTEER_APPLICATIONS);
+    revalidateTag(CACHE_TAGS.VOLUNTEER_APPLICATIONS, "max");
 
     const emailToken = process.env.EMAIL_TOKEN;
     const sender = process.env.EMAIL_SENDER_ADDRESS;

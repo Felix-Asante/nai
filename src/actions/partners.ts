@@ -38,7 +38,7 @@ export async function submitPartnerInquiry(input: PartnerInquiryInput) {
       submittedAt,
     });
 
-    revalidateTag(CACHE_TAGS.PARTNER_INQUIRIES);
+    revalidateTag(CACHE_TAGS.PARTNER_INQUIRIES, "max");
 
     const emailToken = process.env.EMAIL_TOKEN;
     const sender = process.env.EMAIL_SENDER_ADDRESS;
