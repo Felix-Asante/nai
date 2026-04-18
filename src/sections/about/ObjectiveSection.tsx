@@ -21,6 +21,7 @@ type Objective = {
 
 export default function ObjectiveSection() {
   const translate = useTranslations("AboutPage.objectives");
+  const about = useTranslations("AboutPage");
 
   const objectives: Objective[] = [
     {
@@ -48,7 +49,7 @@ export default function ObjectiveSection() {
       <Container>
         <SectionHeading
           align="center"
-          eyebrow="Our priorities"
+          eyebrow={about("objectivesEyebrow")}
           title={translate("title")}
           description={translate("description")}
         />

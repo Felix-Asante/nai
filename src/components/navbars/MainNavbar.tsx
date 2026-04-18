@@ -80,17 +80,17 @@ export default function MainNavbar() {
     >
       <nav
         className="container mx-auto flex items-center justify-between h-16 md:h-20 gap-6"
-        aria-label="Primary"
+        aria-label={translate("Navbar.navPrimary")}
       >
         <Link
           href="/"
           className="flex items-center gap-3 shrink-0"
-          aria-label="Noble Alms International — Home"
+          aria-label={translate("Navbar.homeAriaLabel")}
           onClick={closeMenu}
         >
           <Image
             src="/images/logo.jpg"
-            alt="Noble Alms International"
+            alt={translate("Navbar.logoAlt")}
             width={44}
             height={44}
             unoptimized
@@ -99,10 +99,10 @@ export default function MainNavbar() {
           />
           <span className="hidden sm:flex flex-col leading-tight">
             <span className="text-sm md:text-base font-semibold tracking-tight text-primary-700">
-              Noble Alms
+              {translate("Navbar.brandLine1")}
             </span>
             <span className="text-[11px] md:text-xs font-medium text-neutral-500">
-              International
+              {translate("Navbar.brandLine2")}
             </span>
           </span>
         </Link>
@@ -144,7 +144,7 @@ export default function MainNavbar() {
                 variant="ghost"
                 size="sm"
                 className="hidden sm:inline-flex h-9 gap-1.5 rounded-full px-2.5 text-neutral-600 hover:text-primary-700"
-                aria-label="Change language"
+                aria-label={translate("Navbar.changeLanguage")}
               >
                 <img
                   src={flags[lang].src}
@@ -190,7 +190,11 @@ export default function MainNavbar() {
 
           <button
             onClick={() => setIsMenuOpen((v) => !v)}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-label={
+              isMenuOpen
+                ? translate("Navbar.closeMenu")
+                : translate("Navbar.openMenu")
+            }
             aria-expanded={isMenuOpen}
             className="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-md text-primary-700 hover:bg-primary-50 transition-colors"
           >

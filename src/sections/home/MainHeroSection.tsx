@@ -93,7 +93,7 @@ export default function MainHeroSection() {
               />
               <img
                 src="/images/img-5.jpg"
-                alt="Helping hands"
+                alt={translate("homePage.heroImageAlt")}
                 className="relative aspect-[4/5] w-full rounded-[2rem] object-cover shadow-2xl ring-1 ring-white/20"
               />
               <motion.div

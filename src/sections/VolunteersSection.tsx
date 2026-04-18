@@ -27,7 +27,7 @@ export default function VolunteersSection() {
       <Container>
         <SectionHeading
           align="center"
-          eyebrow="The people"
+          eyebrow={translate("eyebrow")}
           title={translate("title")}
           description={translate("description")}
         />
@@ -55,7 +55,9 @@ export default function VolunteersSection() {
                 <p className="text-white text-sm md:text-base font-semibold">
                   {volunteer.name}
                 </p>
-                <p className="text-white/75 text-xs">Volunteer</p>
+                <p className="text-white/75 text-xs">
+                  {translate("roleLabel")}
+                </p>
               </div>
             </Reveal>
           ))}

@@ -5,7 +5,20 @@
     "contactUs": "Contact Us",
     "blog": "Blog",
     "getInvolved": "Get Involved",
-    "gallery": "Gallery"
+    "gallery": "Gallery",
+    "logoAlt": "Noble Alms International",
+    "brandLine1": "Noble Alms",
+    "brandLine2": "International",
+    "navPrimary": "Primary navigation",
+    "homeAriaLabel": "Noble Alms International — Home",
+    "changeLanguage": "Change language",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "a11y": {
+    "carouselPrevious": "Previous slide",
+    "carouselNext": "Next slide",
+    "youtubePlayer": "YouTube video player"
   },
   "languages": {
     "en": "English",
@@ -25,8 +38,10 @@
     "heroStats": {
       "livesImpacted": "Lives impacted",
       "activeProjects": "Active projects",
-      "countriesServed": "Countries served"
+      "countriesServed": "Countries served",
+      "activeSupporters": "Active supporters"
     },
+    "heroImageAlt": "Helping hands supporting community",
     "whoWeAre": {
       "headline": "At Noble Alms International, we prioritize compassion, integrity, and inclusivity.",
       "description": "As a charitable organization, we are dedicated to creating a positive impact in communities. Our mission is to transform lives, promote happiness, and unleash potential through lively interaction and outreaches, including educational, medical, and charity initiatives. We work tirelessly to promote education, health, and the giving of alms, striving to create a world where everyone has access to the support they need to thrive. Our vision is rooted in the foundational development of noble individuals in society through financial, educational, and health support."
@@ -53,12 +68,15 @@
     },
     "stats": {
       "title": "Together, we've made a tremendous impact!",
-      "description": "Lives impacted and communities transformed through our collective efforts."
+      "description": "Lives impacted and communities transformed through our collective efforts.",
+      "impactEyebrow": "Our impact"
     },
     "projects": {
       "title": "Projects for the charity donation organization",
+      "eyebrow": "What's next",
       "upcoming": "Upcoming Projects",
-      "description": "These projects showcase NAI's commitment to addressing a diverse range of issues, including education, healthcare, economic empowerment, community development, emergency relief, and environmental sustainability."
+      "description": "These projects showcase NAI's commitment to addressing a diverse range of issues, including education, healthcare, economic empowerment, community development, emergency relief, and environmental sustainability.",
+      "viewAll": "View all projects"
     }
   },
   "NotFound": {
@@ -167,15 +185,28 @@
         "description": "Through our alms-giving programs, we provide food, clothing, and essentials to those in need, helping to alleviate poverty and improve living conditions for vulnerable members of society."
       }
     },
-    "meetOurTeam": "Meet Our Team"
+    "meetOurTeam": "Meet Our Team",
+    "heroEyebrow": "About us",
+    "whoWeAreEyebrow": "Who we are",
+    "aboutImageAlt": "Noble Alms International team",
+    "objectivesEyebrow": "Our priorities",
+    "modeEyebrow": "Our framework",
+    "teamEyebrow": "Our people",
+    "teamDescription": "The leaders, volunteers and partners driving our mission forward every day.",
+    "socialOnPlatform": "{name} on {platform}"
   },
   "volunteers": {
     "title": "Our Volunteers",
     "description": "Meet the incredible individuals making a difference in our community.",
-    "becomeVolunteer": "Become a Volunteer"
+    "becomeVolunteer": "Become a Volunteer",
+    "eyebrow": "The people",
+    "roleLabel": "Volunteer"
   },
   "ContactUsPage": {
     "title": "Contact Us",
+    "heroEyebrow": "We'd love to hear from you",
+    "faqEyebrow": "Answers",
+    "mapTitle": "Noble Alms International office map",
     "description": "We are a dynamic charity organization committed to making a positive impact on communities around the world. Whether you have a question, want to know more about our organization, or would like to get involved, please don't hesitate to contact us.",
     "form": {
       "name": {
@@ -212,6 +243,7 @@
   },
   "faq": "Frequently Asked Questions (FAQs)",
   "ProjectsPage": {
+    "eyebrow": "What we do",
     "description": "These projects showcase NAI's commitment to addressing a diverse range of issues, including education, healthcare, economic empowerment, community development, emergency relief, and environmental sustainability.",
     "noProjectsFound": "No projects found",
     "backToProjects": "Back to Projects"
@@ -232,15 +264,28 @@
   "becomeVolunteer": {
     "name": "Name",
     "fullName": "Full Name",
+    "fullNamePlaceholder": "Jane Doe",
     "email": "Email address",
+    "emailPlaceholder": "jane@example.com",
     "phone": "Phone",
+    "phonePlaceholder": "+1 555 000 0000",
     "country": "Country",
     "send-request": "Send Request",
-    "sucess-message": "We have received your request. We will get back to you soon."
+    "successMessage": "We have received your request. We will get back to you soon.",
+    "privacyNote": "Your details are kept private and used only to contact you about volunteering opportunities.",
+    "cancel": "Cancel"
   },
   "gallery": {
     "title": "Our Impact Gallery",
-    "description": "Explore the stories, projects, and communities that make our mission possible."
+    "description": "Explore the stories, projects, and communities that make our mission possible.",
+    "heroEyebrow": "In pictures",
+    "impactEyebrow": "Make an impact",
+    "impactTitle": "Make a difference today",
+    "impactBody": "Your support enables us to continue our vital work around the world. Every donation, no matter the size, helps us create lasting change in communities facing challenges.",
+    "impactList1": "Support sustainable development projects",
+    "impactList2": "Provide emergency relief to those in need",
+    "impactList3": "Empower communities through education and resources",
+    "donateCta": "Donate now"
   },
   "Footer": {
     "taglineLine1": "Noble Alms",

@@ -61,7 +61,7 @@ export default function VolunteerForm({ toggleModal }: VolunteerFormProps) {
         });
       } else {
         toast({
-          description: translate("becomeVolunteer.sucess-message"),
+          description: translate("becomeVolunteer.successMessage"),
         });
         form.reset();
         toggleModal(false);
@@ -85,7 +85,7 @@ export default function VolunteerForm({ toggleModal }: VolunteerFormProps) {
         <div className="grid sm:grid-cols-2 gap-4">
           <FormInput
             name="name"
-            placeholder="Jane Doe"
+            placeholder={translate("becomeVolunteer.fullNamePlaceholder")}
             label={translate("becomeVolunteer.fullName")}
             startContent={<UserIcon className="w-4 h-4 text-neutral-400" />}
             wrapperClassName="h-11"
@@ -93,7 +93,7 @@ export default function VolunteerForm({ toggleModal }: VolunteerFormProps) {
           <FormInput
             type="email"
             name="email"
-            placeholder="jane@example.com"
+            placeholder={translate("becomeVolunteer.emailPlaceholder")}
             label={translate("becomeVolunteer.email")}
             startContent={<MailIcon className="w-4 h-4 text-neutral-400" />}
             wrapperClassName="h-11"
@@ -110,7 +110,7 @@ export default function VolunteerForm({ toggleModal }: VolunteerFormProps) {
           />
           <FormInput
             name="phone"
-            placeholder="+1 555 000 0000"
+            placeholder={translate("becomeVolunteer.phonePlaceholder")}
             label={translate("becomeVolunteer.phone")}
             type="tel"
             startContent={<PhoneIcon className="w-4 h-4 text-neutral-400" />}
@@ -120,10 +120,7 @@ export default function VolunteerForm({ toggleModal }: VolunteerFormProps) {
 
         <div className="flex items-center gap-2 text-xs text-neutral-500 pt-1">
           <ShieldCheckIcon className="w-4 h-4 text-primary-600 shrink-0" />
-          <span>
-            Your details are kept private and used only to contact you about
-            volunteering opportunities.
-          </span>
+          <span>{translate("becomeVolunteer.privacyNote")}</span>
         </div>
 
         <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-3 pt-2 border-t border-neutral-200">
@@ -133,7 +130,7 @@ export default function VolunteerForm({ toggleModal }: VolunteerFormProps) {
             onClick={() => toggleModal(false)}
             className="sm:w-auto h-11 rounded-full px-5"
           >
-            Cancel
+            {translate("becomeVolunteer.cancel")}
           </Button>
           <Button
             loading={isSubscribing}

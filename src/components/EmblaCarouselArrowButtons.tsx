@@ -1,3 +1,5 @@
+"use client";
+
 import React, {
   ComponentPropsWithRef,
   useCallback,
@@ -6,6 +8,7 @@ import React, {
 } from "react";
 import { EmblaCarouselType } from "embla-carousel";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/utils";
 
 type UsePrevNextButtonsType = {
@@ -60,10 +63,11 @@ const baseBtn =
 
 export const PrevButton: React.FC<PropType> = (props) => {
   const { children, btnClassName, ...restProps } = props;
+  const t = useTranslations("a11y");
   return (
     <button
       type="button"
-      aria-label="Previous"
+      aria-label={t("carouselPrevious")}
       className={cn(baseBtn, btnClassName)}
       {...restProps}
     >
@@ -75,10 +79,11 @@ export const PrevButton: React.FC<PropType> = (props) => {
 
 export const NextButton: React.FC<PropType> = (props) => {
   const { children, btnClassName, ...restProps } = props;
+  const t = useTranslations("a11y");
   return (
     <button
       type="button"
-      aria-label="Next"
+      aria-label={t("carouselNext")}
       className={cn(baseBtn, btnClassName)}
       {...restProps}
     >

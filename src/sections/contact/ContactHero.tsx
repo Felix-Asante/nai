@@ -7,7 +7,7 @@ export default function ContactHero() {
 
   return (
     <PageHero
-      eyebrow="We'd love to hear from you"
+      eyebrow={t("heroEyebrow")}
       title={t("title")}
       description={t("description")}
       image="/images/img-6.jpg"

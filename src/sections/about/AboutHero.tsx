@@ -12,7 +12,7 @@ export default function AboutHero() {
   return (
     <div>
       <PageHero
-        eyebrow="About us"
+        eyebrow={translate("heroEyebrow")}
         title={translate("title")}
         description={translate("description")}
         image="/images/img-28.jpg"
@@ -36,7 +36,7 @@ export default function AboutHero() {
                     width={900}
                     height={700}
                     src="/images/img-28.jpg"
-                    alt="Noble Alms International team"
+                    alt={translate("aboutImageAlt")}
                     className="w-full h-full object-cover aspect-[4/3]"
                     unoptimized
                     priority
@@ -46,7 +46,7 @@ export default function AboutHero() {
             </Reveal>
 
             <Reveal delay={0.15} className="lg:col-span-6">
-              <span className="eyebrow">Who we are</span>
+              <span className="eyebrow">{translate("whoWeAreEyebrow")}</span>
               <h2 className="mt-4 headline text-primary-700">
                 {translate("whoWeAre.title")}
               </h2>

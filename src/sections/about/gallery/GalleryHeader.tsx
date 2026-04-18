@@ -3,12 +3,12 @@ import PageHero from "@/components/PageHero";
 import { useTranslations } from "next-intl";
 
 export default function GalleryHeader() {
-  const translate = useTranslations();
+  const translate = useTranslations("gallery");
   return (
     <PageHero
-      eyebrow="In pictures"
-      title={translate("gallery.title")}
-      description={translate("gallery.description")}
+      eyebrow={translate("heroEyebrow")}
+      title={translate("title")}
+      description={translate("description")}
       image="/images/img-24.jpg"
     />
   );

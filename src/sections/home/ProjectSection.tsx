@@ -38,7 +38,7 @@ export default function ProjectsSection({ projects }: ProjectSectionProps) {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-10 md:mb-14">
           <div className="lg:max-w-2xl">
             <SectionHeading
-              eyebrow="What's next"
+              eyebrow={translate("eyebrow")}
               title={translate("upcoming")}
               description={translate("description")}
             />
@@ -79,7 +79,7 @@ export default function ProjectsSection({ projects }: ProjectSectionProps) {
               "rounded-full px-6 h-12 border-primary-200 text-primary-700 hover:bg-primary-50"
             )}
           >
-            View all projects
+            {translate("viewAll")}
             <ArrowRightIcon className="w-4 h-4" />
           </Link>
         </div>

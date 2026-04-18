@@ -5,7 +5,20 @@
     "contactUs": "Contactez-nous",
     "blog": "Blog",
     "getInvolved": "Impliquer",
-    "gallery": "Galerie"
+    "gallery": "Galerie",
+    "logoAlt": "Noble Alms International",
+    "brandLine1": "Noble Alms",
+    "brandLine2": "International",
+    "navPrimary": "Navigation principale",
+    "homeAriaLabel": "Noble Alms International — Accueil",
+    "changeLanguage": "Changer de langue",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
+  },
+  "a11y": {
+    "carouselPrevious": "Diapositive précédente",
+    "carouselNext": "Diapositive suivante",
+    "youtubePlayer": "Lecteur vidéo YouTube"
   },
   "languages": {
     "en": "Anglais",
@@ -25,8 +38,10 @@
     "heroStats": {
       "livesImpacted": "Vies touchées",
       "activeProjects": "Projets actifs",
-      "countriesServed": "Pays desservis"
+      "countriesServed": "Pays desservis",
+      "activeSupporters": "Soutiens actifs"
     },
+    "heroImageAlt": "Mains tendues pour soutenir la communauté",
     "whoWeAre": {
       "headline": "Chez Noble Alms International, nous privilégions la compassion, l'intégrité et l'inclusivité.",
       "description": "En tant qu’organisation caritative, nous nous consacrons à créer un impact positif au sein des communautés. Notre mission est de transformer des vies, de promouvoir le bonheur et de révéler le potentiel à travers des interactions dynamiques et des actions de sensibilisation, notamment des initiatives éducatives, médicales et humanitaires. Nous travaillons sans relâche pour promouvoir l’éducation, la santé et la générosité, en nous efforçant de bâtir un monde où chacun a accès au soutien nécessaire pour s’épanouir. Notre vision repose sur le développement fondamental d’individus nobles au sein de la société, grâce à un soutien financier, éducatif et sanitaire."
@@ -53,12 +68,15 @@
     },
     "stats": {
       "title": "Ensemble, nous avons eu un impact énorme !",
-      "description": "Des vies touchées et des communautés transformées grâce à nos efforts collectifs."
+      "description": "Des vies touchées et des communautés transformées grâce à nos efforts collectifs.",
+      "impactEyebrow": "Notre impact"
     },
     "projects": {
       "title": "Projets pour l'organisation de dons de charité",
+      "eyebrow": "Et ensuite",
       "upcoming": "Projets à venir",
-      "description": "Ces projets montrent l'engagement de NAI à aborder une gamme diversifiée de problèmes, y compris l'éducation, les soins de santé, l'autonomisation économique, le développement communautaire, le secours d'urgence et la durabilité environnementale."
+      "description": "Ces projets montrent l'engagement de NAI à aborder une gamme diversifiée de problèmes, y compris l'éducation, les soins de santé, l'autonomisation économique, le développement communautaire, le secours d'urgence et la durabilité environnementale.",
+      "viewAll": "Voir tous les projets"
     }
   },
   "NotFound": {
@@ -166,15 +184,28 @@
         "description": "À travers nos programmes de dons, nous fournissons de la nourriture, des vêtements et des essentiels à ceux qui en ont besoin, contribuant à atténuer la pauvreté et à améliorer les conditions de vie des membres vulnérables de la société."
       }
     },
-    "meetOurTeam": "Rencontrez Notre Équipe"
+    "meetOurTeam": "Rencontrez Notre Équipe",
+    "heroEyebrow": "À propos",
+    "whoWeAreEyebrow": "Qui nous sommes",
+    "aboutImageAlt": "Équipe de Noble Alms International",
+    "objectivesEyebrow": "Nos priorités",
+    "modeEyebrow": "Notre cadre d'action",
+    "teamEyebrow": "Notre équipe",
+    "teamDescription": "Les dirigeants, bénévoles et partenaires qui font avancer notre mission chaque jour.",
+    "socialOnPlatform": "{name} sur {platform}"
   },
   "volunteers": {
     "title": "Nos Bénévoles",
     "description": "Rencontrez les incroyables individus qui font une différence dans notre communauté.",
-    "becomeVolunteer": "Devenez Bénévole"
+    "becomeVolunteer": "Devenez Bénévole",
+    "eyebrow": "Les visages",
+    "roleLabel": "Bénévole"
   },
   "ContactUsPage": {
     "title": "Contactez-nous",
+    "heroEyebrow": "Écrivez-nous",
+    "faqEyebrow": "Réponses",
+    "mapTitle": "Carte du bureau de Noble Alms International",
     "description": "Nous sommes une organisation caritative dynamique engagée à avoir un impact positif sur les communautés du monde entier. Que vous ayez une question, que vous souhaitiez en savoir plus sur notre organisation ou que vous souhaitiez vous impliquer, n'hésitez pas à nous contacter.",
     "form": {
       "name": {
@@ -211,6 +242,7 @@
   },
   "faq": "Questions Fréquemment Posées (FAQ)",
   "ProjectsPage": {
+    "eyebrow": "Ce que nous faisons",
     "description": "Ces projets mettent en avant l'engagement de NAI à aborder une diversité de problèmes, y compris l'éducation, les soins de santé, l'autonomisation économique, le développement communautaire, le secours d'urgence et la durabilité environnementale.",
     "noProjectsFound": "Aucun projet trouvé",
     "backToProjects": "Retour aux Projets"
@@ -231,15 +263,28 @@
   "becomeVolunteer": {
     "name": "Nom",
     "fullName": "Nom Complet",
-    "email": "Addresse email",
-    "phone": "Phone",
+    "fullNamePlaceholder": "Marie Tremblay",
+    "email": "Adresse courriel",
+    "emailPlaceholder": "marie@exemple.com",
+    "phone": "Téléphone",
+    "phonePlaceholder": "+1 555 000 0000",
     "country": "Pays",
     "send-request": "Envoyer la demande",
-    "success-message": "Nous avons recu votre demande. Nous vous contacterons bientot."
+    "successMessage": "Nous avons reçu votre demande. Nous vous contacterons bientôt.",
+    "privacyNote": "Vos renseignements restent confidentiels et servent uniquement à vous contacter au sujet des occasions de bénévolat.",
+    "cancel": "Annuler"
   },
   "gallery": {
     "title": "Notre galerie d'impact",
-    "description": "Découvrez les histoires, projets et communautés qui rendent notre mission possible."
+    "description": "Découvrez les histoires, projets et communautés qui rendent notre mission possible.",
+    "heroEyebrow": "En images",
+    "impactEyebrow": "Agir maintenant",
+    "impactTitle": "Faites la différence aujourd'hui",
+    "impactBody": "Votre soutien nous permet de poursuivre notre travail essentiel partout dans le monde. Chaque don, quelle que soit sa taille, nous aide à créer un changement durable dans les communautés confrontées à des défis.",
+    "impactList1": "Soutenir des projets de développement durable",
+    "impactList2": "Offrir une aide d'urgence à ceux qui en ont besoin",
+    "impactList3": "Autonomiser les communautés par l'éducation et les ressources",
+    "donateCta": "Faire un don"
   },
   "Footer": {
     "taglineLine1": "Noble Alms",

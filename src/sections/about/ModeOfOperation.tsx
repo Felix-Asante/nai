@@ -14,6 +14,7 @@ const icons = [BookOpenIcon, HeartPulseIcon, HandHeartIcon];
 
 export default function ModeOfOperation() {
   const translate = useTranslations("AboutPage.modeOfOperation");
+  const about = useTranslations("AboutPage");
 
   const goals = [
     {
@@ -41,7 +42,7 @@ export default function ModeOfOperation() {
           <div className="relative p-8 md:p-14 lg:p-16 grid lg:grid-cols-12 gap-10">
             <div className="lg:col-span-5">
               <SectionHeading
-                eyebrow="Our framework"
+                eyebrow={about("modeEyebrow")}
                 tone="light"
                 title={translate("title")}
                 description={translate("description")}

@@ -22,7 +22,7 @@ export default function ProjectHeader({ categories }: Props) {
   return (
     <>
       <PageHero
-        eyebrow="What we do"
+        eyebrow={translate("ProjectsPage.eyebrow")}
         title={translate("Navbar.projects")}
         description={translate("ProjectsPage.description")}
         image="/images/img-15.jpg"

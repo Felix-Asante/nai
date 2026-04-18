@@ -79,10 +79,16 @@ export default function OurImpact() {
   const inView = useInView(ref, { once: true, amount: 0.3 });
 
   const stats: Stat[] = [
-    { value: 139364, label: translate("homePage.stats.description") },
-    { value: 60, label: "Community projects" },
-    { value: 3, label: "Countries served" },
-    { value: 2400, label: "Active supporters" },
+    {
+      value: 139364,
+      label: translate("homePage.heroStats.livesImpacted"),
+    },
+    { value: 60, label: translate("homePage.heroStats.activeProjects") },
+    { value: 3, label: translate("homePage.heroStats.countriesServed") },
+    {
+      value: 2400,
+      label: translate("homePage.heroStats.activeSupporters"),
+    },
   ];
 
   return (
@@ -104,7 +110,7 @@ export default function OurImpact() {
               <div className="lg:col-span-7">
                 <Reveal>
                   <span className="eyebrow text-secondary-200 before:bg-secondary-200/70">
-                    Our impact
+                    {translate("homePage.stats.impactEyebrow")}
                   </span>
                   <h2 className="mt-4 headline text-white max-w-2xl">
                     {translate("homePage.stats.title")}

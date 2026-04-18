@@ -21,9 +21,9 @@ export default function TeamSection({ teamMembers = [] }: Props) {
       <Container>
         <SectionHeading
           align="center"
-          eyebrow="Our people"
+          eyebrow={translate("AboutPage.teamEyebrow")}
           title={translate("AboutPage.meetOurTeam")}
-          description="The leaders, volunteers and partners driving our mission forward every day."
+          description={translate("AboutPage.teamDescription")}
         />
 
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -55,7 +55,10 @@ export default function TeamSection({ teamMembers = [] }: Props) {
                           href={link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label={`${member.name} on ${platform}`}
+                          aria-label={translate(
+                            "AboutPage.socialOnPlatform",
+                            { name: member.name, platform }
+                          )}
                           className="text-neutral-400 hover:text-primary-700 transition-colors"
                         >
                           <img

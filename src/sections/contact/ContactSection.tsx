@@ -35,7 +35,7 @@ export default function ContactSection() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             className="w-full h-full min-h-[420px]"
-            title="Noble Alms International map"
+            title={t("mapTitle")}
           />
         </div>
       </Reveal>

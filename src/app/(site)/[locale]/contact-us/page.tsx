@@ -23,7 +23,8 @@ type Props = {
 export default async function ContactUs(props: Props) {
   const { locale } = await props.params;
   const faqs = await getFAQs(locale);
-  const t = await getTranslations();
+  const t = await getTranslations("ContactUsPage");
+  const tRoot = await getTranslations();
 
   return (
     <main>
@@ -53,8 +54,8 @@ export default async function ContactUs(props: Props) {
               <>
                 <SectionHeading
                   align="center"
-                  eyebrow="Answers"
-                  title={t("faq")}
+                  eyebrow={t("faqEyebrow")}
+                  title={tRoot("faq")}
                 />
                 <div className="mt-12 max-w-4xl mx-auto">
                   <Accordion type="single" collapsible>

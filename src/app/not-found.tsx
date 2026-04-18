@@ -1,6 +1,14 @@
 import Link from "next/link";
+import { getLocale, getTranslations } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 
-export default function RootNotFound() {
+export default async function RootNotFound() {
+  let locale = await getLocale();
+  if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
+    locale = routing.defaultLocale;
+  }
+  const t = await getTranslations({ locale, namespace: "NotFound" });
+
   return (
     <main className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white px-6">
       <div
@@ -21,17 +29,17 @@ export default function RootNotFound() {
           404
         </span>
         <h1 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-primary-700">
-          Page not found
+          {t("title")}
         </h1>
         <p className="mt-4 text-base md:text-lg text-neutral-600 leading-relaxed">
-          The page you&apos;re looking for doesn&apos;t exist or has been moved.
+          {t("description")}
         </p>
         <div className="mt-8 flex justify-center">
           <Link
-            href="/"
+            href={`/${locale}`}
             className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-primary-700 hover:bg-primary-800 text-white text-sm font-medium shadow-soft transition-colors"
           >
-            Back to home
+            {t("actions.backHome")}
           </Link>
         </div>
       </div>

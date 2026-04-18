@@ -99,7 +99,7 @@ export default async function SingleProject(props: Props) {
           {project?.related?.length > 0 && (
             <div className="mt-20 md:mt-28">
               <SectionHeading
-                eyebrow="Keep exploring"
+                eyebrow={translate("SupportOurCauses.otherCausesEyebrow")}
                 title={translate("relatedProjects")}
               />
               <div className="mt-10 grid md:grid-cols-3 gap-6">
