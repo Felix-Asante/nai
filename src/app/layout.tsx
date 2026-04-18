@@ -1,3 +1,4 @@
+import NavigationProgress from "@/components/NavigationProgress";
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
@@ -26,6 +27,7 @@ export default async function RootLayout({
     <html>
       <body>
         <div className={`${bricolageGrotesque.className} antialiased`}>
+          <NavigationProgress />
           <NuqsAdapter>{children}</NuqsAdapter>
         </div>
       </body>

@@ -10,12 +10,17 @@ export const structure: StructureResolver = (S) =>
       S.listItem()
         .title("Gallery Collection")
         .child(S.document().schemaType("gallery").documentId("gallery")),
-      S.listItem()
-        .title("Partners")
-        .child(S.document().schemaType("partners").documentId("partners")),
+      S.documentTypeListItem("partners").title("Partners"),
+      S.documentTypeListItem("partnerInquiry").title("Partner Inquiries"),
+      S.divider(),
       ...S.documentTypeListItems().filter(
         (item) =>
           item.getId() &&
-          !["category", "gallery", "partners"].includes(item.getId()!)
+          ![
+            "category",
+            "gallery",
+            "partners",
+            "partnerInquiry",
+          ].includes(item.getId()!)
       ),
     ]);

@@ -3,17 +3,11 @@ import Button from "@/components/Button";
 import Container from "@/components/layouts/Container";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import VolunteerDialog from "@/components/VolunteerDialog";
 import { cn } from "@/utils";
 import { useTranslations } from "next-intl";
-import VolunteerForm from "./VolunteerForm";
 import { useState } from "react";
+import { HeartHandshakeIcon } from "lucide-react";
 
 const volunteers = [
   { name: "Alex Johnson", image: "/images/img-11.jpg" },
@@ -70,26 +64,17 @@ export default function VolunteersSection() {
         </div>
 
         <div className="mt-12 flex justify-center">
-          <Dialog open={isOpen} onOpenChange={setIsOpen}>
-            <DialogTrigger asChild>
-              <Button
-                size="lg"
-                onClick={() => setIsOpen(true)}
-                className="rounded-full px-6 h-12 bg-primary-700 hover:bg-primary-800"
-              >
-                {translate("becomeVolunteer")}
-              </Button>
-            </DialogTrigger>
-            <DialogContent onPointerDownOutside={(e) => e.preventDefault()}>
-              <DialogHeader>
-                <DialogTitle>{translate("becomeVolunteer")}</DialogTitle>
-              </DialogHeader>
-              <VolunteerForm
-                toggleModal={(state: boolean) => setIsOpen(state)}
-              />
-            </DialogContent>
-          </Dialog>
+          <Button
+            size="lg"
+            onClick={() => setIsOpen(true)}
+            className="rounded-full px-6 h-12 bg-primary-700 hover:bg-primary-800"
+            startContent={<HeartHandshakeIcon className="w-4 h-4" />}
+          >
+            {translate("becomeVolunteer")}
+          </Button>
         </div>
+
+        <VolunteerDialog open={isOpen} onOpenChange={setIsOpen} />
       </Container>
     </section>
   );

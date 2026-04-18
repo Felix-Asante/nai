@@ -67,26 +67,26 @@ export default function NewsLetterSection() {
               onSubmit={form.handleSubmit(onSubscribe)}
               className="flex flex-col sm:flex-row gap-3 w-full"
             >
-              <FormInput
-                name="email"
-                type="email"
-                placeholder="Enter your email address"
-                startContent={
-                  <MailIcon className="w-5 h-5 text-white/60" />
-                }
-                wrapperClassName={cn(
-                  "flex-1 rounded-full border-white/25 bg-white/10",
-                  "h-12 md:h-14 px-5 md:px-6",
-                  "focus-within:border-white/50 focus-within:ring-white/30"
-                )}
-                className="bg-transparent text-white placeholder:text-white/60 text-sm md:text-base"
-              />
+              <div className="flex-1">
+                <FormInput
+                  name="email"
+                  type="email"
+                  placeholder="Enter your email address"
+                  startContent={<MailIcon className="w-5 h-5 text-white/60" />}
+                  wrapperClassName={cn(
+                    "flex-1 rounded-full border-white/25 bg-white/10",
+                    "h-12 md:h-14 px-5 md:px-6",
+                    "focus-within:border-white/50 focus-within:ring-white/30",
+                  )}
+                  className="bg-transparent text-white placeholder:text-white/60 text-sm md:text-base"
+                />
+              </div>
               <Button
                 loading={isSubscribing}
                 className={cn(
                   "rounded-full bg-secondary hover:bg-secondary-600 text-white shrink-0",
                   "h-12 md:h-14 px-6 md:px-8 text-sm md:text-base font-semibold",
-                  "shadow-lg shadow-secondary/20"
+                  "shadow-lg shadow-secondary/20",
                 )}
                 type="submit"
               >

@@ -38,23 +38,37 @@ function useCountUp(target: number, duration = 1600, start = false) {
   return count;
 }
 
-function StatItem({ stat, index, active }: { stat: Stat; index: number; active: boolean }) {
+function StatItem({
+  stat,
+  index,
+  active,
+}: {
+  stat: Stat;
+  index: number;
+  active: boolean;
+}) {
   const value = useCountUp(stat.value, 1600, active);
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       animate={active ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className={cn(
         "p-6 md:p-8",
-        index !== 0 && "md:border-l md:border-white/15"
+        index !== 0 && "md:border-l md:border-white/15",
       )}
     >
       <div className="text-4xl md:text-5xl font-bold tracking-tight">
         {value.toLocaleString()}
         {stat.suffix ?? "+"}
       </div>
-      <div className="mt-2 text-sm md:text-base text-white/75">{stat.label}</div>
+      <div className="mt-2 text-sm md:text-base text-white/75">
+        {stat.label}
+      </div>
     </motion.div>
   );
 }
@@ -99,10 +113,10 @@ export default function OurImpact() {
               </div>
               <Reveal delay={0.15} className="lg:col-span-5 lg:text-right">
                 <Link
-                  href="/contact-us"
+                  href="/partners"
                   className={cn(
                     buttonVariants({ size: "lg" }),
-                    "rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600"
+                    "rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600",
                   )}
                 >
                   {translate("joinMovement")}
@@ -116,7 +130,12 @@ export default function OurImpact() {
               className="mt-12 grid grid-cols-2 md:grid-cols-4 rounded-2xl bg-white/5 ring-1 ring-white/10 overflow-hidden"
             >
               {stats.map((stat, i) => (
-                <StatItem key={stat.label} stat={stat} index={i} active={inView} />
+                <StatItem
+                  key={stat.label}
+                  stat={stat}
+                  index={i}
+                  active={inView}
+                />
               ))}
             </div>
           </div>

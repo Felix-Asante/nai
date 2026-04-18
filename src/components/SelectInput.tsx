@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useController } from "react-hook-form";
 import {
   Select,
@@ -8,6 +8,7 @@ import {
   SelectValue,
 } from "./ui/select";
 import { Label } from "./ui/label";
+import { cn } from "@/utils";
 
 interface Options {
   label: string;
@@ -21,16 +22,19 @@ interface Props {
   defaultValue?: string;
   placeholder?: string;
   options: Options[];
+  triggerClassName?: string;
+  className?: string;
 }
 
 function sortOptions(options: Options[]) {
-  return options.sort((a, b) =>
+  return [...options].sort((a, b) =>
     a.label?.localeCompare(b.label, undefined, {
       sensitivity: "base",
       usage: "sort",
     })
   );
 }
+
 export default function SelectInput({
   name,
   control,
@@ -38,15 +42,22 @@ export default function SelectInput({
   placeholder,
   options,
   defaultValue,
+  triggerClassName,
+  className,
 }: Props) {
   const { field, fieldState } = useController({ name, control, defaultValue });
-  const [value, setValue] = useState("");
 
   return (
-    <div className="mt-2.5">
-      <Label className="block mb-1.5">{label}</Label>
+    <div className={cn("space-y-2", className)}>
+      {label && (
+        <Label
+          className={cn("text-sm", fieldState.error && "text-destructive")}
+        >
+          {label}
+        </Label>
+      )}
       <Select onValueChange={field.onChange} value={field.value?.toString()}>
-        <SelectTrigger>
+        <SelectTrigger className={cn("h-11", triggerClassName)}>
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
@@ -60,7 +71,7 @@ export default function SelectInput({
 
       {fieldState?.error?.message && (
         <p className="text-sm font-medium text-destructive">
-          {fieldState?.error?.message}
+          {fieldState.error.message}
         </p>
       )}
     </div>

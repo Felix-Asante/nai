@@ -28,7 +28,7 @@ export default function ProjectHeader({ categories }: Props) {
         image="/images/img-15.jpg"
       />
 
-      <div className="bg-white sticky top-[64px] z-30 border-b border-neutral-200/70">
+      <div className="bg-white sticky top-[80px] z-30 border-b border-neutral-200/70">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: -8 }}
@@ -42,7 +42,7 @@ export default function ProjectHeader({ categories }: Props) {
                 "shrink-0 px-4 py-1.5 rounded-full text-sm font-medium border transition-colors",
                 !selectedCategory
                   ? "bg-primary-700 text-white border-primary-700"
-                  : "bg-white text-neutral-600 border-neutral-200 hover:border-primary-300 hover:text-primary-700"
+                  : "bg-white text-neutral-600 border-neutral-200 hover:border-primary-300 hover:text-primary-700",
               )}
             >
               {translate("all")}
@@ -56,7 +56,7 @@ export default function ProjectHeader({ categories }: Props) {
                     "shrink-0 px-4 py-1.5 rounded-full text-sm font-medium border transition-colors capitalize",
                     active
                       ? "bg-primary-700 text-white border-primary-700"
-                      : "bg-white text-neutral-600 border-neutral-200 hover:border-primary-300 hover:text-primary-700"
+                      : "bg-white text-neutral-600 border-neutral-200 hover:border-primary-300 hover:text-primary-700",
                   )}
                   onClick={() => setSelectedCategory(category?.title)}
                 >

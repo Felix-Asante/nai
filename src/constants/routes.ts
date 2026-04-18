@@ -38,18 +38,14 @@ export const footerRoutes = (translate: Translator) => [
     name: translate("Navbar.aboutUs"),
     href: "/about-us",
   },
-  // {
-  //   name: "Our Mission",
-  //   href: "/our-mission",
-  // },
   {
     name: translate("Navbar.projects"),
     href: "/projects",
   },
-  // {
-  //   name: "Get Involved",
-  //   href: "/get-involved",
-  // },
+  {
+    name: "Partners",
+    href: "/partners",
+  },
   {
     name: translate("Navbar.contactUs"),
     href: "/contact-us",
