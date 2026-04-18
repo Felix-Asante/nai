@@ -18,11 +18,18 @@
   "learnMore": "En savoir plus",
   "supportUs": "Soutenez-nous",
   "homePage": {
-    "headline": "Transformer des vies avec joie",
-    "subHeadline": "Nous sommes une organisation à but non lucratif dynamique dédiée à créer un impact durable dans les communautés du monde entier.",
+    "brandName": "Noble Alms International",
+    "headline": "Transformer des vies par la compassion et l’action",
+    "subHeadline": "Nous sommes une organisation caritative enregistrée au Canada, dédiée à l’autonomisation des communautés à travers des initiatives durables et à fort impact.",
+    "heroTagline": "Faire progresser l’éducation • Promouvoir la santé • Soulager la pauvreté",
+    "heroStats": {
+      "livesImpacted": "Vies touchées",
+      "activeProjects": "Projets actifs",
+      "countriesServed": "Pays desservis"
+    },
     "whoWeAre": {
       "headline": "Chez Noble Alms International, nous privilégions la compassion, l'intégrité et l'inclusivité.",
-      "description": "En tant qu'organisation à but non lucratif, nous sommes dédiés à créer un impact positif dans les communautés. Notre mission est de transformer des vies, promouvoir le bonheur et libérer le potentiel à travers des interactions vivantes et des actions, y compris des initiatives éducatives, médicales et caritatives. Nous travaillons sans relâche pour promouvoir l'éducation, la santé et le don d'aumônes, en nous efforçant de créer un monde où chacun a accès au soutien dont il a besoin pour prospérer."
+      "description": "En tant qu’organisation caritative, nous nous consacrons à créer un impact positif au sein des communautés. Notre mission est de transformer des vies, de promouvoir le bonheur et de révéler le potentiel à travers des interactions dynamiques et des actions de sensibilisation, notamment des initiatives éducatives, médicales et humanitaires. Nous travaillons sans relâche pour promouvoir l’éducation, la santé et la générosité, en nous efforçant de bâtir un monde où chacun a accès au soutien nécessaire pour s’épanouir. Notre vision repose sur le développement fondamental d’individus nobles au sein de la société, grâce à un soutien financier, éducatif et sanitaire."
     },
     "mission": {
       "headline": "La mission de notre organisation",
@@ -53,6 +60,44 @@
       "upcoming": "Projets à venir",
       "description": "Ces projets montrent l'engagement de NAI à aborder une gamme diversifiée de problèmes, y compris l'éducation, les soins de santé, l'autonomisation économique, le développement communautaire, le secours d'urgence et la durabilité environnementale."
     }
+  },
+  "NotFound": {
+    "badge": "Page introuvable",
+    "title": "Nous ne trouvons pas la page que vous cherchez",
+    "description": "Le lien est peut-être rompu, la page a pu être déplacée ou ne plus exister. Remettons-vous sur la bonne voie.",
+    "exploreInstead": "Explorez plutôt",
+    "visit": "Visiter",
+    "actions": {
+      "backHome": "Retour à l'accueil",
+      "contactUs": "Nous contacter"
+    },
+    "links": {
+      "home": "Accueil",
+      "homeDescription": "Commencez par le début et découvrez notre mission.",
+      "projects": "Projets",
+      "projectsDescription": "Découvrez les initiatives qui transforment des communautés.",
+      "donate": "Faire un don",
+      "donateDescription": "Soutenez un changement durable avec un don de toute taille.",
+      "contact": "Contact",
+      "contactDescription": "Contactez notre équipe — nous serions ravis d'échanger."
+    }
+  },
+  "SupportOurCauses": {
+    "eyebrow": "Nos causes",
+    "title": "Soutenez nos causes",
+    "description": "Chaque vie que nous touchons commence par l'un de nos trois engagements : l'éducation, la santé et la lutte contre la pauvreté. Découvrez nos causes et choisissez comment vous souhaitez aider.",
+    "learnMore": "En savoir plus",
+    "learnMoreAbout": "En savoir plus sur",
+    "donateNow": "Faire un don",
+    "donateCallout": "Chaque don alimente un changement réel et mesurable dans nos trois causes principales.",
+    "backHome": "Retour à l'accueil",
+    "exploreAll": "Voir toutes les causes",
+    "ourImpact": "Notre impact",
+    "makeDifference": "Faites la différence aujourd'hui",
+    "makeDifferenceDescription": "Votre don finance directement les programmes qui font avancer ce travail.",
+    "supportEyebrow": "Soutenir cette cause",
+    "otherCausesEyebrow": "Continuez à explorer",
+    "otherCausesTitle": "Découvrez nos autres causes"
   },
   "HowUCanHelp": {
     "headline": "Comment pourriez-vous aider ?",

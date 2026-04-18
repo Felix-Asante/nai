@@ -18,11 +18,18 @@
   "learnMore": "Learn More",
   "supportUs": "Support Us",
   "homePage": {
-    "headline": "Transforming lives with joy",
-    "subHeadline": "We are a dynamic non-profit organization dedicated to creating a lasting impact in communities around the world.",
+    "brandName": "Noble Alms International",
+    "headline": "Transforming Lives Through Compassion and Action",
+    "subHeadline": "We are a registered charitable organization in Canada, dedicated to empowering communities through sustainable and impactful initiatives.",
+    "heroTagline": "Advancing Education • Promoting Health • Relieving Poverty",
+    "heroStats": {
+      "livesImpacted": "Lives impacted",
+      "activeProjects": "Active projects",
+      "countriesServed": "Countries served"
+    },
     "whoWeAre": {
       "headline": "At Noble Alms International, we prioritize compassion, integrity, and inclusivity.",
-      "description": "As a non-profit organization, we are dedicated to creating a positive impact in communities. Our mission is to transform lives, promote happiness, and unleash potential through lively interaction and outreaches, including educational, medical, and charity initiatives. We work tirelessly to promote education, health, and the giving of alms, striving to create a world where everyone has access to the support they need to thrive."
+      "description": "As a charitable organization, we are dedicated to creating a positive impact in communities. Our mission is to transform lives, promote happiness, and unleash potential through lively interaction and outreaches, including educational, medical, and charity initiatives. We work tirelessly to promote education, health, and the giving of alms, striving to create a world where everyone has access to the support they need to thrive. Our vision is rooted in the foundational development of noble individuals in society through financial, educational, and health support."
     },
     "mission": {
       "headline": "The mission of our organization",
@@ -53,6 +60,44 @@
       "upcoming": "Upcoming Projects",
       "description": "These projects showcase NAI's commitment to addressing a diverse range of issues, including education, healthcare, economic empowerment, community development, emergency relief, and environmental sustainability."
     }
+  },
+  "NotFound": {
+    "badge": "Page not found",
+    "title": "We can't find the page you're looking for",
+    "description": "The link may be broken, the page may have moved, or it may no longer exist. Let's get you back on track.",
+    "exploreInstead": "Explore instead",
+    "visit": "Visit",
+    "actions": {
+      "backHome": "Back to home",
+      "contactUs": "Contact us"
+    },
+    "links": {
+      "home": "Home",
+      "homeDescription": "Start from the beginning and discover our mission.",
+      "projects": "Projects",
+      "projectsDescription": "See the initiatives transforming communities.",
+      "donate": "Donate",
+      "donateDescription": "Fuel lasting change with a gift of any size.",
+      "contact": "Contact",
+      "contactDescription": "Reach our team — we'd love to hear from you."
+    }
+  },
+  "SupportOurCauses": {
+    "eyebrow": "Our causes",
+    "title": "Support Our Causes",
+    "description": "Every life we touch begins with one of three commitments — education, healthcare and poverty relief. Explore our causes and choose how you'd like to help.",
+    "learnMore": "Learn more",
+    "learnMoreAbout": "Learn more about",
+    "donateNow": "Donate Now",
+    "donateCallout": "Every gift fuels real, measurable change across our three core causes.",
+    "backHome": "Back to home",
+    "exploreAll": "Explore all causes",
+    "ourImpact": "Our impact",
+    "makeDifference": "Make a difference today",
+    "makeDifferenceDescription": "Your donation directly funds the programs that keep this work moving forward.",
+    "supportEyebrow": "Support this cause",
+    "otherCausesEyebrow": "Keep exploring",
+    "otherCausesTitle": "Discover our other causes"
   },
   "HowUCanHelp": {
     "headline": "How Could You Help?",

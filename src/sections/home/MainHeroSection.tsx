@@ -7,33 +7,33 @@ import { buttonVariants } from "@/components/ui/button";
 import { ArrowRightIcon, HeartHandshakeIcon } from "lucide-react";
 import { cn } from "@/utils";
 
-const stats = [
-  { value: "139K+", label: "Lives impacted" },
-  { value: "60+", label: "Active projects" },
-  { value: "3", label: "Countries served" },
-];
-
 export default function MainHeroSection() {
   const translate = useTranslations();
 
-  return (
-    <section className="relative isolate overflow-hidden bg-primary-800 text-white">
-      <div
-        className="absolute inset-0 bg-cover bg-center scale-105"
-        style={{ backgroundImage: "url('/images/img-6.jpg')" }}
-        aria-hidden
-      />
-      <div
-        className="absolute inset-0 bg-gradient-to-br from-primary-800/90 via-primary-700/80 to-primary-500/60"
-        aria-hidden
-      />
-      <div
-        className="absolute inset-0 bg-[radial-gradient(70%_80%_at_20%_10%,rgba(255,255,255,0.16),transparent_65%)]"
-        aria-hidden
-      />
+  const stats = [
+    { value: "139K+", label: translate("homePage.heroStats.livesImpacted") },
+    { value: "60+", label: translate("homePage.heroStats.activeProjects") },
+    { value: "3", label: translate("homePage.heroStats.countriesServed") },
+  ] as const;
 
-      <Container className="relative z-10">
-        <div className="grid md:grid-cols-12 gap-10 items-center py-20 md:py-28 lg:py-32">
+  return (
+    <section className="relative mb-16 overflow-visible sm:mb-20 md:mb-24">
+      <div
+        className="absolute inset-0 z-0 overflow-hidden rounded-b-[2.5rem] bg-primary-800 md:rounded-b-[3rem]"
+        aria-hidden
+      >
+        <div
+          className="absolute inset-0 bg-cover bg-center scale-105"
+          style={{ backgroundImage: "url('/images/img-6.jpg')" }}
+        />
+        {/* Original hero overlay weight — strong navy wash over the photo */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-800/90 via-primary-700/80 to-primary-500/60" />
+        <div className="absolute inset-0 bg-[radial-gradient(70%_80%_at_20%_10%,rgba(255,255,255,0.16),transparent_65%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-primary-900/40 to-transparent" />
+      </div>
+
+      <Container className="relative z-10 px-4 pt-16 pb-28 text-white md:px-6 md:pt-20 md:pb-32 lg:pt-24 lg:pb-36">
+        <div className="grid items-center gap-10 md:grid-cols-12">
           <motion.div
             className="md:col-span-7"
             initial={{ opacity: 0, y: 24 }}
@@ -41,13 +41,14 @@ export default function MainHeroSection() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="eyebrow text-secondary-200 before:bg-secondary-200/70">
-              Noble Alms International
+              {translate("homePage.brandName")}
             </span>
-            <h1 className="mt-5 display">
-              {translate("homePage.headline")}
-            </h1>
-            <p className="mt-6 max-w-xl text-lg md:text-xl leading-relaxed text-white/85">
+            <h1 className="mt-5 display">{translate("homePage.headline")}</h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/85 md:text-xl">
               {translate("homePage.subHeadline")}
+            </p>
+            <p className="mt-5 max-w-2xl text-sm font-medium tracking-wide text-white/90 md:text-base">
+              {translate("homePage.heroTagline")}
             </p>
 
             <motion.div
@@ -60,7 +61,7 @@ export default function MainHeroSection() {
                 href="/donate"
                 className={cn(
                   buttonVariants({ size: "lg" }),
-                  "rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600 shadow-lg shadow-secondary/30"
+                  "rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600 shadow-lg shadow-secondary/30",
                 )}
               >
                 <HeartHandshakeIcon className="w-4 h-4" />
@@ -70,7 +71,7 @@ export default function MainHeroSection() {
                 href="/about-us"
                 className={cn(
                   buttonVariants({ size: "lg", variant: "outline" }),
-                  "rounded-full px-6 h-12 border-white/40 bg-white/10 text-white hover:bg-white hover:text-primary-700"
+                  "rounded-full px-6 h-12 border-white/40 bg-white/10 text-white hover:bg-white hover:text-primary-700",
                 )}
               >
                 {translate("learnMore")}
@@ -80,23 +81,26 @@ export default function MainHeroSection() {
           </motion.div>
 
           <motion.div
-            className="md:col-span-5 hidden md:block"
+            className="hidden md:col-span-5 md:block"
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="relative">
-              <div className="absolute -inset-4 rounded-[2rem] bg-secondary/20 blur-2xl" aria-hidden />
+              <div
+                className="absolute -inset-4 rounded-[2rem] bg-secondary/20 blur-2xl"
+                aria-hidden
+              />
               <img
                 src="/images/img-5.jpg"
                 alt="Helping hands"
-                className="relative w-full rounded-[2rem] shadow-2xl aspect-[4/5] object-cover ring-1 ring-white/20"
+                className="relative aspect-[4/5] w-full rounded-[2rem] object-cover shadow-2xl ring-1 ring-white/20"
               />
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.6 }}
-                className="absolute -bottom-6 -left-6 max-w-[240px] bg-white rounded-2xl p-4 shadow-xl text-neutral-700"
+                className="absolute -bottom-6 -left-6 max-w-[240px] rounded-2xl bg-white p-4 text-neutral-700 shadow-xl"
               >
                 <div className="flex items-center gap-3">
                   <div className="flex -space-x-2">
@@ -105,7 +109,7 @@ export default function MainHeroSection() {
                         key={n}
                         src={`/images/${n}.jpg`}
                         alt=""
-                        className="w-9 h-9 rounded-full border-2 border-white object-cover"
+                        className="h-9 w-9 rounded-full border-2 border-white object-cover"
                       />
                     ))}
                   </div>
@@ -122,34 +126,48 @@ export default function MainHeroSection() {
             </div>
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="relative -mb-10 md:-mb-16 translate-y-10 md:translate-y-16"
-        >
-          <div className="grid grid-cols-3 rounded-2xl bg-white text-neutral-700 shadow-elevated overflow-hidden">
-            {stats.map((s, i) => (
-              <div
-                key={s.label}
-                className={cn(
-                  "p-5 md:p-7 text-center md:text-left",
-                  i !== stats.length - 1 && "border-r border-neutral-200/80"
-                )}
-              >
-                <div className="text-2xl md:text-4xl font-bold text-primary-700 tracking-tight">
-                  {s.value}
-                </div>
-                <div className="mt-1 text-xs md:text-sm text-neutral-500 font-medium">
-                  {s.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
       </Container>
-      <div className="h-10 md:h-16" aria-hidden />
+
+      {/* Stats: absolutely positioned at bottom of hero; centered on the seam (half over hero, half over next section) */}
+      <div className="pointer-events-none absolute left-0 right-0 top-full z-20 -translate-y-1/2 px-4 sm:px-6">
+        <Container className="pointer-events-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.55,
+              delay: 0.3,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            <div
+              className={cn(
+                "grid grid-cols-3 overflow-hidden rounded-2xl border border-white/25",
+                "bg-white/95 text-neutral-700 shadow-elevated backdrop-blur-md",
+                "md:rounded-3xl",
+              )}
+            >
+              {stats.map((s, i) => (
+                <div
+                  key={s.label}
+                  className={cn(
+                    "flex min-h-[5.5rem] flex-col justify-center px-2 py-5 sm:min-h-[6rem] sm:px-4 md:min-h-[6.5rem] md:px-8 md:py-7",
+                    "text-center md:text-left",
+                    i !== stats.length - 1 && "border-r border-neutral-200/90",
+                  )}
+                >
+                  <div className="text-xl font-bold tabular-nums tracking-tight text-primary-700 sm:text-2xl md:text-3xl lg:text-4xl">
+                    {s.value}
+                  </div>
+                  <div className="mt-1.5 text-[0.65rem] font-medium leading-snug text-neutral-500 sm:text-xs md:text-sm">
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </Container>
+      </div>
     </section>
   );
 }
