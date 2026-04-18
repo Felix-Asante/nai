@@ -1,14 +1,15 @@
 "use client";
 import { contactDetails, socialLinks, SocialMediaIcons } from "@/constants";
+import { useTranslations } from "next-intl";
 import { MapPinIcon, PhoneIcon, MailIcon, MessageCircleIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useTranslations } from "next-intl";
 import Reveal from "@/components/Reveal";
 
 export default function ContactSection() {
   const t = useTranslations("ContactUsPage");
+  const tc = useTranslations("ContactSection");
 
   const socialAccounts = [
     {
@@ -110,9 +111,9 @@ export default function ContactSection() {
                 <MailIcon className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-semibold text-primary-700">Email us</h3>
+                <h3 className="font-semibold text-primary-700">{tc("emailTitle")}</h3>
                 <p className="text-sm text-neutral-500">
-                  We usually reply within 24 hours
+                  {tc("emailSubtitle")}
                 </p>
               </div>
             </div>

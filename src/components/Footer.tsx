@@ -14,13 +14,14 @@ import {
 
 export default async function Footer() {
   const t = await getTranslations();
+  const tf = await getTranslations("Footer");
 
   const waysToHelp = [
     { name: t("donate"), href: "/donate" },
-    { name: "Monthly giving", href: "/donate?frequency=monthly" },
-    { name: "Sponsor a project", href: "/donate#sponsor" },
-    { name: "Corporate partners", href: "/partners" },
-    { name: "Careers & Volunteers", href: "/volunteer" },
+    { name: tf("ways.monthlyGiving"), href: "/donate?frequency=monthly" },
+    { name: tf("ways.sponsorProject"), href: "/donate#sponsor" },
+    { name: tf("ways.corporatePartners"), href: "/partners" },
+    { name: tf("ways.careersVolunteers"), href: "/volunteer" },
   ];
 
   const explore = [
@@ -29,6 +30,8 @@ export default async function Footer() {
     { name: t("Navbar.gallery"), href: "/gallery" },
     { name: t("Navbar.contactUs"), href: "/contact-us" },
   ];
+
+  const year = new Date().getFullYear();
 
   return (
     <footer className="relative bg-primary-800 text-white">
@@ -52,14 +55,13 @@ export default async function Footer() {
                 className="object-contain rounded-md"
               />
               <div className="leading-tight">
-                <div className="font-semibold">Noble Alms</div>
-                <div className="text-sm text-white/70">International</div>
+                <div className="font-semibold">{tf("taglineLine1")}</div>
+                <div className="text-sm text-white/70">{tf("taglineLine2")}</div>
               </div>
             </Link>
 
             <p className="mt-5 text-sm md:text-base text-white/75 leading-relaxed max-w-sm">
-              Transforming lives, promoting happiness, and unleashing potential
-              through education, health, and charity — across borders.
+              {tf("description")}
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-2.5">
@@ -89,11 +91,12 @@ export default async function Footer() {
                 aria-hidden
               />
               <p className="text-xs md:text-sm text-white/80 leading-relaxed">
-                Registered charitable organization in {" "}
-                {charityInfo.registrationLocation}.
+                {tf("registeredCharityBadge", {
+                  location: charityInfo.registrationLocation,
+                })}
                 <br />
                 <span className="text-white/60">
-                  Charity Reg. No.{" "}
+                  {tf("charityRegLabel")}{" "}
                   <span className="font-mono tracking-wide text-white/90">
                     {charityInfo.registrationNumber}
                   </span>
@@ -104,7 +107,7 @@ export default async function Footer() {
 
           <div className="md:col-span-2">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white/80 mb-4">
-              Ways to help
+              {tf("waysToHelpTitle")}
             </h4>
             <ul className="space-y-3 text-sm">
               {waysToHelp.map((item) => (
@@ -122,7 +125,7 @@ export default async function Footer() {
 
           <div className="md:col-span-2">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white/80 mb-4">
-              Explore
+              {tf("exploreTitle")}
             </h4>
             <ul className="space-y-3 text-sm">
               {explore.map((item) => (
@@ -140,7 +143,7 @@ export default async function Footer() {
 
           <div className="md:col-span-4">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white/80 mb-4">
-              Get in touch
+              {tf("getInTouchTitle")}
             </h4>
             <ul className="space-y-3 text-sm text-white/80">
               {contactDetails.emails.map((item) => (
@@ -157,7 +160,7 @@ export default async function Footer() {
             </ul>
 
             <p className="mt-5 text-xs uppercase tracking-wider text-white/50">
-              You can also call us on
+              {tf("callUsIntro")}
             </p>
             <ul className="mt-2 space-y-2 text-sm text-white/80">
               {contactDetails.phoneNumbers.map((item) => (
@@ -181,17 +184,12 @@ export default async function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row gap-3 md:items-center md:justify-between text-xs text-white/60">
-          <p>
-            © {new Date().getFullYear()} Noble Alms International. All rights
-            reserved.
-          </p>
+          <p>{tf("copyright", { year })}</p>
           <p className="md:text-right">
-            Noble Alms International is a registered charitable organization in{" "}
-            {charityInfo.registrationLocation}. Charity Reg. No.{" "}
-            <span className="font-mono text-white/80">
-              {charityInfo.registrationNumber}
-            </span>
-            .
+            {tf("registeredLegal", {
+              location: charityInfo.registrationLocation,
+              regNumber: charityInfo.registrationNumber,
+            })}
           </p>
         </div>
       </Container>

@@ -36,72 +36,13 @@ import { getCountries } from "react-phone-number-input";
 import en from "react-phone-number-input/locale/en";
 import fr from "react-phone-number-input/locale/fr";
 import { submitVolunteerApplication } from "@/actions/volunteers";
+import { useTranslations } from "next-intl";
 
 type InterestValue = "education" | "health" | "community" | "other";
 type AvailabilityValue = "weekdays" | "weekends" | "both";
 
-const INTEREST_OPTIONS: {
-  value: InterestValue;
-  label: string;
-  Icon: LucideIcon;
-  accent: string;
-}[] = [
-  {
-    value: "education",
-    label: "Education Support",
-    Icon: BookOpenIcon,
-    accent: "bg-primary-50 text-primary-700",
-  },
-  {
-    value: "health",
-    label: "Health & Medical Outreach",
-    Icon: HeartPulseIcon,
-    accent: "bg-secondary-50 text-secondary-600",
-  },
-  {
-    value: "community",
-    label: "Community Development",
-    Icon: HandHeartIcon,
-    accent: "bg-primary-50 text-primary-700",
-  },
-  {
-    value: "other",
-    label: "Other",
-    Icon: SparklesIcon,
-    accent: "bg-neutral-100 text-neutral-700",
-  },
-];
-
-const AVAILABILITY_OPTIONS: {
-  value: AvailabilityValue;
-  label: string;
-  description: string;
-}[] = [
-  {
-    value: "weekdays",
-    label: "Weekdays",
-    description: "Monday to Friday",
-  },
-  {
-    value: "weekends",
-    label: "Weekends",
-    description: "Saturday and Sunday",
-  },
-  {
-    value: "both",
-    label: "Both",
-    description: "Flexible availability",
-  },
-];
-
-const HOURS_OPTIONS = [
-  { label: "1–3 hours / week", value: "1-3" },
-  { label: "4–6 hours / week", value: "4-6" },
-  { label: "7–10 hours / week", value: "7-10" },
-  { label: "10+ hours / week", value: "10+" },
-];
-
 export default function VolunteerApplicationForm() {
+  const t = useTranslations("VolunteerApplicationForm");
   const params = useParams();
   const locale = params?.locale || "en";
   const lang = locale === "en" ? en : fr;
@@ -115,6 +56,68 @@ export default function VolunteerApplicationForm() {
         value: en[country],
       })),
     [lang]
+  );
+
+  const interestOptions = useMemo(
+    () =>
+      [
+        {
+          value: "education" as const,
+          label: t("interestEducation"),
+          Icon: BookOpenIcon,
+          accent: "bg-primary-50 text-primary-700",
+        },
+        {
+          value: "health" as const,
+          label: t("interestHealth"),
+          Icon: HeartPulseIcon,
+          accent: "bg-secondary-50 text-secondary-600",
+        },
+        {
+          value: "community" as const,
+          label: t("interestCommunity"),
+          Icon: HandHeartIcon,
+          accent: "bg-primary-50 text-primary-700",
+        },
+        {
+          value: "other" as const,
+          label: t("interestOther"),
+          Icon: SparklesIcon,
+          accent: "bg-neutral-100 text-neutral-700",
+        },
+      ],
+    [t]
+  );
+
+  const availabilityOptions = useMemo(
+    () => [
+      {
+        value: "weekdays" as const,
+        label: t("weekdays"),
+        description: t("weekdaysDesc"),
+      },
+      {
+        value: "weekends" as const,
+        label: t("weekends"),
+        description: t("weekendsDesc"),
+      },
+      {
+        value: "both" as const,
+        label: t("both"),
+        description: t("bothDesc"),
+      },
+    ],
+    [t]
+  );
+
+  const hoursOptions = useMemo(
+    () => [
+      { value: "1-3", label: t("hours1to3") },
+      { value: "4-6", label: t("hours4to6") },
+      { value: "7-10", label: t("hours7to10") },
+      { value: "10+", label: t("hours10plus") },
+    ],
+    [t]
   );
 
   const form = useForm<VolunteerApplicationInput>({
@@ -164,8 +167,7 @@ export default function VolunteerApplicationForm() {
       setSubmitted(true);
       form.reset();
       toast({
-        description:
-          "Thank you! Your application has been received. Our team will contact you soon.",
+        description: t("toastSuccess"),
       });
     } catch (error) {
       toast({
@@ -184,14 +186,13 @@ export default function VolunteerApplicationForm() {
           <CheckCircle2Icon className="w-7 h-7" />
         </div>
         <h3 className="mt-5 text-xl md:text-2xl font-semibold text-primary-700">
-          Application received
+          {t("successTitle")}
         </h3>
         <p className="mt-3 text-neutral-600 leading-relaxed">
-          Thank you for applying to volunteer with Noble Alms International.
-          Our team will review your application and be in touch shortly.
+          {t("successBody")}
         </p>
         <p className="mt-4 text-sm text-neutral-500">
-          For inquiries:{" "}
+          {t("successInquiries")}{" "}
           <a
             href="mailto:info@noblealmsinternational.com"
             className="font-semibold text-primary-700 hover:text-secondary transition-colors"
@@ -204,7 +205,7 @@ export default function VolunteerApplicationForm() {
           onClick={() => setSubmitted(false)}
           className="mt-6 text-sm font-semibold text-primary-700 hover:text-secondary transition-colors"
         >
-          Submit another application
+          {t("submitAnother")}
         </button>
       </div>
     );
@@ -219,14 +220,14 @@ export default function VolunteerApplicationForm() {
         {/* Personal Information */}
         <Section
           icon="📌"
-          title="Personal Information"
-          description="Please fill in your details."
+          title={t("personalSection.title")}
+          description={t("personalSection.description")}
         >
           <div className="grid sm:grid-cols-2 gap-4">
             <FormInput
               name="fullName"
-              label="Full name"
-              placeholder="Jane Doe"
+              label={t("fullName")}
+              placeholder={t("fullNamePlaceholder")}
               startContent={
                 <UserIcon className="w-4 h-4 text-neutral-400" />
               }
@@ -235,8 +236,8 @@ export default function VolunteerApplicationForm() {
             <FormInput
               type="email"
               name="email"
-              label="Email address"
-              placeholder="jane@example.com"
+              label={t("email")}
+              placeholder={t("emailPlaceholder")}
               startContent={
                 <MailIcon className="w-4 h-4 text-neutral-400" />
               }
@@ -248,8 +249,8 @@ export default function VolunteerApplicationForm() {
             <FormInput
               name="phone"
               type="tel"
-              label="Phone number"
-              placeholder="+1 555 000 0000"
+              label={t("phone")}
+              placeholder={t("phonePlaceholder")}
               startContent={
                 <PhoneIcon className="w-4 h-4 text-neutral-400" />
               }
@@ -258,8 +259,8 @@ export default function VolunteerApplicationForm() {
             <SelectInput
               name="country"
               control={control}
-              label="Country / Location"
-              placeholder="Select your country"
+              label={t("country")}
+              placeholder={t("countryPlaceholder")}
               options={COUNTRIES}
             />
           </div>
@@ -268,11 +269,11 @@ export default function VolunteerApplicationForm() {
         {/* Areas of Interest */}
         <Section
           icon="🎯"
-          title="Areas of Interest"
-          description="Please select where you would like to help. You can choose more than one."
+          title={t("interestsSection.title")}
+          description={t("interestsSection.description")}
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {INTEREST_OPTIONS.map((option) => {
+            {interestOptions.map((option) => {
               const Icon = option.Icon;
               const isActive = interests.includes(option.value);
               return (
@@ -330,7 +331,7 @@ export default function VolunteerApplicationForm() {
           {showOtherField && (
             <div className="space-y-2">
               <Label htmlFor="interestsOther" className="text-sm">
-                Please specify
+                {t("otherSpecify")}
               </Label>
               <Controller
                 control={control}
@@ -339,7 +340,7 @@ export default function VolunteerApplicationForm() {
                   <input
                     id="interestsOther"
                     type="text"
-                    placeholder="Tell us how you'd like to help"
+                    placeholder={t("otherPlaceholder")}
                     className="flex h-11 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                     {...field}
                   />
@@ -352,11 +353,11 @@ export default function VolunteerApplicationForm() {
         {/* Availability */}
         <Section
           icon="⏰"
-          title="Availability"
-          description="Let us know when you are available."
+          title={t("availabilitySection.title")}
+          description={t("availabilitySection.description")}
         >
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {AVAILABILITY_OPTIONS.map((option) => {
+            {availabilityOptions.map((option) => {
               const isActive = availability === option.value;
               return (
                 <button
@@ -406,10 +407,10 @@ export default function VolunteerApplicationForm() {
 
           <div className="space-y-2">
             <Label htmlFor="hoursPerWeek" className="text-sm">
-              Hours per week available
+              {t("hoursLabel")}
             </Label>
             <div className="flex flex-wrap gap-2">
-              {HOURS_OPTIONS.map((opt) => {
+              {hoursOptions.map((opt) => {
                 const isActive = watch("hoursPerWeek") === opt.value;
                 return (
                   <button
@@ -444,8 +445,8 @@ export default function VolunteerApplicationForm() {
         {/* Motivation */}
         <Section
           icon="💬"
-          title="Motivation"
-          description="Why do you want to volunteer with us?"
+          title={t("motivationSection.title")}
+          description={t("motivationSection.description")}
         >
           <div className="space-y-2">
             <Controller
@@ -455,7 +456,7 @@ export default function VolunteerApplicationForm() {
                 <Textarea
                   id="motivation"
                   rows={5}
-                  placeholder="Share a short note about what inspires you to volunteer with Noble Alms International."
+                  placeholder={t("motivationPlaceholder")}
                   {...field}
                 />
               )}
@@ -472,8 +473,7 @@ export default function VolunteerApplicationForm() {
           <div className="flex items-start gap-2 text-xs text-neutral-500">
             <ShieldCheckIcon className="w-4 h-4 text-primary-600 shrink-0 mt-0.5" />
             <span>
-              Your details are kept private and used only to coordinate your
-              volunteer engagement.
+              {t("privacyNote")}
             </span>
           </div>
           <Button
@@ -482,7 +482,7 @@ export default function VolunteerApplicationForm() {
             className="sm:w-auto h-12 rounded-full px-6 bg-secondary hover:bg-secondary-600 text-white shadow-lg shadow-secondary/20"
           >
             <SendIcon className="w-4 h-4" />
-            Submit your application
+            {t("submit")}
           </Button>
         </div>
       </form>

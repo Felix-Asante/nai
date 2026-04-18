@@ -14,26 +14,29 @@ import {
   ShieldCheckIcon,
   TrendingUpIcon,
 } from "lucide-react";
-
-const impactAreas = [
-  {
-    Icon: BookOpenIcon,
-    title: "Expand access to education",
-    accent: "bg-sky-50 text-sky-700",
-  },
-  {
-    Icon: HeartPulseIcon,
-    title: "Improve healthcare delivery",
-    accent: "bg-rose-50 text-rose-700",
-  },
-  {
-    Icon: HandshakeIcon,
-    title: "Support vulnerable communities",
-    accent: "bg-emerald-50 text-emerald-700",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function WhyPartner() {
+  const t = useTranslations("PartnersPage.why");
+
+  const impactAreas = [
+    {
+      Icon: BookOpenIcon,
+      title: t("impact1"),
+      accent: "bg-sky-50 text-sky-700",
+    },
+    {
+      Icon: HeartPulseIcon,
+      title: t("impact2"),
+      accent: "bg-rose-50 text-rose-700",
+    },
+    {
+      Icon: HandshakeIcon,
+      title: t("impact3"),
+      accent: "bg-emerald-50 text-emerald-700",
+    },
+  ];
+
   return (
     <section className="section-y bg-white">
       <Container>
@@ -50,16 +53,14 @@ export default function WhyPartner() {
           <div className="relative p-8 md:p-14 lg:p-16 grid lg:grid-cols-12 gap-10">
             <div className="lg:col-span-6">
               <SectionHeading
-                eyebrow="Why partner with us"
+                eyebrow={t("eyebrow")}
                 tone="light"
-                title="A mission focused on real impact"
-                description="By partnering with Noble Alms International, your organization becomes part of a mission focused on real impact. Together, we can expand access to education, improve healthcare delivery, and support vulnerable communities."
+                title={t("title")}
+                description={t("description")}
               />
 
               <p className="mt-6 text-white/85 text-base md:text-lg leading-relaxed">
-                Your partnership helps create lasting change while positioning
-                your organization as a socially responsible leader committed to
-                making a difference.
+                {t("paragraph")}
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -71,7 +72,7 @@ export default function WhyPartner() {
                   )}
                 >
                   <HandshakeIcon className="w-4 h-4" />
-                  Become a partner today
+                  {t("ctaPrimary")}
                 </Link>
                 <Link
                   href="/projects"
@@ -80,7 +81,7 @@ export default function WhyPartner() {
                     "rounded-full px-6 h-12 border-white/40 bg-white/10 text-white hover:bg-white hover:text-primary-700"
                   )}
                 >
-                  See our work
+                  {t("ctaSecondary")}
                   <ArrowRightIcon className="w-4 h-4" />
                 </Link>
               </div>
@@ -109,19 +110,19 @@ export default function WhyPartner() {
                     <div className="rounded-2xl bg-white/10 backdrop-blur-sm ring-1 ring-white/15 p-5">
                       <ShieldCheckIcon className="w-5 h-5 text-secondary-200" />
                       <p className="mt-3 font-semibold text-white">
-                        Trusted stewardship
+                        {t("trustedTitle")}
                       </p>
                       <p className="mt-1 text-sm text-white/80 leading-relaxed">
-                        Transparent reporting and donor-first governance.
+                        {t("trustedDesc")}
                       </p>
                     </div>
                     <div className="rounded-2xl bg-white/10 backdrop-blur-sm ring-1 ring-white/15 p-5">
                       <TrendingUpIcon className="w-5 h-5 text-secondary-200" />
                       <p className="mt-3 font-semibold text-white">
-                        Measurable outcomes
+                        {t("measurableTitle")}
                       </p>
                       <p className="mt-1 text-sm text-white/80 leading-relaxed">
-                        Programmes designed to deliver real, trackable impact.
+                        {t("measurableDesc")}
                       </p>
                     </div>
                   </div>

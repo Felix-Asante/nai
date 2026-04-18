@@ -4,12 +4,15 @@ import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { cn } from "@/utils";
 import type { PartnerRecord } from "@/lib/sanity/api/partners";
+import { useTranslations } from "next-intl";
 
 type Props = {
   partners: PartnerRecord[];
 };
 
 export default function PartnersGrid({ partners }: Props) {
+  const t = useTranslations("PartnersPage.grid");
+
   if (!partners?.length) return null;
 
   return (
@@ -17,9 +20,9 @@ export default function PartnersGrid({ partners }: Props) {
       <Container>
         <SectionHeading
           align="center"
-          eyebrow="Our partners"
-          title="In good company"
-          description="A growing community of organisations helping us deliver impact where it is needed most."
+          eyebrow={t("eyebrow")}
+          title={t("title")}
+          description={t("description")}
         />
 
         <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
@@ -56,7 +59,7 @@ export default function PartnersGrid({ partners }: Props) {
                     href={partner.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`Visit ${partner.name}`}
+                    aria-label={t("visitPartner", { name: partner.name })}
                     className="block rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600"
                   >
                     {card}

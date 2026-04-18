@@ -9,23 +9,32 @@ import PartnershipTypes from "@/sections/partners/PartnershipTypes";
 import WhyPartner from "@/sections/partners/WhyPartner";
 import { cn } from "@/utils";
 import { ArrowRightIcon, HandshakeIcon } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
+import { getTranslations } from "next-intl/server";
 
-export const metadata = {
-  title: "Corporate Partnerships — Noble Alms International",
-  description:
-    "Partner with Noble Alms International to deliver measurable impact across education, health and humanitarian support.",
+type Props = {
+  params: Promise<{ locale: string }>;
 };
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "PartnersPage" });
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+  };
+}
 
 export default async function PartnersPage() {
   const partners = await getPartners();
+  const t = await getTranslations("PartnersPage");
 
   return (
     <main>
       <PageHero
-        eyebrow="Partner with us"
-        title="Corporate Partnerships"
-        description="Join a community of forward-thinking organisations investing in meaningful, measurable change. Together we unlock opportunity for vulnerable communities."
+        eyebrow={t("hero.eyebrow")}
+        title={t("hero.title")}
+        description={t("hero.description")}
         image="/images/img-8.jpg"
       >
         <Link
@@ -36,7 +45,7 @@ export default async function PartnersPage() {
           )}
         >
           <HandshakeIcon className="w-4 h-4" />
-          Become a partner
+          {t("hero.becomePartner")}
         </Link>
         <Link
           href="#partnership-types"
@@ -45,7 +54,7 @@ export default async function PartnersPage() {
             "rounded-full px-6 h-12 border-white/40 bg-white/10 text-white hover:bg-white hover:text-primary-700"
           )}
         >
-          Explore partnership models
+          {t("hero.exploreModels")}
           <ArrowRightIcon className="w-4 h-4" />
         </Link>
       </PageHero>

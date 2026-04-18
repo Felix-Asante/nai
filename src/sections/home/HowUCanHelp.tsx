@@ -42,7 +42,7 @@ export default function HowUCanHelp() {
       description: translate("HowUCanHelp.itemTwo.description"),
       Icon: RefreshCcwIcon,
       accent: "bg-secondary-50 text-secondary-600",
-      cta: "Give monthly",
+      cta: translate("HowUCanHelp.itemTwo.cta"),
       action: "link",
       href: "/donate?frequency=monthly",
     },
@@ -50,8 +50,8 @@ export default function HowUCanHelp() {
       title: translate("HowUCanHelp.itemThree.title"),
       description: translate("HowUCanHelp.itemThree.description"),
       Icon: HandshakeIcon,
-      accent: "bg-emerald-50 text-emerald-700",
-      cta: "Explore partnerships",
+      accent: "bg-primary-50 text-primary-700",
+      cta: translate("HowUCanHelp.itemThree.cta"),
       action: "link",
       href: "/partners",
     },
@@ -59,8 +59,8 @@ export default function HowUCanHelp() {
       title: translate("HowUCanHelp.itemFour.title"),
       description: translate("HowUCanHelp.itemFour.description"),
       Icon: HeartIcon,
-      accent: "bg-violet-50 text-violet-700",
-      cta: "Start volunteering",
+      accent: "bg-secondary-50 text-secondary-600",
+      cta: translate("HowUCanHelp.itemFour.cta"),
       action: "link",
       href: "/volunteer",
     },
@@ -71,7 +71,7 @@ export default function HowUCanHelp() {
       <Container>
         <SectionHeading
           align="center"
-          eyebrow="Get involved"
+          eyebrow={translate("HowUCanHelp.eyebrow")}
           title={translate("HowUCanHelp.headline")}
           description={translate("HowUCanHelp.description")}
         />
@@ -123,7 +123,7 @@ export default function HowUCanHelp() {
             href="/partners"
             className="inline-flex items-center gap-2 text-sm font-semibold text-primary-700 hover:text-secondary transition-colors"
           >
-            Looking to partner as an organization?
+            {translate("HowUCanHelp.partnerOrgLink")}
             <ArrowRightIcon className="w-4 h-4" />
           </Link>
         </div>

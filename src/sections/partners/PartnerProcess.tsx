@@ -3,34 +3,38 @@ import Container from "@/components/layouts/Container";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { cn } from "@/utils";
-
-const steps = [
-  {
-    title: "Tell us about your goals",
-    description:
-      "Share a short brief via the form below. Our partnerships team will get back to you within three working days.",
-  },
-  {
-    title: "Design a partnership together",
-    description:
-      "We map your objectives to our priority programmes and shape a proposal — scope, outcomes, timeline and investment.",
-  },
-  {
-    title: "Launch, report, celebrate",
-    description:
-      "Kick off your partnership with on-the-ground activation, regular impact reporting and shared storytelling.",
-  },
-];
+import { useTranslations } from "next-intl";
+import { useMemo } from "react";
 
 export default function PartnerProcess() {
+  const t = useTranslations("PartnersPage.process");
+
+  const steps = useMemo(
+    () => [
+      {
+        title: t("step1Title"),
+        description: t("step1Desc"),
+      },
+      {
+        title: t("step2Title"),
+        description: t("step2Desc"),
+      },
+      {
+        title: t("step3Title"),
+        description: t("step3Desc"),
+      },
+    ],
+    [t]
+  );
+
   return (
     <section className="section-y bg-white">
       <Container>
         <SectionHeading
           align="center"
-          eyebrow="How it works"
-          title="From first conversation to lasting impact"
-          description="A simple, transparent process designed to make partnering with us straightforward."
+          eyebrow={t("eyebrow")}
+          title={t("title")}
+          description={t("description")}
         />
 
         <ol className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">

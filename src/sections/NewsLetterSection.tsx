@@ -17,6 +17,7 @@ import { MailIcon, SendIcon } from "lucide-react";
 
 export default function NewsLetterSection() {
   const translate = useTranslations();
+  const tn = useTranslations("Newsletter");
   const [isSubscribing, setIsSubscribing] = React.useState(false);
   const form = useForm<subscribeToNewsLetterInput>({
     resolver: zodResolver(subscribeNewsLetterRules),
@@ -50,14 +51,13 @@ export default function NewsLetterSection() {
       <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
         <div className="md:col-span-5">
           <span className="eyebrow text-secondary-200 before:bg-secondary-200/70">
-            Stay connected
+            {tn("eyebrow")}
           </span>
           <h3 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-semibold text-white leading-tight tracking-tight">
-            Join our newsletter
+            {tn("title")}
           </h3>
           <p className="mt-3 text-sm md:text-base text-white/70 max-w-sm">
-            Get stories of impact, upcoming projects and ways to support —
-            straight to your inbox.
+            {tn("description")}
           </p>
         </div>
 
@@ -71,7 +71,7 @@ export default function NewsLetterSection() {
                 <FormInput
                   name="email"
                   type="email"
-                  placeholder="Enter your email address"
+                  placeholder={tn("emailPlaceholder")}
                   startContent={<MailIcon className="w-5 h-5 text-white/60" />}
                   wrapperClassName={cn(
                     "flex-1 rounded-full border-white/25 bg-white/10",
@@ -91,12 +91,12 @@ export default function NewsLetterSection() {
                 type="submit"
               >
                 <SendIcon className="w-4 h-4" />
-                Subscribe
+                {tn("subscribe")}
               </Button>
             </form>
           </Form>
           <p className="mt-3 text-xs text-white/50">
-            We respect your privacy. Unsubscribe at any time.
+            {tn("privacy")}
           </p>
         </div>
       </div>

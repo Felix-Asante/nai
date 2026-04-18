@@ -102,22 +102,27 @@
   "HowUCanHelp": {
     "headline": "Comment pourriez-vous aider ?",
     "description": "Vos contributions font une réelle différence. Explorez les moyens par lesquels vous pouvez soutenir notre mission et créer un changement significatif.",
+    "eyebrow": "S'impliquer",
     "itemOne": {
       "title": "Dons monétaires",
       "description": "Soutenez des projets avec vos contributions financières."
     },
     "itemTwo": {
       "title": "Devenez un donateur mensuel",
-      "description": "Assurez un impact continu avec des dons récurrents."
+      "description": "Assurez un impact continu avec des dons récurrents.",
+      "cta": "Don mensuel"
     },
     "itemThree": {
       "title": "Partenariats d'entreprise",
-      "description": "Collaborez avec nous pour promouvoir la responsabilité sociale des entreprises."
+      "description": "Collaborez avec nous pour promouvoir la responsabilité sociale des entreprises.",
+      "cta": "Découvrir les partenariats"
     },
     "itemFour": {
       "title": "Offrez votre temps",
-      "description": "Soyez le changement que vous souhaitez voir en vous portant volontaire."
-    }
+      "description": "Soyez le changement que vous souhaitez voir en vous portant volontaire.",
+      "cta": "Devenir bénévole"
+    },
+    "partnerOrgLink": "Vous souhaitez un partenariat en tant qu'organisation ?"
   },
   "joinMovement": "Rejoignez notre organisation caritative",
   "AboutPage": {
@@ -235,5 +240,330 @@
   "gallery": {
     "title": "Notre galerie d'impact",
     "description": "Découvrez les histoires, projets et communautés qui rendent notre mission possible."
+  },
+  "Footer": {
+    "taglineLine1": "Noble Alms",
+    "taglineLine2": "International",
+    "description": "Transformer des vies, promouvoir le bonheur et libérer le potentiel par l'éducation, la santé et la charité — au-delà des frontières.",
+    "waysToHelpTitle": "Façons d'aider",
+    "exploreTitle": "Explorer",
+    "getInTouchTitle": "Nous joindre",
+    "callUsIntro": "Vous pouvez aussi nous appeler au",
+    "registeredCharityBadge": "Organisme de bienfaisance enregistré en {location}.",
+    "charityRegLabel": "N° d'enregistrement :",
+    "copyright": "© {year} Noble Alms International. Tous droits réservés.",
+    "registeredLegal": "Noble Alms International est un organisme de bienfaisance enregistré en {location}. N° d'enregistrement {regNumber}.",
+    "ways": {
+      "monthlyGiving": "Don mensuel",
+      "sponsorProject": "Parrainer un projet",
+      "corporatePartners": "Partenaires corporatifs",
+      "careersVolunteers": "Carrières et bénévolat"
+    }
+  },
+  "Newsletter": {
+    "eyebrow": "Restez informés",
+    "title": "Abonnez-vous à notre infolettre",
+    "description": "Recevez des histoires d'impact, des projets à venir et des façons de soutenir — directement dans votre boîte courriel.",
+    "emailPlaceholder": "Entrez votre adresse courriel",
+    "subscribe": "S'abonner",
+    "privacy": "Nous respectons votre vie privée. Désabonnement possible à tout moment."
+  },
+  "DonatePage": {
+    "metaTitle": "Faire un don — Noble Alms International",
+    "metaDescription": "Soutenez Noble Alms International par un don ponctuel, un don mensuel ou le parrainage d'un projet.",
+    "hero": {
+      "eyebrow": "Ensemble nous pouvons",
+      "title": "Votre générosité transforme des vies",
+      "description": "Chaque don, quelle que soit sa taille, crée un impact significatif et durable dans les communautés que nous servons.",
+      "donateNow": "Faire un don",
+      "seeProjects": "Voir nos projets",
+      "waysNavLabel": "Façons de donner",
+      "jumpMonetary": "Dons monétaires",
+      "jumpMonthly": "Donateur mensuel",
+      "jumpSponsor": "Parrainer un projet"
+    },
+    "formSection": {
+      "eyebrow": "Donnez aujourd'hui",
+      "title": "Effectuez votre don",
+      "description": "Choisissez un montant et un mode de paiement qui vous conviennent."
+    },
+    "sections": {
+      "monetary": {
+        "eyebrow": "Donnez aujourd'hui",
+        "title": "Dons monétaires",
+        "p1": "Les dons monétaires sont essentiels pour soutenir le travail de Noble Alms International. En tant qu'organisme de bienfaisance enregistré au Canada, nous comptons sur les contributions financières générales pour assurer la mise en œuvre de nos programmes et répondre aux besoins urgents des communautés.",
+        "p2": "Votre don n'est pas limité à un seul domaine : il est orienté là où le besoin est le plus grand parmi nos initiatives clés — soutien éducatif, santé dans les communautés mal desservies et aide humanitaire d'urgence pour les familles en difficulté.",
+        "p3": "Cette flexibilité nous permet de réagir rapidement aux besoins réels et d'allouer les ressources efficacement. Qu'il s'agisse de fournitures scolaires, de dépistages médicaux ou de biens essentiels, votre contribution améliore directement des vies.",
+        "p4": "Tous les dons admissibles sont utilisés de manière responsable et transparente, avec une forte responsabilisation et un impact communautaire.",
+        "h1": "Orienté vers les besoins les plus pressants dans nos programmes",
+        "h2": "Finance l'éducation, la santé et l'aide humanitaire",
+        "h3": "Gestion transparente et responsable de chaque don",
+        "cta": "Faire un don"
+      },
+      "monthly": {
+        "eyebrow": "Impact durable",
+        "title": "Devenez donateur mensuel",
+        "p1": "Les dons mensuels assurent la pérennité de Noble Alms International. Un soutien régulier nous permet de planifier, d'élargir nos programmes et d'offrir un accompagnement constant aux communautés.",
+        "p2": "Contrairement aux dons uniques, les contributions mensuelles créent un impact continu pour nos initiatives en éducation, santé et lutte contre la pauvreté — sensibilisation scolaire, activités médicales et développement communautaire.",
+        "p3": "Votre soutien mensuel nous aide à répondre aux défis à long terme et garantit que notre travail ne s'interrompt pas et que les communautés vulnérables reçoivent une aide fiable toute l'année.",
+        "p4": "Même de petits montants mensuels s'accumulent pour un changement significatif et renforcent notre mission.",
+        "h1": "Un soutien fiable qui anticipe les besoins des communautés",
+        "h2": "Programmes scolaires, médicaux et communautaires continus",
+        "h3": "De petits dons mensuels, un grand impact à long terme",
+        "cta": "Faire un don"
+      },
+      "sponsor": {
+        "eyebrow": "Parrainer un projet",
+        "title": "Parrainer un projet",
+        "p1": "Le parrainage permet de soutenir directement une initiative précise — programme éducatif, dépistage de santé ou projet de secours communautaire.",
+        "p2": "Contrairement aux dons généraux, le parrainage offre un impact ciblé et visible. Vous choisissez un projet aligné avec vos valeurs.",
+        "p3": "Les parrains sont informés de l'avancement et des résultats — activités, communautés touchées et impact global.",
+        "p4": "Cette transparence permet de voir concrètement comment votre soutien transforme des vies.",
+        "h1": "Choisissez un projet aligné avec vos valeurs",
+        "h2": "Recevez des mises à jour et des résultats concrets",
+        "h3": "Voyez votre soutien transformer des vies en temps réel",
+        "cta": "Parrainer maintenant",
+        "secondaryCta": "Voir les projets actifs"
+      }
+    }
+  },
+  "DonationForm": {
+    "selectAmount": "Choisir le montant du don",
+    "customAmountPlaceholder": "Ou saisir un montant personnalisé",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "Adresse courriel",
+    "cardNumber": "Numéro de carte",
+    "cardPlaceholder": "1234 5678 9012 3456",
+    "expiry": "Date d'expiration",
+    "expiryPlaceholder": "MM/AA",
+    "cvv": "CVV",
+    "cvvPlaceholder": "123",
+    "submit": "Finaliser le don",
+    "secureNote": "Don sécurisé. Vos informations sont protégées par un chiffrement 256 bits."
+  },
+  "VolunteerPage": {
+    "metaTitle": "Carrières et bénévolat — Noble Alms International",
+    "metaDescription": "Travaillez avec un sens du but chez Noble Alms International. Découvrez les carrières, le bénévolat et les façons de mettre vos compétences au service de notre mission.",
+    "hero": {
+      "eyebrow": "👥 Carrières et bénévolat",
+      "title": "Travaillez avec un sens du but chez Noble Alms International",
+      "description": "Vos compétences, votre passion et votre engagement peuvent transformer des vies par l'éducation, la santé et l'aide humanitaire.",
+      "register": "S'inscrire maintenant",
+      "openRoles": "Voir les postes ouverts"
+    },
+    "intro": {
+      "eyebrow": "Un travail porteur de sens",
+      "title": "Chaque rôle compte pour un impact durable",
+      "p1": "Chez Noble Alms International, vos compétences et votre dévouement contribuent à transformer des vies par l'éducation, les soins de santé et l'aide humanitaire.",
+      "p2": "En tant qu'organisme de bienfaisance enregistré au Canada, nous croyons que chaque rôle — professionnel ou bénévole — est essentiel pour un impact significatif et durable."
+    },
+    "mission": {
+      "eyebrow": "🌍 Rejoignez notre mission",
+      "title": "Compétences recherchées",
+      "description": "Nous accueillons les personnes passionnées par le développement communautaire et l'impact social. Du secteur communautaire ou d'autres horizons, il existe des façons significatives de contribuer.",
+      "skill1": "Éducation et développement des jeunes",
+      "skill2": "Santé et sensibilisation communautaire",
+      "skill3": "Administration et coordination",
+      "skill4": "Communications et plaidoyer",
+      "skill5": "Collecte de fonds et partenariats",
+      "skill6": "Planification et soutien d'événements"
+    },
+    "openRoles": {
+      "title": "Postes ouverts",
+      "description": "Nous n'avons pas de poste ouvert pour le moment. Les nouvelles offres seront publiées ici — inscrivez votre intérêt ci-dessous et nous vous contacterons lorsqu'un poste correspondra.",
+      "cta": "Manifester mon intérêt"
+    },
+    "volunteerOpps": {
+      "eyebrow": "🙌 Opportunités de bénévolat",
+      "title": "Donnez de votre temps, créez un vrai changement",
+      "description": "Rejoignez un réseau croissant de personnes qui consacrent leur temps et leur énergie à nos programmes.",
+      "list1": "Soutien aux programmes éducatifs et de sensibilisation",
+      "list2": "Aide aux initiatives de santé et communautaires",
+      "list3": "Aide aux événements et campagnes",
+      "list4": "Soutien administratif et sur le terrain",
+      "closing": "En ligne ou en personne, votre temps fait une vraie différence.",
+      "register": "S'inscrire maintenant",
+      "imageAlt": "Bénévoles soutenant des initiatives communautaires"
+    },
+    "whoCan": {
+      "title": "Qui peut être bénévole",
+      "description": "Étudiants, professionnels et toute personne désireuse d'aider. Aucune expérience requise — seulement engagement et volonté."
+    },
+    "whyJoin": {
+      "eyebrow": "💙 Pourquoi nous rejoindre ?",
+      "title": "Faites la différence aux côtés de personnes engagées",
+      "description": "Rejoignez Noble Alms International pour mettre vos compétences au service du changement et travailler avec des personnes passionnées au Canada et au-delà.",
+      "pill1": "Mettre vos compétences à contribution",
+      "pill2": "Rejoindre une communauté engagée",
+      "pill3": "Soutenir un changement durable",
+      "pill4": "Organisme de bienfaisance canadien enregistré"
+    },
+    "register": {
+      "eyebrow": "📩 Inscription",
+      "title": "S'inscrire comme bénévole",
+      "description": "Remplissez le formulaire ci-dessous. Après envoi, notre équipe examinera votre demande et vous contactera lorsqu'une opportunité correspondra.",
+      "questionsTitle": "Questions sur le bénévolat ?",
+      "questionsDescription": "Notre équipe est là pour vous aider. Écrivez-nous et nous vous répondrons."
+    }
+  },
+  "VolunteerApplicationForm": {
+    "successTitle": "Candidature reçue",
+    "successBody": "Merci pour votre candidature de bénévolat auprès de Noble Alms International. Notre équipe l'examinera et vous contactera sous peu.",
+    "successInquiries": "Pour toute question :",
+    "submitAnother": "Soumettre une autre candidature",
+    "toastSuccess": "Merci ! Nous avons bien reçu votre candidature. Notre équipe vous contactera bientôt.",
+    "personalSection": {
+      "title": "Renseignements personnels",
+      "description": "Veuillez remplir vos coordonnées."
+    },
+    "fullName": "Nom complet",
+    "fullNamePlaceholder": "Marie Tremblay",
+    "email": "Adresse courriel",
+    "emailPlaceholder": "marie@exemple.com",
+    "phone": "Numéro de téléphone",
+    "phonePlaceholder": "+1 555 000 0000",
+    "country": "Pays / lieu",
+    "countryPlaceholder": "Sélectionnez votre pays",
+    "interestsSection": {
+      "title": "Domaines d'intérêt",
+      "description": "Indiquez où vous souhaitez aider. Vous pouvez en choisir plusieurs."
+    },
+    "interestEducation": "Soutien à l'éducation",
+    "interestHealth": "Santé et sensibilisation médicale",
+    "interestCommunity": "Développement communautaire",
+    "interestOther": "Autre",
+    "otherSpecify": "Précisez",
+    "otherPlaceholder": "Dites-nous comment vous souhaitez aider",
+    "availabilitySection": {
+      "title": "Disponibilité",
+      "description": "Indiquez quand vous êtes disponible."
+    },
+    "weekdays": "En semaine",
+    "weekdaysDesc": "Du lundi au vendredi",
+    "weekends": "Fins de semaine",
+    "weekendsDesc": "Samedi et dimanche",
+    "both": "Les deux",
+    "bothDesc": "Disponibilité flexible",
+    "hoursLabel": "Heures par semaine disponibles",
+    "hours1to3": "1 à 3 h / semaine",
+    "hours4to6": "4 à 6 h / semaine",
+    "hours7to10": "7 à 10 h / semaine",
+    "hours10plus": "10 h et plus / semaine",
+    "motivationSection": {
+      "title": "Motivation",
+      "description": "Pourquoi souhaitez-vous être bénévole chez nous ?"
+    },
+    "motivationPlaceholder": "Partagez brièvement ce qui vous inspire à vous porter volontaire auprès de Noble Alms International.",
+    "privacyNote": "Vos renseignements restent confidentiels et servent uniquement à coordonner votre engagement bénévole.",
+    "submit": "Soumettre ma candidature"
+  },
+  "PartnersPage": {
+    "metaTitle": "Partenariats d'entreprise — Noble Alms International",
+    "metaDescription": "Partenairez avec Noble Alms International pour un impact mesurable en éducation, santé et aide humanitaire.",
+    "hero": {
+      "eyebrow": "Partenaires",
+      "title": "Partenariats d'entreprise",
+      "description": "Rejoignez une communauté d'organisations avant-gardistes qui investissent dans un changement mesurable. Ensemble, nous ouvrons des opportunités aux communautés vulnérables.",
+      "becomePartner": "Devenir partenaire",
+      "exploreModels": "Explorer les modèles de partenariat"
+    },
+    "intro": {
+      "eyebrow": "Partenaires",
+      "title": "Un changement réel et mesurable — ensemble",
+      "description": "Noble Alms International est un organisme de bienfaisance enregistré au Canada dédié à transformer des vies par l'éducation, la santé et l'aide humanitaire.",
+      "card1Title": "Organisme de bienfaisance enregistré",
+      "card1Desc": "Gestion transparente et responsable selon les normes canadiennes à but non lucratif.",
+      "card2Title": "Portée mondiale, action locale",
+      "card2Desc": "Des équipes sur le terrain là où le besoin est le plus grand, avec une visibilité pour les partenaires.",
+      "card3Title": "Partenariat aligné sur vos valeurs",
+      "card3Desc": "Chaque collaboration s'adapte à vos objectifs, à votre marque et aux priorités communautaires.",
+      "body1": "Notre impact est rendu possible par la mobilisation de donateurs, de particuliers et de partenaires corporatifs partageant notre vision du développement durable des communautés.",
+      "body2": "Aujourd'hui, la responsabilité sociale des entreprises est essentielle. S'associer à un organisme de confiance permet d'avoir un impact social tout en renforçant la réputation et l'engagement communautaire.",
+      "body3": "Travailler avec Noble Alms International offre l'opportunité de contribuer à un changement mesurable dans les communautés mal desservies tout en alignant vos valeurs sur les objectifs de développement durable.",
+      "statLives": "Vies touchées",
+      "statProjects": "Projets actifs",
+      "statCountries": "Pays desservis"
+    },
+    "types": {
+      "eyebrow": "Modalités de partenariat",
+      "title": "Le partenariat qui vous convient",
+      "description": "Nous proposons des partenariats flexibles alignés sur vos objectifs d'affaires et de responsabilité sociale.",
+      "strategicGiving": "Don stratégique",
+      "strategicGivingDesc": "Alignez vos contributions financières sur des programmes reflétant les valeurs et priorités sociales de votre entreprise — éducation, santé ou développement communautaire.",
+      "causeSupport": "Soutien à une cause et commandite",
+      "causeSupportDesc": "Soutenez des projets, campagnes ou actions de terrain : séminaires, missions médicales ou secours communautaire, avec un impact direct et visible.",
+      "inKind": "Dons en nature d'entreprise",
+      "inKindDesc": "Soutenez nos programmes par des biens ou ressources : matériel pédagogique, fournitures médicales ou articles essentiels, distribués aux communautés.",
+      "brand": "Visibilité et reconnaissance de marque",
+      "brandDesc": "Le partenariat offre une visibilité par des initiatives, événements et actions de sensibilisation — démontrer votre impact social.",
+      "employee": "Engagement des employés",
+      "employeeDesc": "Mobilisez vos équipes par le bénévolat, la sensibilisation et l'engagement communautaire — renforcer la culture d'équipe et l'impact social.",
+      "longTerm": "Partenariats stratégiques à long terme",
+      "longTermDesc": "Construisez des relations au-delà des dons ponctuels et développez des programmes durables alignés sur vos objectifs et les besoins des communautés."
+    },
+    "why": {
+      "eyebrow": "Pourquoi nous choisir",
+      "title": "Une mission axée sur l'impact réel",
+      "description": "En partenaire de Noble Alms International, vous rejoignez une mission d'impact concret. Ensemble, nous élargissons l'accès à l'éducation, améliorons les soins et soutenons les communautés vulnérables.",
+      "paragraph": "Votre partenariat crée un changement durable et positionne votre organisation comme un acteur socialement responsable.",
+      "ctaPrimary": "Devenir partenaire aujourd'hui",
+      "ctaSecondary": "Voir notre travail",
+      "impact1": "Élargir l'accès à l'éducation",
+      "impact2": "Améliorer l'offre de soins de santé",
+      "impact3": "Soutenir les communautés vulnérables",
+      "trustedTitle": "Gestion de confiance",
+      "trustedDesc": "Rapports transparents et gouvernance axée sur les donateurs.",
+      "measurableTitle": "Résultats mesurables",
+      "measurableDesc": "Des programmes conçus pour un impact réel et suivi."
+    },
+    "process": {
+      "eyebrow": "Comment ça fonctionne",
+      "title": "De la première conversation à l'impact durable",
+      "description": "Un processus simple et transparent pour partenaire avec nous.",
+      "step1Title": "Parlez-nous de vos objectifs",
+      "step1Desc": "Envoyez un bref message via le formulaire. Notre équipe vous répond sous trois jours ouvrables.",
+      "step2Title": "Concevoir le partenariat ensemble",
+      "step2Desc": "Nous alignons vos objectifs sur nos programmes prioritaires et proposons une portée, des résultats, un calendrier et un investissement.",
+      "step3Title": "Lancer, rendre compte, célébrer",
+      "step3Desc": "Démarrez avec une activation sur le terrain, des rapports d'impact réguliers et une narration partagée."
+    },
+    "grid": {
+      "eyebrow": "Nos partenaires",
+      "title": "En bonne compagnie",
+      "description": "Une communauté croissante d'organisations qui nous aident à agir là où le besoin est le plus grand.",
+      "visitPartner": "Visiter {name}"
+    },
+    "inquiry": {
+      "eyebrow": "Premier contact",
+      "title": "Devenez partenaire aujourd'hui",
+      "description": "Discutons d'un partenariat personnalisé qui répond à vos objectifs et crée un impact pour les enfants et les communautés.",
+      "bullet1": "Gestionnaire de partenariat dédié pour chaque organisation",
+      "bullet2": "Propositions sur mesure selon vos objectifs et budget",
+      "bullet3": "Rapports transparents et récit partagé",
+      "privacy": "Vos renseignements restent confidentiels et servent uniquement à cette prise de contact.",
+      "successTitle": "Demande reçue",
+      "successBody": "Merci pour votre message. Un membre de notre équipe partenariats vous répondra sous peu.",
+      "submitAnother": "Envoyer une autre demande",
+      "toastSuccess": "Merci ! Notre équipe partenariats vous contactera bientôt.",
+      "formTitle": "Demande de partenariat corporatif",
+      "formSubtitle": "Indiquez vos coordonnées — réponse sous trois jours ouvrables.",
+      "firstName": "Prénom",
+      "firstNamePlaceholder": "Marie",
+      "lastName": "Nom",
+      "lastNamePlaceholder": "Tremblay",
+      "workEmail": "Courriel professionnel",
+      "workEmailPlaceholder": "marie@entreprise.org",
+      "organization": "Organisation (facultatif)",
+      "organizationPlaceholder": "Fondation Exemple",
+      "messageOptional": "Autre chose à partager ? (facultatif)",
+      "messagePlaceholder": "Parlez-nous brièvement de votre intérêt pour un partenariat avec Noble Alms.",
+      "consent": "En soumettant, vous acceptez d'être contacté au sujet de cette opportunité de partenariat.",
+      "submit": "Envoyer"
+    }
+  },
+  "ContactSection": {
+    "emailTitle": "Nous écrire",
+    "emailSubtitle": "Nous répondons généralement sous 24 heures"
   }
 }
