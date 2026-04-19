@@ -40,7 +40,13 @@ export default function MainHeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="eyebrow text-secondary-200 before:bg-secondary-200/70">
+            <span
+              className={cn(
+                "eyebrow text-secondary-200 before:bg-secondary-200/70",
+                "text-base sm:text-lg md:text-xl",
+                "before:w-10 sm:before:w-12 md:before:w-14",
+              )}
+            >
               {translate("homePage.brandName")}
             </span>
             <h1 className="mt-5 display">{translate("homePage.headline")}</h1>

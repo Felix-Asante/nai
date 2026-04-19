@@ -32,7 +32,7 @@
   "supportUs": "Soutenez-nous",
   "homePage": {
     "brandName": "Noble Alms International",
-    "headline": "Transformer des vies par la compassion et l’action",
+    "headline": "Transformer des vies avec joie",
     "subHeadline": "Nous sommes une organisation caritative enregistrée au Canada, dédiée à l’autonomisation des communautés à travers des initiatives durables et à fort impact.",
     "heroTagline": "Faire progresser l’éducation • Promouvoir la santé • Soulager la pauvreté",
     "heroStats": {
@@ -248,6 +248,11 @@
     "backToProjects": "Retour aux Projets"
   },
   "readMore": "Lire la suite",
+  "projectTimeline": {
+    "upcoming": "À venir",
+    "ongoing": "En cours",
+    "past": "Passé"
+  },
   "all": "Tous",
   "copyLink": "Copier le lien",
   "copied": "Copié !",

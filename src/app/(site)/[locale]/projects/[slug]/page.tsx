@@ -9,6 +9,11 @@ import { urlFor } from "@/lib/sanity/sanity.image";
 import ProjectGallery from "@/sections/ProjectGallery";
 import ProjectShareSection from "@/sections/projects/ProjectShareSection";
 import { SupportedLanguages } from "@/types";
+import {
+  getProjectYearAndStatus,
+  projectTimelineBadgeClass,
+} from "@/utils/projectTimeline";
+import { cn } from "@/utils";
 import { ArrowLeftIcon } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
@@ -46,6 +51,7 @@ export default async function SingleProject(props: Props) {
   const { slug, locale } = await props.params;
   const project = await getSingleProject(slug, locale);
   const translate = await getTranslations();
+  const { year, status } = getProjectYearAndStatus(project.date);
 
   return (
     <main>
@@ -64,6 +70,30 @@ export default async function SingleProject(props: Props) {
               <span className="mt-6 inline-block text-xs font-semibold uppercase tracking-wider text-secondary">
                 {project.category}
               </span>
+            )}
+            {(year != null || status !== "unknown") && (
+              <div
+                className={cn(
+                  "flex flex-wrap items-center gap-2",
+                  project?.category ? "mt-4" : "mt-6",
+                )}
+              >
+                {year != null && (
+                  <span className="inline-flex items-center rounded-full bg-primary-50 px-3 py-1 text-sm font-semibold tabular-nums text-primary-800 ring-1 ring-primary-100">
+                    {year}
+                  </span>
+                )}
+                {status !== "unknown" && (
+                  <span
+                    className={cn(
+                      "inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white shadow-sm",
+                      projectTimelineBadgeClass(status),
+                    )}
+                  >
+                    {translate(`projectTimeline.${status}`)}
+                  </span>
+                )}
+              </div>
             )}
             <h1 className="mt-2 display text-primary-700">{project?.title}</h1>
             {project?.excerpt && (
