@@ -24,41 +24,26 @@ export async function getAllTeamMembers(locale: SupportedLanguages) {
     tags: [CACHE_TAGS.TEAM],
   });
 
-  // quick fix
-  const orderedTeamMembers: any[] = [];
-  teamMembers
-    .map((member) => {
-      return {
-        ...member,
-        position: member.position[locale] || member.position?.en!,
-      };
-    })
-    .forEach((member) => {
-      if (
-        [
-          "Executive Member / President",
-          "Membre exécutif / Président",
-        ].includes(member.position)
-      ) {
-        orderedTeamMembers[0] = member;
-      } else if (
-        [
-          "Executive Member / Vice President",
-          "Membre exécutif / Vice-Président",
-        ].includes(member.position)
-      ) {
-        orderedTeamMembers[1] = member;
-      } else if (
-        [
-          "Executive Member / Financial Secretary",
-          "Membre exécutif / Secrétaire Financier",
-        ].includes(member.position)
-      ) {
-        orderedTeamMembers[2] = member;
-      } else {
-        orderedTeamMembers.push(member);
-      }
-    });
+  const positionOrder: Record<string, number> = {
+    "Executive Member / President": 0,
+    "Membre exécutif / Président": 0,
+    "Executive Member / Vice President": 1,
+    "Membre exécutif / Vice-Président": 1,
+    "Executive Member / Financial Secretary": 2,
+    "Membre exécutif / Secrétaire Financier": 2,
+  };
 
-  return orderedTeamMembers;
+  // Sort by role so we never use sparse array indices (assigning [1] or [2]
+  // before [0] would leave `undefined` slots and break TeamSection.map).
+  return teamMembers
+    .map((member) => ({
+      ...member,
+      position: member.position[locale] || member.position?.en!,
+    }))
+    .sort((a, b) => {
+      const orderA = positionOrder[a.position] ?? 100;
+      const orderB = positionOrder[b.position] ?? 100;
+      if (orderA !== orderB) return orderA - orderB;
+      return a.name.localeCompare(b.name);
+    });
 }
