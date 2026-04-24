@@ -6,14 +6,11 @@ import Image from "next/image";
 import { Link, usePathname, useRouter } from "@/i18n/routing";
 import { useEffect, useMemo, useState } from "react";
 import { buttonVariants, ShadcnButton } from "../ui/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "../ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import { cn } from "@/utils";
+import { charityInfo } from "@/constants";
 
 const flags: Record<string, { src: string; label: string }> = {
   en: { src: "/icons/uk.png", label: "EN" },
@@ -69,144 +66,149 @@ export default function MainNavbar() {
 
   return (
     <>
-    <header
-      className={cn(
-        "sticky top-0 left-0 right-0 z-50 transition-all duration-300",
-        "bg-white/95 backdrop-blur-md text-neutral-700",
-        isScrolled
-          ? "shadow-[0_4px_24px_rgba(11,60,117,0.08)] border-b border-neutral-200/60"
-          : "border-b border-transparent"
-      )}
-    >
-      <nav
-        className="container mx-auto flex items-center justify-between h-16 md:h-20 gap-6"
-        aria-label={translate("Navbar.navPrimary")}
+      <header
+        className={cn(
+          "sticky top-0 left-0 right-0 z-50 transition-all duration-300",
+          "bg-white/95 backdrop-blur-md text-neutral-700",
+          isScrolled
+            ? "shadow-[0_4px_24px_rgba(11,60,117,0.08)] border-b border-neutral-200/60"
+            : "border-b border-transparent",
+        )}
       >
-        <Link
-          href="/"
-          className="flex items-center gap-3 shrink-0"
-          aria-label={translate("Navbar.homeAriaLabel")}
-          onClick={closeMenu}
+        <nav
+          className="container mx-auto flex items-center justify-between h-16 md:h-20 gap-6"
+          aria-label={translate("Navbar.navPrimary")}
         >
-          <Image
-            src="/images/logo.jpg"
-            alt={translate("Navbar.logoAlt")}
-            width={44}
-            height={44}
-            unoptimized
-            priority
-            className="object-contain rounded-md"
-          />
-          <span className="hidden sm:flex flex-col leading-tight">
-            <span className="text-sm md:text-base font-semibold tracking-tight text-primary-700">
-              {translate("Navbar.brandLine1")}
+          <Link
+            href="/"
+            className="flex items-center gap-3 shrink-0"
+            aria-label={translate("Navbar.homeAriaLabel")}
+            onClick={closeMenu}
+          >
+            <Image
+              src="/images/logo.jpg"
+              alt={translate("Navbar.logoAlt")}
+              width={44}
+              height={44}
+              unoptimized
+              priority
+              className="object-contain rounded-md"
+            />
+            <span className="hidden sm:flex flex-col leading-tight">
+              <span className="text-sm md:text-base font-semibold tracking-tight text-primary-700">
+                {translate("Navbar.brandLine1")}
+              </span>
+              <span className="text-[11px] md:text-xs font-medium text-neutral-500">
+                {translate("Navbar.brandLine2")}
+              </span>
             </span>
-            <span className="text-[11px] md:text-xs font-medium text-neutral-500">
-              {translate("Navbar.brandLine2")}
-            </span>
-          </span>
-        </Link>
+          </Link>
 
-        <ul className="hidden lg:flex items-center gap-1">
-          {routes.map((route) => {
-            const isActive =
-              pathname === route.href ||
-              (route.href !== "/" && pathname.startsWith(route.href));
-            return (
-              <li key={route.name}>
-                <Link
-                  href={route.href}
-                  className={cn(
-                    "relative inline-flex items-center px-3.5 py-2 text-sm font-medium rounded-md transition-colors",
-                    isActive
-                      ? "text-primary-700"
-                      : "text-neutral-600 hover:text-primary-700"
-                  )}
-                >
-                  {route.name}
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-underline"
-                      className="absolute left-3.5 right-3.5 -bottom-px h-0.5 rounded-full bg-secondary"
-                      transition={{ type: "spring", stiffness: 360, damping: 30 }}
-                    />
-                  )}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+          <ul className="hidden lg:flex items-center gap-1">
+            {routes.map((route) => {
+              const isActive =
+                pathname === route.href ||
+                (route.href !== "/" && pathname.startsWith(route.href));
+              return (
+                <li key={route.name}>
+                  <Link
+                    href={route.href}
+                    className={cn(
+                      "relative inline-flex items-center px-3.5 py-2 text-sm font-medium rounded-md transition-colors",
+                      isActive
+                        ? "text-primary-700"
+                        : "text-neutral-600 hover:text-primary-700",
+                    )}
+                  >
+                    {route.name}
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-underline"
+                        className="absolute left-3.5 right-3.5 -bottom-px h-0.5 rounded-full bg-secondary"
+                        transition={{
+                          type: "spring",
+                          stiffness: 360,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
 
-        <div className="flex items-center gap-2">
-          <Popover>
-            <PopoverTrigger asChild>
-              <ShadcnButton
-                variant="ghost"
-                size="sm"
-                className="hidden sm:inline-flex h-9 gap-1.5 rounded-full px-2.5 text-neutral-600 hover:text-primary-700"
-                aria-label={translate("Navbar.changeLanguage")}
-              >
-                <img
-                  src={flags[lang].src}
-                  alt=""
-                  className="w-5 h-5 rounded-full object-cover"
-                />
-                <span className="text-xs font-semibold">
-                  {flags[lang].label}
-                </span>
-                <ChevronDownIcon className="w-3.5 h-3.5 opacity-60" />
-              </ShadcnButton>
-            </PopoverTrigger>
-            <PopoverContent className="w-44 p-1.5" align="end">
-              {(["en", "fr"] as const).map((l) => (
-                <button
-                  key={l}
-                  onClick={() => setLanguage(l)}
-                  className={cn(
-                    "w-full flex items-center gap-2.5 px-3 py-2 text-sm rounded-md hover:bg-muted transition-colors",
-                    lang === l && "bg-muted font-medium"
-                  )}
+          <div className="flex items-center gap-2">
+            <Popover>
+              <PopoverTrigger asChild>
+                <ShadcnButton
+                  variant="ghost"
+                  size="sm"
+                  className="hidden sm:inline-flex h-9 gap-1.5 rounded-full px-2.5 text-neutral-600 hover:text-primary-700"
+                  aria-label={translate("Navbar.changeLanguage")}
                 >
                   <img
-                    src={flags[l].src}
+                    src={flags[lang].src}
                     alt=""
                     className="w-5 h-5 rounded-full object-cover"
                   />
-                  <span>{translate(`languages.${l}`)}</span>
-                </button>
-              ))}
-            </PopoverContent>
-          </Popover>
+                  <span className="text-xs font-semibold">
+                    {flags[lang].label}
+                  </span>
+                  <ChevronDownIcon className="w-3.5 h-3.5 opacity-60" />
+                </ShadcnButton>
+              </PopoverTrigger>
+              <PopoverContent className="w-44 p-1.5" align="end">
+                {(["en", "fr"] as const).map((l) => (
+                  <button
+                    key={l}
+                    onClick={() => setLanguage(l)}
+                    className={cn(
+                      "w-full flex items-center gap-2.5 px-3 py-2 text-sm rounded-md hover:bg-muted transition-colors",
+                      lang === l && "bg-muted font-medium",
+                    )}
+                  >
+                    <img
+                      src={flags[l].src}
+                      alt=""
+                      className="w-5 h-5 rounded-full object-cover"
+                    />
+                    <span>{translate(`languages.${l}`)}</span>
+                  </button>
+                ))}
+              </PopoverContent>
+            </Popover>
 
-          <Link
-            href="/donate"
-            className={cn(
-              buttonVariants({ size: "default" }),
-              "hidden sm:inline-flex h-10 rounded-full px-5 bg-secondary text-white hover:bg-secondary-600 shadow-sm shadow-secondary/30"
-            )}
-          >
-            {translate("donateNow")}
-          </Link>
+            <Link
+              href={charityInfo.donationUrl}
+              target="_blank"
+              className={cn(
+                buttonVariants({ size: "default" }),
+                "hidden sm:inline-flex h-10 rounded-full px-5 bg-secondary text-white hover:bg-secondary-600 shadow-sm shadow-secondary/30",
+              )}
+            >
+              {translate("donateNow")}
+            </Link>
 
-          <button
-            onClick={() => setIsMenuOpen((v) => !v)}
-            aria-label={
-              isMenuOpen
-                ? translate("Navbar.closeMenu")
-                : translate("Navbar.openMenu")
-            }
-            aria-expanded={isMenuOpen}
-            className="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-md text-primary-700 hover:bg-primary-50 transition-colors"
-          >
-            {isMenuOpen ? (
-              <XIcon className="w-6 h-6" />
-            ) : (
-              <MenuIcon className="w-6 h-6" />
-            )}
-          </button>
-        </div>
-      </nav>
-    </header>
+            <button
+              onClick={() => setIsMenuOpen((v) => !v)}
+              aria-label={
+                isMenuOpen
+                  ? translate("Navbar.closeMenu")
+                  : translate("Navbar.openMenu")
+              }
+              aria-expanded={isMenuOpen}
+              className="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-md text-primary-700 hover:bg-primary-50 transition-colors"
+            >
+              {isMenuOpen ? (
+                <XIcon className="w-6 h-6" />
+              ) : (
+                <MenuIcon className="w-6 h-6" />
+              )}
+            </button>
+          </div>
+        </nav>
+      </header>
 
       <AnimatePresence>
         {isMenuOpen && (
@@ -237,7 +239,7 @@ export default function MainNavbar() {
                         "flex items-center justify-between py-4 text-lg font-semibold transition-colors",
                         isActive
                           ? "text-primary-700"
-                          : "text-neutral-700 hover:text-primary-700"
+                          : "text-neutral-700 hover:text-primary-700",
                       )}
                     >
                       {route.name}
@@ -250,11 +252,12 @@ export default function MainNavbar() {
               })}
               <li className="pt-6 pb-2 flex flex-col gap-3">
                 <Link
-                  href="/donate"
+                  href={charityInfo.donationUrl}
+                  target="_blank"
                   onClick={closeMenu}
                   className={cn(
                     buttonVariants({ size: "lg" }),
-                    "w-full rounded-full bg-secondary text-white hover:bg-secondary-600"
+                    "w-full rounded-full bg-secondary text-white hover:bg-secondary-600",
                   )}
                 >
                   {translate("donateNow")}
@@ -271,7 +274,7 @@ export default function MainNavbar() {
                         "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors",
                         lang === l
                           ? "border-primary-700 text-primary-700 bg-primary-50"
-                          : "border-neutral-200 text-neutral-600 hover:border-primary-300"
+                          : "border-neutral-200 text-neutral-600 hover:border-primary-300",
                       )}
                     >
                       <img

@@ -45,6 +45,8 @@ export const socialLinks = [
 export const charityInfo = {
   registrationLocation: "Ontario, Canada",
   registrationNumber: "720842426RR0001",
+  donationUrl:
+    "https://www.canadahelps.org/en/charities/noble-alms-international/",
 };
 
 export const contactDetails = {

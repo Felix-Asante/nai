@@ -3,6 +3,7 @@
 import Container from "@/components/layouts/Container";
 import Reveal from "@/components/Reveal";
 import { buttonVariants } from "@/components/ui/button";
+import { charityInfo } from "@/constants";
 import { Link } from "@/i18n/routing";
 import { cn } from "@/utils";
 import {
@@ -63,12 +64,13 @@ export default function DonateDetailedSections() {
         const Icon = config.Icon;
         const isReversed = config.reverse;
         const id = config.id;
-        const paragraphs = [t(`${id}.p1`), t(`${id}.p2`), t(`${id}.p3`), t(`${id}.p4`)];
-        const highlights = [
-          t(`${id}.h1`),
-          t(`${id}.h2`),
-          t(`${id}.h3`),
+        const paragraphs = [
+          t(`${id}.p1`),
+          t(`${id}.p2`),
+          t(`${id}.p3`),
+          t(`${id}.p4`),
         ];
+        const highlights = [t(`${id}.h1`), t(`${id}.h2`), t(`${id}.h3`)];
 
         return (
           <div
@@ -77,26 +79,26 @@ export default function DonateDetailedSections() {
             className={cn(
               "section-y-sm scroll-mt-24",
               index === sectionConfigs.length - 1 && "section-y",
-              index % 2 === 1 && "bg-neutral-200/40"
+              index % 2 === 1 && "bg-neutral-200/40",
             )}
           >
             <Container>
               <div
                 className={cn(
-                  "grid lg:grid-cols-12 gap-10 lg:gap-14 items-center"
+                  "grid lg:grid-cols-12 gap-10 lg:gap-14 items-center",
                 )}
               >
                 <Reveal
                   className={cn(
                     "lg:col-span-6",
-                    isReversed ? "lg:order-2" : "lg:order-1"
+                    isReversed ? "lg:order-2" : "lg:order-1",
                   )}
                 >
                   <div className="flex items-center gap-3">
                     <div
                       className={cn(
                         "w-11 h-11 rounded-xl flex items-center justify-center",
-                        config.accent
+                        config.accent,
                       )}
                     >
                       <Icon className="w-5 h-5" />
@@ -130,16 +132,11 @@ export default function DonateDetailedSections() {
 
                   <div className="mt-8 flex flex-wrap gap-3">
                     <Link
-                      href={
-                        id === "monthly"
-                          ? "#donate?frequency=monthly"
-                          : id === "sponsor"
-                            ? "/projects"
-                            : "#donate"
-                      }
+                      href={charityInfo.donationUrl}
+                      target="_blank"
                       className={cn(
                         buttonVariants({ size: "lg" }),
-                        "rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600 text-white shadow-lg shadow-secondary/30"
+                        "rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600 text-white shadow-lg shadow-secondary/30",
                       )}
                     >
                       <HeartHandshakeIcon className="w-4 h-4" />
@@ -150,7 +147,7 @@ export default function DonateDetailedSections() {
                         href="/projects"
                         className={cn(
                           buttonVariants({ size: "lg", variant: "outline" }),
-                          "rounded-full px-6 h-12 border-neutral-300 text-neutral-700 hover:bg-neutral-100"
+                          "rounded-full px-6 h-12 border-neutral-300 text-neutral-700 hover:bg-neutral-100",
                         )}
                       >
                         {t("sponsor.secondaryCta")}
@@ -164,21 +161,21 @@ export default function DonateDetailedSections() {
                   delay={0.15}
                   className={cn(
                     "lg:col-span-6",
-                    isReversed ? "lg:order-1" : "lg:order-2"
+                    isReversed ? "lg:order-1" : "lg:order-2",
                   )}
                 >
                   <div className="relative">
                     <div
                       className={cn(
                         "absolute -top-5 -left-5 w-24 h-24 rounded-2xl hidden md:block",
-                        isReversed ? "bg-primary-100" : "bg-secondary/15"
+                        isReversed ? "bg-primary-100" : "bg-secondary/15",
                       )}
                       aria-hidden
                     />
                     <div
                       className={cn(
                         "absolute -bottom-5 -right-5 w-32 h-32 rounded-2xl hidden md:block",
-                        isReversed ? "bg-secondary/15" : "bg-primary-100"
+                        isReversed ? "bg-secondary/15" : "bg-primary-100",
                       )}
                       aria-hidden
                     />

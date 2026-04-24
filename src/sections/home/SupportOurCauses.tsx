@@ -10,6 +10,7 @@ import type { SupportedLanguages } from "@/types";
 import { cn } from "@/utils";
 import { ArrowRightIcon, HeartHandshakeIcon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import { charityInfo } from "@/constants";
 
 export default function SupportOurCauses() {
   const translate = useTranslations("SupportOurCauses");
@@ -86,7 +87,8 @@ export default function SupportOurCauses() {
                   {translate("donateCallout")}
                 </p>
                 <Link
-                  href="/donate"
+                  href={charityInfo.donationUrl}
+                  target="_blank"
                   className={cn(
                     buttonVariants({ size: "lg" }),
                     "rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600 text-white shadow-lg shadow-secondary/30 shrink-0",

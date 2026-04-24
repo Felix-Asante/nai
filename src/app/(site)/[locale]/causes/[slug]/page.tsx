@@ -17,6 +17,7 @@ import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import type { SupportedLanguages } from "@/types";
+import { charityInfo } from "@/constants";
 
 type Props = {
   params: Promise<{
@@ -70,10 +71,11 @@ export default async function CauseDetailPage(props: Props) {
         image={cause.image}
       >
         <Link
-          href="/donate"
+          href={charityInfo.donationUrl}
+          target="_blank"
           className={cn(
             buttonVariants({ size: "lg" }),
-            "rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600 text-white shadow-lg shadow-secondary/30"
+            "rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600 text-white shadow-lg shadow-secondary/30",
           )}
         >
           <HeartHandshakeIcon className="w-4 h-4" />
@@ -83,7 +85,7 @@ export default async function CauseDetailPage(props: Props) {
           href="#support"
           className={cn(
             buttonVariants({ size: "lg", variant: "outline" }),
-            "rounded-full px-6 h-12 border-white/40 bg-white/10 text-white hover:bg-white hover:text-primary-700"
+            "rounded-full px-6 h-12 border-white/40 bg-white/10 text-white hover:bg-white hover:text-primary-700",
           )}
         >
           {translate("supportEyebrow")}
@@ -107,7 +109,7 @@ export default async function CauseDetailPage(props: Props) {
                 <span
                   className={cn(
                     "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold",
-                    cause.accent.badge
+                    cause.accent.badge,
                   )}
                 >
                   <span aria-hidden>{cause.emoji}</span>
@@ -149,7 +151,7 @@ export default async function CauseDetailPage(props: Props) {
                         <div
                           className={cn(
                             "w-10 h-10 rounded-xl flex items-center justify-center",
-                            cause.accent.badge
+                            cause.accent.badge,
                           )}
                         >
                           <SparklesIcon className="w-5 h-5" />
@@ -182,10 +184,11 @@ export default async function CauseDetailPage(props: Props) {
                         {translate("makeDifferenceDescription")}
                       </p>
                       <Link
-                        href="/donate"
+                        href={charityInfo.donationUrl}
+                        target="_blank"
                         className={cn(
                           buttonVariants({ size: "lg" }),
-                          "mt-5 w-full rounded-full h-11 bg-secondary hover:bg-secondary-600 text-white shadow-lg shadow-secondary/30"
+                          "mt-5 w-full rounded-full h-11 bg-secondary hover:bg-secondary-600 text-white shadow-lg shadow-secondary/30",
                         )}
                       >
                         <HeartHandshakeIcon className="w-4 h-4" />
@@ -200,7 +203,10 @@ export default async function CauseDetailPage(props: Props) {
         </Container>
       </section>
 
-      <section id="support" className="section-y bg-neutral-200/40 scroll-mt-24">
+      <section
+        id="support"
+        className="section-y bg-neutral-200/40 scroll-mt-24"
+      >
         <Container>
           <div className="relative rounded-3xl overflow-hidden bg-brand-gradient text-white">
             <div
@@ -221,10 +227,11 @@ export default async function CauseDetailPage(props: Props) {
                   description={cause.article.supportIntro[locale]}
                 />
                 <Link
-                  href="/donate"
+                  href={charityInfo.donationUrl}
+                  target="_blank"
                   className={cn(
                     buttonVariants({ size: "lg" }),
-                    "mt-8 rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600 text-white shadow-lg shadow-secondary/30"
+                    "mt-8 rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600 text-white shadow-lg shadow-secondary/30",
                   )}
                 >
                   <HeartHandshakeIcon className="w-4 h-4" />
@@ -282,7 +289,7 @@ export default async function CauseDetailPage(props: Props) {
                     <span
                       className={cn(
                         "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold",
-                        other.accent.badge
+                        other.accent.badge,
                       )}
                     >
                       <span aria-hidden>{other.emoji}</span>

@@ -7,6 +7,7 @@ import { cn } from "@/utils";
 import { Link } from "@/i18n/routing";
 import { HeartPulseIcon, ArrowRightIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { charityInfo } from "@/constants";
 
 export default function GalleryImpactBanner() {
   const t = useTranslations("gallery");
@@ -46,10 +47,11 @@ export default function GalleryImpactBanner() {
                   ))}
                 </ul>
                 <Link
-                  href="/donate#donate"
+                  href={charityInfo.donationUrl}
+                  target="_blank"
                   className={cn(
                     buttonVariants({ size: "lg" }),
-                    "mt-7 rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600"
+                    "mt-7 rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600",
                   )}
                 >
                   {t("donateCta")}

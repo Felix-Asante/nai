@@ -1,14 +1,12 @@
 "use client";
 
 import Container from "@/components/layouts/Container";
-import Reveal from "@/components/Reveal";
-import SectionHeading from "@/components/SectionHeading";
 import { buttonVariants } from "@/components/ui/button";
+import { charityInfo } from "@/constants";
+import { Link } from "@/i18n/routing";
 import DonateDetailedSections from "@/sections/donate/DonateDetailedSections";
-import { DonationForm } from "@/sections/DonationForm";
 import { cn } from "@/utils";
 import { ArrowRightIcon, HeartHandshakeIcon } from "lucide-react";
-import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 
 export default function DonatePageContent() {
@@ -37,10 +35,11 @@ export default function DonatePageContent() {
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link
-                href="#donate"
+                href={charityInfo.donationUrl}
+                target="_blank"
                 className={cn(
                   buttonVariants({ size: "lg" }),
-                  "rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600 shadow-lg shadow-secondary/30"
+                  "rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600 shadow-lg shadow-secondary/30",
                 )}
               >
                 <HeartHandshakeIcon className="w-4 h-4" />
@@ -50,7 +49,7 @@ export default function DonatePageContent() {
                 href="/projects"
                 className={cn(
                   buttonVariants({ size: "lg", variant: "outline" }),
-                  "rounded-full px-6 h-12 border-white/40 bg-white/10 text-white hover:bg-white hover:text-primary-700"
+                  "rounded-full px-6 h-12 border-white/40 bg-white/10 text-white hover:bg-white hover:text-primary-700",
                 )}
               >
                 {t("hero.seeProjects")}
@@ -82,7 +81,7 @@ export default function DonatePageContent() {
 
       <DonateDetailedSections />
 
-      <section id="donate" className="section-y bg-neutral-200/40 scroll-mt-24">
+      {/* <section id="donate" className="section-y bg-neutral-200/40 scroll-mt-24">
         <Container>
           <SectionHeading
             align="center"
@@ -94,7 +93,7 @@ export default function DonatePageContent() {
             <DonationForm />
           </Reveal>
         </Container>
-      </section>
+      </section> */}
     </main>
   );
 }

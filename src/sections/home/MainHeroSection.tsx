@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { buttonVariants } from "@/components/ui/button";
 import { ArrowRightIcon, HeartHandshakeIcon } from "lucide-react";
 import { cn } from "@/utils";
+import { charityInfo } from "@/constants";
 
 export default function MainHeroSection() {
   const translate = useTranslations();
@@ -64,7 +65,8 @@ export default function MainHeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <Link
-                href="/donate"
+                href={charityInfo.donationUrl}
+                target="_blank"
                 className={cn(
                   buttonVariants({ size: "lg" }),
                   "rounded-full px-6 h-12 bg-secondary hover:bg-secondary-600 shadow-lg shadow-secondary/30",
